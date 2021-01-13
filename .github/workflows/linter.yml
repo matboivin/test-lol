@@ -1,6 +1,11 @@
 name: 'Yamllint GitHub Actions'
+
 on:
-  - pull_request
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   yamllint:
     name: 'Yamllint'
