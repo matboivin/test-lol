@@ -1,10 +1,10 @@
 # Notions
 
-## Articles
+## Articles
 
 - MISC 112
 
-## Links
+## Links
 
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
