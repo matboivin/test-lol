@@ -13,3 +13,5 @@
 
 - [kubernetes-goat](https://github.com/madhuakula/kubernetes-goat)
 - [peirates](https://github.com/inguardians/peirates)
+- [gke-auditor](https://github.com/google/gke-auditor)
+- CVE-2020-8558
