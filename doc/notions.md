@@ -9,21 +9,31 @@
 
 ## Links
 
+### References
+
+- [Kubernetes](https://kubernetes.io/)
+- [etcd](https://etcd.io/)
+- [Cloud Native Computing Foundation](https://www.cncf.io/)
+
 ### Training
 
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
 
-### References
+### Cheatsheets
 
 - [kubectl Cheat Sheet](https://phoenixnap.com/kb/kubectl-commands-cheat-sheet)
 
 ### Understanding how it works
 
-- [What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
-- [Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
+- [phoenixNAP:What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
+- [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
 - [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
+
+### Bookmarks
+
+- [container.training: Namespaces](https://container.training/kube-selfpaced.yml.html#119)
 
 ### Security
 
