@@ -17,7 +17,7 @@ Kubernetes has a decentralized architecture that does not handle tasks sequentia
 5. Kubernetes continuously monitors the elements of the cluster to make sure the current state of the application does not vary from the desired state.
 
 <p align="center">
-  <img src="assets/full-kubernetes-model-architecture.png" alt="bash diagram" />
+  <img src="assets/full-kubernetes-model-architecture.png" alt="k8s diagram" />
 </p>
 
 Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
@@ -40,11 +40,11 @@ The following objects are stored in `etcd`.
 `kubectl`: CLI tool Kubernetes API
 
 <p align="center">
-  <img src="assets/service-pod.png" alt="bash diagram" />
+  <img src="assets/service-pod.png" alt="service and pod" />
 </p>
 
 <p align="center">
-  <img src="assets/service-pod-ip.png" alt="bash diagram" />
+  <img src="assets/service-pod-ip.png" alt="service and pod with IP address" />
 </p>
 
 Images source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
@@ -71,7 +71,7 @@ You also provide the parameters of the desired state for the application(s) runn
 Source: [phoenixNAP: What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
 
 <p align="center">
-  <img src="assets/kubernetes-master-elements.png" alt="bash diagram" />
+  <img src="assets/kubernetes-master-elements.png" alt="master node" />
 </p>
 
 Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
@@ -109,7 +109,7 @@ There are multiple instances of Worker Nodes, each performing their assigned tas
 Source: [phoenixNAP: What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
 
 <p align="center">
-  <img src="assets/components-worker-node-kubernetes.png" alt="bash diagram" />
+  <img src="assets/components-worker-node-kubernetes.png" alt="worker node" />
 </p>
 
 Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
@@ -133,7 +133,7 @@ A pod is the smallest element of scheduling in Kubernetes. Without it, a contain
 The pod serves as a ‘wrapper’ for a single container with the application code. Based on the availability of resources, the Master schedules the pod on a specific node and coordinates with the container runtime to launch the container.
 
 <p align="center">
-  <img src="assets/container-pod-deplyment-kubernetes.png" alt="bash diagram" />
+  <img src="assets/container-pod-deplyment-kubernetes.png" alt="pod deployment" />
 </p>
 
 In instances where pods unexpectedly fail to perform their tasks, Kubernetes does not attempt to fix them. Instead, it creates and starts a new pod in its place. This new pod is a replica, except for the DNS and IP address. This feature has had a profound impact on how developers design applications.
