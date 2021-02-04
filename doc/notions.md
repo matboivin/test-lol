@@ -14,6 +14,7 @@
 - [Kubernetes](https://kubernetes.io/)
 - [etcd](https://etcd.io/)
 - [Cloud Native Computing Foundation](https://www.cncf.io/)
+- [minikube](https://minikube.sigs.k8s.io/docs/)
 
 ### Training
 
