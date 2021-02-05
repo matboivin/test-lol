@@ -48,6 +48,12 @@ minikube start
 minikube start --vm-driver=<pilote name>
 ```
 
+### Open the Kubernetes dashboard in a browser:
+
+```console
+minikube dashboard
+```
+
 ## Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
