@@ -20,6 +20,7 @@
 
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
+- [Kubernetes Documentation: Interactive Tutorial - Creating a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
 
 ### Cheatsheets
 
