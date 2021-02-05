@@ -37,6 +37,10 @@
 
 - [container.training: Namespaces](https://container.training/kube-selfpaced.yml.html#119)
 
+### JSON
+
+- [jq](https://stedolan.github.io/jq/)
+
 ### Security
 
 - [kubernetes-goat](https://github.com/madhuakula/kubernetes-goat)

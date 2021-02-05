@@ -33,6 +33,12 @@ Source: [Minikube : un environnement Kubernetes maximal pour une charge de trava
 
 Source: [minikube start](https://minikube.sigs.k8s.io/docs/start/)
 
+Install [jq](https://stedolan.github.io/jq/) to format output:
+
+```console
+kubectl version -o json | jq
+```
+
 ### Start cluster
 
 ```console
