@@ -58,6 +58,10 @@ minikube dashboard
 
 Write Dockerfiles.
 
+#### NGINX
+
+> A container with annginx server listening on ports 80 and 443. Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.  The page displayed does not matter as long as it is not an http error.  This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.  It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+
 ## Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
