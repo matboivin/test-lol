@@ -48,11 +48,15 @@ minikube start
 minikube start --vm-driver=<pilote name>
 ```
 
-### Open the Kubernetes dashboard in a browser:
+Open the Kubernetes dashboard in a browser:
 
 ```console
 minikube dashboard
 ```
+
+### Containerize apps
+
+Write Dockerfiles.
 
 ## Samples
 
