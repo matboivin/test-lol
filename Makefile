@@ -23,5 +23,6 @@ docker-rmi:
 
 clean: docker-rm docker-rmi
 
-.PHONY: re
 re: clean up
+
+.PHONY: up clean re
