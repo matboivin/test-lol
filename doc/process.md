@@ -79,6 +79,8 @@ To make images smaller:
 > If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:  `$ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf`  [(Source)](https://hub.docker.com/_/nginx)
 
 - [NGINX default conf](https://tutoriel-nginx.readthedocs.io/fr/latest/Basic_Config.html)
+- [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
+- [Alpine Wiki: NGINX](https://wiki.alpinelinux.org/wiki/Nginx)
 
 ## Samples
 
