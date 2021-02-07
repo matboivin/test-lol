@@ -60,7 +60,21 @@ Write Dockerfiles.
 
 #### NGINX
 
-> A container with annginx server listening on ports 80 and 443. Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.  The page displayed does not matter as long as it is not an http error.  This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.  It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+Containers have to be build using Alpine Linux.  
+-> version 3.13
+
+- A container with a nginx server listening on ports 80 and 443.
+  - Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
+  - The page displayed does not matter as long as it is not an http error.
+  - This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
+  - It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
+
+- [How To Install Nginx web server on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-nginx-web-server-on-alpine-linux/)
+
+To make images smaller:  
+`apk update` + `rm /var/cache/apk/*` OR `apk add --no-cache`
+
+- [Alpine Dockerfile Advantages of --no-cache Vs. rm /var/cache/apk/*](https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk/49119046)
 
 ## Samples
 

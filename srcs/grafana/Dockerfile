@@ -3,7 +3,7 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages
-RUN apk add --no-cache nginx
+RUN apk add --no-cache
 
 # Inform which ports are intended to be published
-EXPOSE 80 443
+EXPOSE 3000
