@@ -88,6 +88,14 @@ Log files:
 - `/var/log/nginx/access.log`
 - `/var/log/nginx/error.log`
 
+#### FTPS server
+
+> FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
+
+- [Alpine Wiki: FTP](https://wiki.alpinelinux.org/wiki/FTP)
+
+vsftpd (Very Secure FTP Daemon) -> server
+
 ## Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
