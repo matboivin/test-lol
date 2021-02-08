@@ -82,6 +82,12 @@ To make images smaller:
 - [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
 - [Alpine Wiki: NGINX](https://wiki.alpinelinux.org/wiki/Nginx)
 
+> If you add a custom CMD in the Dockerfile, be sure to include -g daemon off; in the CMD in order for nginx to stay in the foreground, so that Docker can track the process properly (otherwise your container will stop immediately after starting)!  [(Source)](https://hub.docker.com/_/nginx)
+
+Log files:
+- `/var/log/nginx/access.log`
+- `/var/log/nginx/error.log`
+
 ## Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
