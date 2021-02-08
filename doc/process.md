@@ -58,6 +58,52 @@ minikube dashboard
 
 Write Dockerfiles.
 
+#### Create group and user on Alpine
+
+adduser
+
+```
+Usage: adduser [OPTIONS] USER [GROUP]
+
+Create new user, or add USER to GROUP
+
+	-h	--home							DIR		Home directory
+	-g	--gecos							GECOS	GECOS field
+	-s	--shell							SHELL	Login shell
+	-G	--ingroup						GRP		Group
+	-S	--system						Create a system user
+	-D	--disabled-password	Don't assign a password
+	-H	--no-create-home		Don't create home directory
+	-u	--uid								UID		User id
+	-k											SKEL	Skeleton directory (/etc/skel)
+```
+
+addgroup
+
+```
+Usage: addgroup [-g GID] [-S] [USER] GROUP
+
+Add a group or add a user to a group
+
+	-g	--gid			GID	Group id
+	-S	--system	Create a system group
+```
+
+chpasswd
+
+```
+Usage: chpasswd [--md5|--encrypted|--crypt-method|--root]
+
+Read user:password from stdin and update /etc/passwd
+
+	-e,--encrypted		Supplied passwords are in encrypted form
+	-m,--md5		Encrypt using md5, not des
+	-c,--crypt-method ALG	des,md5,sha256/512 (default sha512)
+	-R,--root DIR		Directory to chroot into
+```
+
+- [How do I add a user when I'm using Alpine as a base image?](https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image)
+
 #### NGINX
 
 Containers have to be build using Alpine Linux.  
@@ -92,9 +138,14 @@ Log files:
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
 
-- [Alpine Wiki: FTP](https://wiki.alpinelinux.org/wiki/FTP)
-
 vsftpd (Very Secure FTP Daemon) -> server
+
+- [Alpine Wiki: FTP](https://wiki.alpinelinux.org/wiki/FTP)
+- [How to Install and Configure an FTP server (vsftpd) with SSL/TLS on Ubuntu 20.04](https://www.howtoforge.com/tutorial/ubuntu-vsftpd/)
+- [How to setup and use FTP Server in Ubuntu Linux](https://linuxconfig.org/how-to-setup-and-use-ftp-server-in-ubuntu-linux)
+
+> Il existe plusieurs raisons pour lesquelles il est nécessaire de restreindre une session SFTP d’un utilisateur à un dossier particulier sur un serveur Linux. Entre autres, la préservation de l’intégrité des fichiers, la protection contre les logiciels malveillants, et surtout la protection du système.
+Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut avoir recours à un chroot jail.  Sur les systèmes d’exploitation basés sur Unix, un chroot jail est une fonctionnalité utilisée pour isoler un processus et ses enfants (child process) du reste du système d’exploitation. Pour des raisons de sécurité, c’est une fonctionnalité qui doit être employée exclusivement sur les processus n’utilisant pas le compte root.  [(Source)](https://homputersecurity.com/2019/05/14/mise-en-place-dune-restriction-chroot-jail-sur-un-dossier-nappartenant-pas-au-compte-root/)
 
 ## Samples
 
