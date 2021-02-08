@@ -10,9 +10,14 @@ RUN apk add --no-cache vsftpd \
  && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.orig
 
 # Create group and user
-RUN addgroup -S $FTP_USER \
- && adduser -D -h /home/$FTP_USER -s /sbin/nologin -G $FTP_USER $FTP_USER \
- && echo "user42:user42" | chpasswd
+RUN addgroup --system $FTP_USER \
+ && adduser \
+    --disabled-password \
+    --home /home/$FTP_USER \
+    --system /sbin/nologin \
+    --ingroup $FTP_USER \
+    $FTP_USER \
+ && echo "$FTP_USER:$FTP_PASSWD" | chpasswd
 
 # Inform which ports are intended to be published
 EXPOSE 21
