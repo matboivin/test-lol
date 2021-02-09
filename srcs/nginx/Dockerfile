@@ -7,7 +7,7 @@ RUN apk add --no-cache nginx openssl \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 
 # Add new config
-COPY config/nginx.conf /etc/nginx/nginx.conf
+COPY config/nginx.conf /etc/nginx/
 # Add index and favicon
 COPY config/index.html var/www/
 COPY config/favicon.ico var/www/

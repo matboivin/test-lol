@@ -67,15 +67,15 @@ Usage: adduser [OPTIONS] USER [GROUP]
 
 Create new user, or add USER to GROUP
 
-	-h	--home							DIR		Home directory
-	-g	--gecos							GECOS	GECOS field
-	-s	--shell							SHELL	Login shell
-	-G	--ingroup						GRP		Group
-	-S	--system						Create a system user
+	-h	--home				DIR		Home directory
+	-g	--gecos				GECOS	GECOS field
+	-s	--shell				SHELL	Login shell
+	-G	--ingroup			GRP		Group
+	-S	--system			Create a system user
 	-D	--disabled-password	Don't assign a password
-	-H	--no-create-home		Don't create home directory
-	-u	--uid								UID		User id
-	-k											SKEL	Skeleton directory (/etc/skel)
+	-H	--no-create-home	Don't create home directory
+	-u	--uid				UID		User id
+	-k						SKEL	Skeleton directory (/etc/skel)
 ```
 
 addgroup
@@ -85,7 +85,7 @@ Usage: addgroup [-g GID] [-S] [USER] GROUP
 
 Add a group or add a user to a group
 
-	-g	--gid			GID	Group id
+	-g	--gid		GID	Group id
 	-S	--system	Create a system group
 ```
 
