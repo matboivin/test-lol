@@ -1,14 +1,14 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := nginx
-DOCKER_NAME := nginx1
+IMAGE := ftps-server
+DOCKER_NAME := ftps1
 TAG = 1.0.0
 
 docker-build:
 	docker build -t $(IMAGE) .
 
 docker-run:
-	docker run -it -p 80:80 -p 443:443 --name $(DOCKER_NAME) $(IMAGE)
+	docker run -it -p 20:20 -p 21:21 --name $(DOCKER_NAME) $(IMAGE) sh
 
 up: docker-build docker-run
 

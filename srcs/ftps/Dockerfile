@@ -24,4 +24,4 @@ RUN addgroup --system $FTP_USER \
 COPY config/vsftpd.conf /etc/vsftpd/
 
 # Inform which ports are intended to be published
-EXPOSE 21
+EXPOSE 20 21
