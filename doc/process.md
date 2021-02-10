@@ -106,6 +106,8 @@ Read user:password from stdin and update /etc/passwd
 
 #### NGINX
 
+- [NGINX official Docker image](https://hub.docker.com/_/nginx)
+
 Containers have to be build using Alpine Linux.  
 -> version 3.13
 
@@ -133,6 +135,12 @@ To make images smaller:
 Log files:
 - `/var/log/nginx/access.log`
 - `/var/log/nginx/error.log`
+
+#### MySQL
+
+- [MySQL official Docker image](https://registry.hub.docker.com/_/mysql/)
+- [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
+- [Alpine Wiki: MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
 
 #### FTPS server
 
