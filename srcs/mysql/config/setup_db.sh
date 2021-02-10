@@ -2,25 +2,20 @@
 #
 # Setup database
 
-db_name='wordpress_db'
-username='ft_user'
-userpassword='ft_password'
-hostname='localhost'
-
 # Start service
 service mysql start
 
 # Create database user
-mysql -e "CREATE USER '$username'@'$hostname' IDENTIFIED BY '$userpassword'"
+mysql -e "CREATE USER '$MYSQL_USER'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'"
 
 # phpMyAdmin database
-mysql -e "GRANT ALL PRIVILEGES ON phpmyadmin.* TO '$username'@'$hostname';"
+mysql -e "GRANT ALL PRIVILEGES ON phpmyadmin.* TO '$MYSQL_USER'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 
 # WordPress database
-mysql -e "CREATE DATABASE $db_name;"
-mysql -e "GRANT ALL PRIVILEGES ON $db_name.* TO '$username'@'$hostname';"
+mysql -e "CREATE DATABASE $MYSQL_DATABASE;"
+mysql -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 
-mysql $db_name -u root < /root/wordpress_db.sql
+mysql $MYSQL_DATABASE -u root < /root/wordpress_db.sql
 rm /root/wordpress_db.sql

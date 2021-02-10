@@ -2,6 +2,7 @@ FROM alpine:3.13
 
 LABEL maintainer="mboivin@student.42.fr"
 
+# Environment Variables
 ENV FTP_USER=user42
 ENV FTP_PASSWD=user42
 

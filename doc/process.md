@@ -142,6 +142,15 @@ Log files:
 - [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
 - [Alpine Wiki: MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
 
+Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
+
+- MYSQL_ROOT_PASSWORD
+- MYSQL_DATABASE
+- MYSQL_USER, MYSQL_PASSWORD
+- MYSQL_HOST
+
+[MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
+
 #### FTPS server
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
