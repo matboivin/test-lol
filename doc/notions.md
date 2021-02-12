@@ -36,10 +36,13 @@
 ### Bookmarks
 
 - [container.training: Namespaces](https://container.training/kube-selfpaced.yml.html#119)
+- [Kubernetes Documentation: Creating a new namespace](https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace)
 
-### JSON
+### Organization
 
 - [jq](https://stedolan.github.io/jq/)
+- [A Better Way of Organizing Your Kubernetes Manifest Files](https://boxunix.com/2020/05/15/a-better-way-of-organizing-your-kubernetes-manifest-files/)
+- [Helm docs: The Chart File Structure](https://helm.sh/docs/topics/charts/)
 
 ### Security
 
