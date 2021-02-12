@@ -151,6 +151,11 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 
 [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
 
+#### WordPress
+
+- [Custom WordPress Docker Setup](https://codingwithmanny.medium.com/custom-wordpress-docker-setup-8851e98e6b8)
+- [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+
 #### FTPS server
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
@@ -168,4 +173,4 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
-- [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+- [ container-examples / alpine-mysql](https://github.com/container-examples/alpine-mysql/)
