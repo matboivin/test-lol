@@ -14,5 +14,8 @@ minikube addons enable dashboard
 docker build -t nginx:$TAG srcs/nginx
 docker build -t wordpress:$TAG srcs/wordpress
 
+# Secrets
+#kubectl apply -f ./secrets/wordpress-db.yaml
+
 # Create namespace
 #kubectl create -f ./srcs/ft-services.yaml
