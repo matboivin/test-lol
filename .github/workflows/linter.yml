@@ -17,3 +17,5 @@ jobs:
         with:
           manifests: |
               srcs/ft-services.yaml
+              srcs/mysql/mysql-deployment.yaml
+              srcs/wordpress/wordpress-deployment.yaml
