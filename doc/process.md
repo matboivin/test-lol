@@ -177,6 +177,19 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 Your Load Balancer should be the only entry point for the Cluster.
 
 - [Ce qu’il faut savoir sur MetalLB](https://www.objectif-libre.com/fr/blog/2019/06/11/metallb/)
+- [MetalLB installation](https://metallb.universe.tf/installation/)
+
+```
+# see what changes would be made, returns nonzero returncode if different
+kubectl get configmap kube-proxy -n kube-system -o yaml | \
+sed -e "s/strictARP: false/strictARP: true/" | \
+kubectl diff -f - -n kube-system
+
+# actually apply the changes, returns nonzero returncode on errors only
+kubectl get configmap kube-proxy -n kube-system -o yaml | \
+sed -e "s/strictARP: false/strictARP: true/" | \
+kubectl apply -f - -n kube-system
+```
 
 ## Samples
 
