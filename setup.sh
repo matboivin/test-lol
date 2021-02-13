@@ -15,4 +15,4 @@ docker build -t nginx:$TAG srcs/nginx
 docker build -t wordpress:$TAG srcs/wordpress
 
 # Create namespace
-kubectl create -f ./srcs/ft-services.yaml
+#kubectl create -f ./srcs/ft-services.yaml

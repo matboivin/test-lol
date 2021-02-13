@@ -3,14 +3,13 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages
-RUN apk add --no-cache
+RUN apk add --no-cache php
 
 # Environment Variables
 ENV USER=www-data
 
-# Install necessary packages and backup default vsftpd config
-RUN apk add --no-cache vsftpd vsftpd-doc \
- && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.orig
+# Install necessary packages
+RUN apk add --no-cache php7.3-fpm php7.3-mysql php7.3-gd php7.3-mbstring php7.3-xml php-pear php7.3-gettext php7.3-cgi php7.3-zip
 
 # Create group and user
 RUN addgroup --system $USER \
