@@ -5,6 +5,7 @@
 MINIKUBE_VERSION=v1.17.1
 KUBECTL_VERSION=v1.18.0
 IMAGES_TAG=1.0
+DOCKERFILE_PATH=docker-config/srcs
 
 # Check directory exists
 if [ ! -d "/usr/local/bin/r" ]; then
@@ -15,10 +16,10 @@ fi
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/$MINIKUBE_VERSION/minikube-linux-amd64
 chmod +x minikube
 sudo install minikube /usr/local/bin/
-rm -rf minikube
 
 if [ $? -eq 0 ]; then
     echo "√  minikube was installed"
+    rm -rf .minikube
 else
     echo "✘  minikube installation failed"
     exit 1
@@ -45,8 +46,8 @@ minikube addons enable dashboard
 minikube addons enable metallb
 
 # Build images
-docker build -t nginx:$IMAGES_TAG srcs/nginx
-docker build -t wordpress:$IMAGES_TAG srcs/wordpress
+docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
+docker build -t wordpress:$IMAGES_TAG $DOCKERFILE_PATH/wordpress
 
 # Secrets
 #kubectl apply -f ./secrets/wordpress-db.yaml
