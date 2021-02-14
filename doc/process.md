@@ -176,6 +176,8 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 > Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
 Your Load Balancer should be the only entry point for the Cluster.
 
+> Un  mécanisme  souple,  implémenté  sous  forme  d’un  protocole  distinct  et  appelé  ARP  (Address Resolution Protocol) permet de déterminer dynamiquement l’adresse MAC à partir de l’adresse IP d’un hôte.  [(Source)](http://www.gipsa-lab.grenoble-inp.fr/~christian.bulfone/MIASHS-L3/PDF/2-Le_protocole_IP.pdf)
+
 - [Ce qu’il faut savoir sur MetalLB](https://www.objectif-libre.com/fr/blog/2019/06/11/metallb/)
 - [MetalLB installation](https://metallb.universe.tf/installation/)
 
