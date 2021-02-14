@@ -5,7 +5,7 @@
 MINIKUBE_VERSION=v1.17.1
 KUBECTL_VERSION=v1.18.0
 IMAGES_TAG=1.0
-DOCKERFILE_PATH=docker-config/srcs
+DOCKERFILE_PATH=docker-config
 
 # Check directory exists
 if [ ! -d "/usr/local/bin/r" ]; then
@@ -19,7 +19,7 @@ sudo install minikube /usr/local/bin/
 
 if [ $? -eq 0 ]; then
     echo "√  minikube was installed"
-    rm -rf .minikube
+    rm -rf minikube
 else
     echo "✘  minikube installation failed"
     exit 1
