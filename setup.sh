@@ -6,6 +6,7 @@ MINIKUBE_VERSION=v1.17.1
 KUBECTL_VERSION=v1.18.0
 IMAGES_TAG=1.0
 DOCKERFILE_PATH=srcs/docker-config
+DEPLOY_PATH=srcs/deployments
 
 # Check directory exists
 if [ ! -d "/usr/local/bin/r" ]; then
@@ -45,9 +46,15 @@ minikube addons enable dashboard
 # Enable MetalLB load balancer
 minikube addons enable metallb
 
+# Set the environment variables
+eval $(minikube docker-env)
+
 # Build images
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
 docker build -t wordpress:$IMAGES_TAG $DOCKERFILE_PATH/wordpress
+
+# Deployments
+kubectl apply -f $DEPLOY_PATH/nginx-deployment.yaml
 
 # Secrets
 #kubectl apply -f ./secrets/wordpress-db.yaml
