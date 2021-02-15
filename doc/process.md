@@ -197,6 +197,12 @@ sed -e "s/strictARP: false/strictARP: true/" | \
 kubectl apply -f - -n kube-system
 ```
 
+> The controller helps in the IP address assignment, whereas the speaker advertises layer -2 address.
+
+```console
+kubectl get pods -n metallb-system
+```
+
 ## Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
