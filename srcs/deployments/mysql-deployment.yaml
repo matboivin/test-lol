@@ -45,8 +45,8 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:1.0
-        name: mysql
+      - name: mysql
+        image: mysql:1.0
         imagePullPolicy: Never
         env:
         - name: MYSQL_ROOT_PASSWORD

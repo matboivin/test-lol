@@ -19,4 +19,5 @@ jobs:
               srcs/ft-services.yaml
               srcs/secrets/wordpress-db.yaml
               srcs/deployments/mysql-deployment.yaml
+              srcs/deployments/nginx-deployment.yaml
               srcs/deployments/wordpress-deployment.yaml
