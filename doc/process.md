@@ -158,6 +158,10 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 - [How to Run WordPress in Kuberbetes](https://www.serverlab.ca/tutorials/containers/kubernetes/how-to-run-wordpress-in-kuberbetes/)
 - [Alpine Wiki: WordPress](https://wiki.alpinelinux.org/wiki/WordPress)
 
+php7-mysql -> deprecated
+
+- [How to install PHP 7 fpm on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/)
+
 #### FTPS server
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
