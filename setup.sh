@@ -39,7 +39,7 @@ else
 fi
 
 # Start cluster
-minikube start --vm-driver=docker
+minikube start --driver=docker
 
 # Enable dashboard
 minikube addons enable dashboard
@@ -52,6 +52,10 @@ eval $(minikube docker-env)
 # Build images
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
 docker build -t wordpress:$IMAGES_TAG $DOCKERFILE_PATH/wordpress
+
+
+# MetalLB configuration
+kubectl apply -f srcs/metallb-config.yaml
 
 # Deployments
 kubectl apply -f $DEPLOY_PATH/nginx-deployment.yaml
