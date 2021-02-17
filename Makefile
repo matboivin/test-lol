@@ -10,7 +10,7 @@ install:
 docker-build:
 	@zsh $(SCRIPTS_PATH)/build_docker.sh
 
-debug: stop clean
+debug:
 	@zsh setup.sh
 
 stop:
