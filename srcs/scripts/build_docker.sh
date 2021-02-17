@@ -3,7 +3,7 @@
 # Build Docker images
 
 # VARIABLES
-IMAGES_TAG=1.0
+IMAGES_TAG=dev
 DOCKERFILE_PATH=srcs/docker-config
 
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx

@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress:1.0
+        image: wordpress:dev
         imagePullPolicy: Never
         env:
         - name: WORDPRESS_DB_HOST

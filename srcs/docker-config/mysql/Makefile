@@ -2,7 +2,7 @@ SHELL = /bin/sh
 DOCKER_USER := mboivin
 IMAGE := mysql1
 DOCKER_NAME := mysql1
-TAG = 1.0.0
+TAG = dev
 
 docker-build:
 	docker build -t $(IMAGE) .
