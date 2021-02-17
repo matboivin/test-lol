@@ -1,8 +1,8 @@
 SHELL = /bin/zsh
-SCRIPTS_PATH=scripts
+SCRIPTS_PATH=srcs/scripts
 
 all:
-	@zsh $(SCRIPTS_PATH)/launch.sh
+	@zsh setup.sh
 
 install:
 	@zsh $(SCRIPTS_PATH)/install.sh
@@ -10,14 +10,18 @@ install:
 docker-build:
 	@zsh $(SCRIPTS_PATH)/build_docker.sh
 
-debug:
-	@zsh setup.sh
+docker-stop:
+	docker stop $(docker ps -a -q)
+
+docker-clean:
+	docker rm $(docker ps -a -q)
+	docker rmi $(docker images -q)
 
 stop:
 	minikube stop
 
-clean:
-	@zsh $(SCRIPTS_PATH)/clean.sh
+clean: docker-clean
+	minikube delete
 
 re: clean all
 
