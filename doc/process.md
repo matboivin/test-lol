@@ -54,6 +54,12 @@ Open the Kubernetes dashboard in a browser:
 minikube dashboard
 ```
 
+Some dashboard features require the metrics-server addon. To enable all features please run:
+
+```console
+minikube addons enable metrics-server
+```
+
 ### Containerize apps
 
 Write Dockerfiles.
