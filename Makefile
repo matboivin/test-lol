@@ -13,16 +13,18 @@ docker-build:
 docker-stop:
 	docker stop $(docker ps -a -q)
 
-docker-clean:
+docker-rm:
 	docker rm $(docker ps -a -q)
+
+docker-rmi:
 	docker rmi $(docker images -q)
 
 stop:
 	minikube stop
 
-clean: docker-clean
-	minikube delete
+clean:
+	@zsh $(SCRIPTS_PATH)/clean.sh
 
 re: clean all
 
-.PHONY: install debug stop clean re
+.PHONY: install stop clean re
