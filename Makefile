@@ -1,14 +1,24 @@
-SHELL = /bin/sh
+SHELL = /bin/zsh
+SCRIPTS_PATH=scripts
 
 all:
-	sh setup.sh
+	@zsh $(SCRIPTS_PATH)/launch.sh
 
 install:
-	sh install.sh
+	@zsh $(SCRIPTS_PATH)/install.sh
+
+docker-build:
+	@zsh $(SCRIPTS_PATH)/build_docker.sh
+
+debug: stop clean
+	@zsh setup.sh
+
+stop:
+	minikube stop
 
 clean:
-	sh clean.sh
+	@zsh $(SCRIPTS_PATH)/clean.sh
 
 re: clean all
 
-.PHONY: install clean re
+.PHONY: install debug stop clean re
