@@ -18,6 +18,11 @@ jobs:
           manifests: |
               srcs/ft-services.yaml
               srcs/secrets/wordpress-db.yaml
-              srcs/deployments/mysql-deployment.yaml
-              srcs/deployments/nginx-deployment.yaml
-              srcs/deployments/wordpress-deployment.yaml
+              srcs/deployments/mysql.yaml
+              srcs/deployments/nginx.yaml
+              srcs/deployments/wordpress.yaml
+              srcs/services/mysql.yaml
+              srcs/services/nginx.yaml
+              srcs/services/wordpress.yaml
+              srcs/pvcs/mysql.yaml
+              srcs/pvcs/wordpress.yaml

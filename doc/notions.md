@@ -16,13 +16,13 @@
 - [Cloud Native Computing Foundation](https://www.cncf.io/)
 - [minikube](https://minikube.sigs.k8s.io/docs/)
 
-### Training
+### Training
 
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
 - [Kubernetes Documentation: Interactive Tutorial - Creating a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
 
-### Cheatsheets
+### Cheatsheets
 
 - [kubectl Cheat Sheet](https://phoenixnap.com/kb/kubectl-commands-cheat-sheet)
 
@@ -37,6 +37,8 @@
 
 - [container.training: Namespaces](https://container.training/kube-selfpaced.yml.html#119)
 - [Kubernetes Documentation: Creating a new namespace](https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace)
+- [Kubernetes Documentation: Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/)
+- [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
 
 ### Organization
 
