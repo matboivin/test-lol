@@ -17,12 +17,13 @@ jobs:
         with:
           manifests: |
               srcs/ft-services.yaml
-              srcs/secrets/wordpress-db.yaml
+              srcs/metallb-config.yaml
               srcs/deployments/mysql.yaml
               srcs/deployments/nginx.yaml
               srcs/deployments/wordpress.yaml
+              srcs/pvcs/mysql.yaml
+              srcs/pvcs/wordpress.yaml
+              srcs/secrets/wordpress-db.yaml
               srcs/services/mysql.yaml
               srcs/services/nginx.yaml
               srcs/services/wordpress.yaml
-              srcs/pvcs/mysql.yaml
-              srcs/pvcs/wordpress.yaml
