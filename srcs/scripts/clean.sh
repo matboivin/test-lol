@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Clean ft_services project at 42
 

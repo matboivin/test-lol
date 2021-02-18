@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Install minikube and kubectl
 
@@ -10,7 +10,6 @@ BIN_PATH=/usr/local/bin
 # Check directory exists
 if [ ! -d "$BIN_PATH" ]; then
     mkdir -p $BIN_PATH
-
 fi
 
 # Install minikube

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Setup ft_services project at 42
 
