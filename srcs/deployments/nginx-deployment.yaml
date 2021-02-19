@@ -4,7 +4,6 @@ metadata:
   name: nginx
   labels:
     app: nginx
-    tier: frontend
 spec:
   ports:
     - port: 80
@@ -26,10 +25,12 @@ spec:
   selector:
     matchLabels:
       app: nginx
+      tier: frontend
   template:
     metadata:
       labels:
         app: nginx
+        tier: frontend
     spec:
       containers:
       - name: nginx

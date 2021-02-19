@@ -9,7 +9,8 @@ RUN apk add --no-cache php
 ENV USER=www-data
 
 # Install necessary packages
-RUN apk add --no-cache php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib
+RUN apk add --no-cache nginx \
+    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib
 
 # Create group and user
 RUN addgroup --system $USER \
