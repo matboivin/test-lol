@@ -32,6 +32,7 @@
 - [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
 - [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
+- [matchLabels, labels, and selectors explained in detail, for beginners](https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362)
 
 ### Bookmarks
 
@@ -39,6 +40,7 @@
 - [Kubernetes Documentation: Creating a new namespace](https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace)
 - [Kubernetes Documentation: Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/)
 - [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
+- [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
 ### Organization
 

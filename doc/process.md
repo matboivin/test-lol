@@ -167,6 +167,8 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 php7-mysql -> deprecated
 
 - [How to install PHP 7 fpm on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/)
+- [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
+- [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 
 #### FTPS server
 
@@ -208,6 +210,10 @@ kubectl apply -f - -n kube-system
 ```console
 kubectl get pods -n metallb-system
 ```
+
+### YAML files
+
+> The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
 ## Samples
 
