@@ -211,6 +211,8 @@ kubectl apply -f - -n kube-system
 kubectl get pods -n metallb-system
 ```
 
+- [Multi-cluster testing with kind and MetalLB](https://banzaicloud.com/blog/multi-cluster-testing/)
+
 ### YAML files
 
 > The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
