@@ -31,7 +31,9 @@ zsh $SCRIPTS_PATH/build_docker.sh
 
 # CLUSTER
 echo "\nSTEP 3/4 Configure cluster\n"
+#kubectl apply -f $MANIFESTS_PATH --recursive
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
-kubectl apply -f $MANIFESTS_PATH --recursive
+kubectl apply -f $MANIFESTS_PATH/secrets --recursive
+kubectl apply -f $MANIFESTS_PATH/deployments --recursive
 
 #minikube dashboard
