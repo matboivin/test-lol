@@ -7,3 +7,6 @@ RUN apk add --no-cache nginx
 
 # Inform which ports are intended to be published
 EXPOSE 5000
+
+# Run server
+CMD ["nginx", "-g", "daemon off;"]

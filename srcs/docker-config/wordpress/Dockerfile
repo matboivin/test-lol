@@ -9,29 +9,45 @@ RUN apk add --no-cache php
 ENV USER=www-data
 
 # Install necessary packages
-RUN apk add --no-cache nginx \
+RUN apk add --no-cache openrc nginx openssl \
     php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib
 
-# Create group and user
-RUN addgroup --system $USER \
- && adduser \
-    --system \
-    --disabled-password \
-    --home /home/$USER \
-    --shell /sbin/nologin \
-    --ingroup $USER \
-    $USER
+# Add new config
+COPY config/nginx.conf /etc/nginx/
+# Add favicon
+COPY config/favicon.ico var/www/
+
+# Create new user and group for NGINX, create a directory for HTML files and grant permissions
+RUN adduser -D -g 'www' www \
+ && mkdir -p var/www/ \
+ && mkdir -p run/nginx/ \
+ && chown -R www:www /var/www \
+ && chown -R www:www /run \
+ && chown -R www:www /var/lib/nginx
+
+# Generate a self-signed certificate and private key using OpenSSL
+RUN cd /etc/ssl/certs/ \
+ && openssl req -x509 -days 90 \
+    -out localhost.crt \
+    -keyout localhost.key \
+    -newkey rsa:2048 -nodes -sha256 \
+    -subj '/CN=localhost' \
+ && chown 600 /etc/ssl/certs/localhost.key /etc/ssl/certs/localhost.crt
 
 # Get and setup WordPress
-RUN mkdir -p var/www/ \
- && cd /tmp/ && wget https://wordpress.org/latest.tar.gz \
+RUN cd /tmp && wget https://wordpress.org/latest.tar.gz \
  && tar -C /var/www/ -xvf latest.tar.gz \
- && chown -R www-data:www-data /var/www/wordpress
-#COPY config/wordpress/wp-config.php /var/www/wordpress
+ && chown -R www:www /var/www/wordpress
+#COPY config/wp-config.php /var/www/wordpress
 # WordPress styling
 COPY config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
-COPY config/favicon.ico /var/www/wordpress/wp-content/uploads/2020/05/
-COPY config/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2020/05/
+#COPY config/favicon.ico /var/www/wordpress/wp-content/uploads/2020/05/
+#COPY config/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2020/05/
 
 # Inform which ports are intended to be published
 EXPOSE 5050
+
+RUN rc-service php-fpm7 restart
+
+# Run server
+CMD ["nginx", "-g", "daemon off;"]
