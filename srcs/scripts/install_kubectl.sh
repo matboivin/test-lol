@@ -3,7 +3,7 @@
 # Ensure kubectl is installed
 
 # VARIABLES
-KUBECTL_VERSION=v1.18.0
+KUBECTL_VERSION=v1.20.2
 BIN_PATH=/usr/local/bin
 
 # Check directory exists
