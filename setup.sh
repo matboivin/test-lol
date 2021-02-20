@@ -28,22 +28,12 @@ minikube addons enable metallb
 echo "\nSTEP 3/5 Build docker images\n"
 zsh build_docker.sh
 
-# LOAD BALANCER
-echo "\nSTEP 4/5 Configure load balancer\n"
+# CLUSTER
+echo "\nSTEP 4/5 Configure cluster\n"
 
-# MetalLB configuration
 kubectl apply -f srcs/metallb-config.yaml
-
-# DEPLOYMENT
-echo "\nSTEP 4/5 Deploy\n"
-
-# Secrets
-#kubectl apply -f ./secrets/wordpress-db.yaml
-
-# Create namespace
-#kubectl create -f ./srcs/ft-services.yaml
-
-# Deployments
 kubectl apply -f $DEPLOY_PATH/nginx-deployment.yaml
+
+#kubectl apply -f srcs --recursive
 
 #minikube dashboard
