@@ -5,17 +5,13 @@ LABEL maintainer="mboivin@student.42.fr"
 # Install necessary packages
 RUN apk add --no-cache php
 
-# Environment Variables
-ENV USER=www-data
-
-# Install necessary packages
+# Install necessary packages and backup default NGINX config
 RUN apk add --no-cache nginx openssl \
-    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib
+    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
+ && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 
 # Add new config
 COPY config/nginx.conf /etc/nginx/
-# Add favicon
-COPY config/favicon.ico var/www/
 
 # Create new user and group for NGINX, create a directory for HTML files and grant permissions
 RUN adduser -D -g 'www' www \
@@ -45,7 +41,7 @@ COPY config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 #COPY config/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2020/05/
 
 # Inform which ports are intended to be published
-EXPOSE 5050
+EXPOSE 80 443 5050
 
 # Run server
 CMD ["nginx", "-g", "daemon off;"]
