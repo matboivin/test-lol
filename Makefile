@@ -5,7 +5,7 @@ all:
 	@zsh setup.sh
 
 install:
-	@zsh $(SCRIPTS_PATH)/install.sh
+	@zsh $(SCRIPTS_PATH)/install_minikube.sh
 
 docker-build:
 	@zsh $(SCRIPTS_PATH)/build_docker.sh

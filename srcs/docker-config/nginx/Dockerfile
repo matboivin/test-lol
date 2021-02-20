@@ -15,9 +15,10 @@ COPY config/favicon.ico var/www/
 # Create new user and group for NGINX, create a directory for HTML files and grant permissions
 RUN adduser -D -g 'www' www \
  && mkdir -p var/www/ \
+ && mkdir -p run/nginx/ \
  && chown -R www:www /var/www \
- && chown -R www:www /var/lib/nginx \
- && chown -R www:www /run
+ && chown -R www:www /run \
+ && chown -R www:www /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN cd /etc/ssl/certs/ \
