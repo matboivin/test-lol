@@ -9,7 +9,7 @@ RUN apk add --no-cache php
 ENV USER=www-data
 
 # Install necessary packages
-RUN apk add --no-cache openrc nginx openssl \
+RUN apk add --no-cache nginx openssl \
     php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib
 
 # Add new config
@@ -46,8 +46,6 @@ COPY config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 
 # Inform which ports are intended to be published
 EXPOSE 5050
-
-RUN rc-service php-fpm7 restart
 
 # Run server
 CMD ["nginx", "-g", "daemon off;"]
