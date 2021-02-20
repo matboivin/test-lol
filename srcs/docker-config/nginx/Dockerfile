@@ -12,13 +12,12 @@ COPY config/nginx.conf /etc/nginx/
 COPY config/index.html var/www/
 COPY config/favicon.ico var/www/
 
-# Grants NGINX user permissions
-RUN  mkdir -p var/www/ \
- && mkdir -p run/nginx/ \
- && chown -R nginx:nginx /var/www \
- && chown -R nginx:nginx /var/lib/nginx \
- && chown -R nginx:nginx /var/log/nginx \
- && chown -R nginx:nginx /run
+# Create new user and group for NGINX, create a directory for HTML files and grant permissions
+RUN adduser -D -g 'www' www \
+ && mkdir -p var/www/ \
+ && chown -R www:www /var/www \
+ && chown -R www:www /var/lib/nginx \
+ && chown -R www:www /run
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN cd /etc/ssl/certs/ \
