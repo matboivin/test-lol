@@ -32,7 +32,7 @@ COPY config/index.html /var/www/localhost
 
 # Get and setup WordPress
 RUN cd /var/www/ && wget https://wordpress.org/latest.tar.gz \
- && tar -C /var/www/ -xvf latest.tar.gz \
+ && tar -xvf latest.tar.gz \
  && chown -R www:www /var/www/wordpress \
  && rm latest.tar.gz
 #COPY config/wp-config.php /var/www/wordpress
