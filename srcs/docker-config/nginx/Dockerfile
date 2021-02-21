@@ -9,13 +9,13 @@ RUN apk add --no-cache nginx openssl \
 # Add new config
 COPY config/nginx.conf /etc/nginx/
 # Add index and favicon
-COPY config/index.html var/www/
-COPY config/favicon.ico var/www/
+COPY config/index.html /var/www/
+COPY config/favicon.ico /var/www/
 
 # Create new user and group for NGINX, create a directory for HTML files and grant permissions
 RUN adduser -D -g 'www' www \
- && mkdir -p var/www/ \
- && mkdir -p run/nginx/ \
+ && mkdir -p /var/www/ \
+ && mkdir -p /run/nginx/ \
  && chown -R www:www /var/www \
  && chown -R www:www /run \
  && chown -R www:www /var/lib/nginx
