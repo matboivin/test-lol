@@ -157,6 +157,8 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 
 [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
 
+`/var/lib/mysql` inside the container: where MySQL by default will write its data files.
+
 #### WordPress
 
 - [Custom WordPress Docker Setup](https://codingwithmanny.medium.com/custom-wordpress-docker-setup-8851e98e6b8)
