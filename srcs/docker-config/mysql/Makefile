@@ -5,7 +5,7 @@ DOCKER_NAME := mysql1
 TAG = dev
 
 docker-build:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
 	docker run -it --name $(DOCKER_NAME) $(IMAGE) sh
@@ -19,7 +19,7 @@ docker-rm: docker-stop
 	docker rm $(DOCKER_NAME)
 
 docker-rmi:
-	docker rmi $(IMAGE)
+	docker rmi $(IMAGE):$(TAG)
 
 clean: docker-rm docker-rmi
 
