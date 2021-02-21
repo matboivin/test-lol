@@ -9,13 +9,13 @@ ENV MYSQL_PASSWORD=user42
 ENV HOSTNAME=localhost
 
 # Install necessary packages
-RUN apk add --no-cache mysql mysql-client
+RUN apk add --no-cache mysql mysql-client openrc
 
 # Init database
 RUN mkdir -p /scripts/ \
  && mkdir -p /run/mysqld \
  && chown -R mysql:mysql /run/mysqld \
- && /usr/bin/mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+ && /usr/bin/mysql_install_db --user=root --datadir=/var/lib/mysql > /dev/null
 #COPY config/setup_db.sh /scripts/
 
 # Where MySQL by default will write its data files
