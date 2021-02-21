@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := mysql1
+IMAGE := mysql
 DOCKER_NAME := mysql1
 TAG = dev
 
@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE) .
 
 docker-run:
-	docker run -it -p 3306:3306 --name $(DOCKER_NAME) $(IMAGE) sh
+	docker run -it --name $(DOCKER_NAME) $(IMAGE) sh
 
 up: docker-build docker-run
 
