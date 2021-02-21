@@ -1,0 +1,7 @@
+CREATE USER user42@localhost IDENTIFIED BY '$MYSQL_PASSWORD'
+GRANT ALL PRIVILEGES ON phpmyadmin.* TO user42@localhost;
+FLUSH PRIVILEGES;
+
+CREATE DATABASE wordpress-db;
+GRANT ALL PRIVILEGES ON wordpress-db.* TO user42@localhost;
+FLUSH PRIVILEGES;

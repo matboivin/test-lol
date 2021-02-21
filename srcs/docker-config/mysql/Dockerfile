@@ -15,8 +15,9 @@ RUN apk add --no-cache mysql mysql-client openrc
 RUN mkdir -p /scripts/ \
  && mkdir -p /run/mysqld \
  && chown -R mysql:mysql /run/mysqld \
- && /usr/bin/mysql_install_db --user=root --datadir=/var/lib/mysql > /dev/null
+ && mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 #COPY config/setup_db.sh /scripts/
+COPY config/mysql_conf /scripts/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]
