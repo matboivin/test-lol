@@ -3,16 +3,17 @@
 # Setup database
 
 # Install MariaDB/MySQL in /var/lib/mysql
-mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+mysql_install_db --user=mysql --datadir=/var/lib/mysql # > /dev/null
+# Start mysqld in background
+/usr/bin/mysqld_safe --datadir='/var/lib/mysql'&
 
-# Create database
+# Create WordPress database
 cat << EOF > mysql_conf
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;
-GRANT SELECT, SHOW VIEW, PROCESS ON *.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;
-
 CREATE DATABASE $MYSQL_DATABASE;
 GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
 FLUSH PRIVILEGES;
+EXIT
 EOF
 
-#/usr/bin/mysqld --user=mysql < mysql_conf
+#mysql -u root password $MYSQL_ROOT_PASSWORD < mysql_conf
+#/usr/bin/mysqld --user=mysql
