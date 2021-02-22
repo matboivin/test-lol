@@ -2,14 +2,17 @@
 #
 # Setup database
 
-# Create database user
-mysql -e "CREATE USER '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD'"
+# Install MariaDB/MySQL in /var/lib/mysql
+mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 
-# phpMyAdmin database
-mysql -e "GRANT ALL PRIVILEGES ON phpmyadmin.* TO '$MYSQL_USER'@'$HOSTNAME';"
-mysql -e "FLUSH PRIVILEGES;"
+# Create database
+cat << EOF > mysql_conf
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;
+GRANT SELECT, SHOW VIEW, PROCESS ON *.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION;
 
-# WordPress database
-mysql -e "CREATE DATABASE $MYSQL_DATABASE;"
-mysql -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME';"
-mysql -e "FLUSH PRIVILEGES;"
+CREATE DATABASE $MYSQL_DATABASE;
+GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
+FLUSH PRIVILEGES;
+EOF
+
+#/usr/bin/mysqld --user=mysql < mysql_conf
