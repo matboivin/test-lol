@@ -15,10 +15,12 @@ RUN apk add --no-cache mysql mysql-client
 # Init database
 RUN mkdir -p /run/mysqld \
  && chown -R mysql:mysql /run/mysqld
-COPY config/setup_db.sh /root/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]
 
 # Inform which ports are intended to be published
 EXPOSE 3306
+
+COPY config/setup_db.sh /root/
+#ENTRYPOINT ["sh", "/root/setup_db.sh"]
