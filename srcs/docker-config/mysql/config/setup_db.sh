@@ -2,18 +2,23 @@
 #
 # Setup database
 
-# Install MariaDB/MySQL in /var/lib/mysql
-mysql_install_db --user=mysql --datadir=/var/lib/mysql # > /dev/null
-# Start mysqld in background
-/usr/bin/mysqld_safe --datadir='/var/lib/mysql'&
+# Tmp file to create WordPress database
+tmp_file=mysql_conf
 
-# Create WordPress database
-cat << EOF > mysql_conf
+cat << EOF > $tmp_file
 CREATE DATABASE $MYSQL_DATABASE;
 GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
 FLUSH PRIVILEGES;
-EXIT
 EOF
 
-#mysql -u root password $MYSQL_ROOT_PASSWORD < mysql_conf
-#/usr/bin/mysqld --user=mysql
+# Install MariaDB/MySQL in /var/lib/mysql
+mysql_install_db --user=mysql --datadir=/var/lib/mysql #> /dev/null
+sleep 5
+
+# Start mysqld in background
+#/usr/bin/mysqld_safe --datadir='/var/lib/mysql' &
+#sleep 6
+#mysql -e "$(cat $tmp_file)"
+#rm -rf $tmp_file
+
+/usr/bin/mysqld --user=mysql < $tmp_file
