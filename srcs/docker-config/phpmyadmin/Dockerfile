@@ -4,6 +4,7 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages and backup default NGINX config
 RUN apk add --no-cache nginx openssl \
+    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 
 # Add new config

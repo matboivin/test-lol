@@ -15,7 +15,6 @@ spec:
       name: https
   selector:
     app: nginx
-    tier: entrypoint
   type: LoadBalancer
 ---
 apiVersion: apps/v1
@@ -27,12 +26,10 @@ spec:
   selector:
     matchLabels:
       app: nginx
-      tier: entrypoint
   template:
     metadata:
       labels:
         app: nginx
-        tier: entrypoint
     spec:
       containers:
       - name: nginx

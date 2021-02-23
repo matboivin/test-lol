@@ -18,7 +18,8 @@ jobs:
           manifests: |
               srcs/00-namespace.yaml
               srcs/configmaps/metallb-config.yaml
-              srcs/deployments/mysql-deployment.yaml
-              srcs/deployments/nginx-deployment.yaml
-              srcs/deployments/wordpress-deployment.yaml
+              srcs/services/mysql.yaml
+              srcs/services/nginx.yaml
+              srcs/services/phpmyadmin.yaml
+              srcs/services/wordpress.yaml
               srcs/secrets/wordpress-db.yaml

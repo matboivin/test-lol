@@ -192,6 +192,18 @@ php7-mysql -> deprecated
 - [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 
+### PhpMyAdmin
+
+- [Alpine Wiki: PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
+- [Official phpMyAdmin Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
+- [Deploy PhpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
+
+- `PMA_HOST`: define address/host name of the MySQL server
+- `PMA_PORT`: define port of the MySQL server
+
+PhpMyAdmin is linked to an existing MySQL service.  
+PhpMyAdmin needs the root password of the MySQL service.  
+
 ### FTPS server
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
