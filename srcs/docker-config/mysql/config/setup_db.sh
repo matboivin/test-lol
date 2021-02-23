@@ -2,23 +2,22 @@
 #
 # Setup database
 
-# Tmp file to create WordPress database
-tmp_file=mysql_conf
-
-cat << EOF > $tmp_file
-CREATE DATABASE $MYSQL_DATABASE;
-GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
-FLUSH PRIVILEGES;
-EOF
-
 # Install MariaDB/MySQL in /var/lib/mysql
-mysql_install_db --user=mysql --datadir=/var/lib/mysql #> /dev/null
+echo "⧗   Install MariaDB/MySQL system tables in '/var/lib/mysql' ..."
+mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 sleep 5
 
 # Start mysqld in background
-#/usr/bin/mysqld_safe --datadir='/var/lib/mysql' &
-#sleep 6
-#mysql -e "$(cat $tmp_file)"
-#rm -rf $tmp_file
+echo "⧗   Start mysqld in background ..."
+/usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
+sleep 5
 
-/usr/bin/mysqld --user=mysql < $tmp_file
+# Create database
+echo "⧗   Create database ..."
+mysql -e "CREATE DATABASE $MYSQL_DATABASE;GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';FLUSH PRIVILEGES;"
+# Kill mysqld
+kill `cat /run/mysqld/mysqld.pid`
+sleep 5
+# Restart mysqld
+echo "√   Done"
+/usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid

@@ -11,7 +11,7 @@ ENV HOSTNAME=localhost
 # Install necessary packages
 RUN apk add --no-cache mysql mysql-client
 
-# Init database
+# Create mysqld app dir
 RUN mkdir -p /run/mysqld \
  && chown -R mysql:mysql /run/mysqld
 

@@ -2,9 +2,9 @@
 
 LEMP stack infrastructure in a kubernetes cluster.
 
-## Steps
+# Steps
 
-### Installation
+## Installation
 
 42VM requires 2 CPU.  
 Add user42 to the docker group:
@@ -39,7 +39,7 @@ Install [jq](https://stedolan.github.io/jq/) to format output:
 kubectl version -o json | jq
 ```
 
-### Start cluster
+## Start cluster
 
 ```console
 minikube start
@@ -60,7 +60,7 @@ Some dashboard features require the metrics-server addon. To enable all features
 minikube addons enable metrics-server
 ```
 
-### Containerize apps
+## Containerize apps
 
 Write Dockerfiles.
 
@@ -110,7 +110,17 @@ Read user:password from stdin and update /etc/passwd
 
 - [How do I add a user when I'm using Alpine as a base image?](https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image)
 
-#### NGINX
+#### /var – Variable Data Files
+
+The /var directory is the writable counterpart to the /usr directory, which must be read-only in normal operation. Log files and everything else that would normally be written to /usr during normal operation are written to the /var directory. For example, you’ll find log files in /var/log.
+
+#### /run – Application State Files
+
+The /run directory is fairly new, and gives applications a standard place to store transient files they require like sockets and process IDs. These files can’t be stored in /tmp because files in /tmp may be deleted.
+
+Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
+
+### NGINX
 
 - [NGINX official Docker image](https://hub.docker.com/_/nginx)
 
@@ -142,7 +152,7 @@ Log files:
 - `/var/log/nginx/access.log`
 - `/var/log/nginx/error.log`
 
-#### MySQL
+### MySQL
 
 - [MySQL official Docker image](https://registry.hub.docker.com/_/mysql/)
 - [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
@@ -159,7 +169,17 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 
 `/var/lib/mysql` inside the container: where MySQL by default will write its data files.
 
-#### WordPress
+```console
+/usr/bin/mysqld --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid --skip-grant-tables --skip-networking &
+
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';FLUSH PRIVILEGES;ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';FLUSH PRIVILEGES;set password = password('MyNewPass');"
+
+kill  `cat /run/mysqld/mysqld.pid`
+```
+
+Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/Mysql#Restore_root_password) -> store pid then kill process
+
+### WordPress
 
 - [Custom WordPress Docker Setup](https://codingwithmanny.medium.com/custom-wordpress-docker-setup-8851e98e6b8)
 - [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
@@ -172,7 +192,7 @@ php7-mysql -> deprecated
 - [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 
-#### FTPS server
+### FTPS server
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
 
@@ -185,7 +205,7 @@ vsftpd (Very Secure FTP Daemon) -> server
 > Il existe plusieurs raisons pour lesquelles il est nécessaire de restreindre une session SFTP d’un utilisateur à un dossier particulier sur un serveur Linux. Entre autres, la préservation de l’intégrité des fichiers, la protection contre les logiciels malveillants, et surtout la protection du système.
 Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut avoir recours à un chroot jail.  Sur les systèmes d’exploitation basés sur Unix, un chroot jail est une fonctionnalité utilisée pour isoler un processus et ses enfants (child process) du reste du système d’exploitation. Pour des raisons de sécurité, c’est une fonctionnalité qui doit être employée exclusivement sur les processus n’utilisant pas le compte root.  [(Source)](https://homputersecurity.com/2019/05/14/mise-en-place-dune-restriction-chroot-jail-sur-un-dossier-nappartenant-pas-au-compte-root/)
 
-### Load balancer
+## Load balancer
 
 > Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
 Your Load Balancer should be the only entry point for the Cluster.
@@ -215,11 +235,11 @@ kubectl get pods -n metallb-system
 
 - [Multi-cluster testing with kind and MetalLB](https://banzaicloud.com/blog/multi-cluster-testing/)
 
-### YAML files
+# YAML files
 
 > The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
-## Samples
+# Samples
 
 - [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)

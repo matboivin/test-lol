@@ -15,6 +15,7 @@
 - [etcd](https://etcd.io/)
 - [Cloud Native Computing Foundation](https://www.cncf.io/)
 - [minikube](https://minikube.sigs.k8s.io/docs/)
+- [The Linux Directory Structure, Explained](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ### Training
 
