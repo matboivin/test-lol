@@ -152,6 +152,17 @@ Log files:
 - `/var/log/nginx/access.log`
 - `/var/log/nginx/error.log`
 
+#### Cache
+
+- [How to Cache Content in NGINX](https://www.tecmint.com/cache-content-with-nginx/)
+
+#### Redir / reverse proxy
+
+- [Mettez en place un reverse-proxy avec Nginx](https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236081-mettez-en-place-un-reverse-proxy-avec-nginx)
+- [How to proxy web apps using nginx?](https://gist.github.com/soheilhy/8b94347ff8336d971ad0)
+- [How to get phpmyadmin to work with both a reverse proxy and a plain IP:PMA_PORT connection?](https://serverfault.com/questions/1044014/how-to-get-phpmyadmin-to-work-with-both-a-reverse-proxy-and-a-plain-ippma-port)
+- [Wordpress on Docker behind nginx reverse proxy using SSL](https://stackoverflow.com/questions/63135042/wordpress-on-docker-behind-nginx-reverse-proxy-using-ssl)
+
 ### MySQL
 
 - [MySQL official Docker image](https://registry.hub.docker.com/_/mysql/)
@@ -218,6 +229,8 @@ vsftpd (Very Secure FTP Daemon) -> server
 Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut avoir recours à un chroot jail.  Sur les systèmes d’exploitation basés sur Unix, un chroot jail est une fonctionnalité utilisée pour isoler un processus et ses enfants (child process) du reste du système d’exploitation. Pour des raisons de sécurité, c’est une fonctionnalité qui doit être employée exclusivement sur les processus n’utilisant pas le compte root.  [(Source)](https://homputersecurity.com/2019/05/14/mise-en-place-dune-restriction-chroot-jail-sur-un-dossier-nappartenant-pas-au-compte-root/)
 
 ## Load balancer
+
+- [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
 
 > Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
 Your Load Balancer should be the only entry point for the Cluster.
