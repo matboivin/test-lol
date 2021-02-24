@@ -15,7 +15,6 @@
 - [etcd](https://etcd.io/)
 - [Cloud Native Computing Foundation](https://www.cncf.io/)
 - [minikube](https://minikube.sigs.k8s.io/docs/)
-- [The Linux Directory Structure, Explained](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
 
 ### Training
 
@@ -26,12 +25,13 @@
 ### Cheatsheets
 
 - [kubectl Cheat Sheet](https://phoenixnap.com/kb/kubectl-commands-cheat-sheet)
+- [The Linux Directory Structure, Explained](https://www.howtogeek.com/117435/htg-explains-the-linux-directory-structure-explained/)
+- [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 
 ### Understanding how it works
 
 - [phoenixNAP:What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
 - [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
-- [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
 - [matchLabels, labels, and selectors explained in detail, for beginners](https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362)
 
@@ -42,6 +42,7 @@
 - [Kubernetes Documentation: Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/)
 - [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
 - [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
+- [WordPress requirements](https://wordpress.org/about/requirements/)
 
 ### Organization
 
@@ -57,3 +58,9 @@
 - [peirates](https://github.com/inguardians/peirates)
 - [gke-auditor](https://github.com/google/gke-auditor)
 - CVE-2020-8558
+
+### Samples
+
+- [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
+- [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
+- [ container-examples / alpine-mysql](https://github.com/container-examples/alpine-mysql/)
