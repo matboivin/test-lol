@@ -44,6 +44,7 @@
 - [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 - [NGINX doc: ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
 - [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
+- [Nginx location match tester](https://nginx.viraptor.info/)
 - [WordPress requirements](https://wordpress.org/about/requirements/)
 
 ### Organization
@@ -60,6 +61,7 @@
 - [peirates](https://github.com/inguardians/peirates)
 - [gke-auditor](https://github.com/google/gke-auditor)
 - CVE-2020-8558
+- [Guide de sécurité et de renforcement du serveur Web Nginx](https://geekflare.com/fr/nginx-webserver-security-hardening-guide/)
 
 ### Samples
 
