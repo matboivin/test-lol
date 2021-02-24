@@ -93,7 +93,7 @@ minikube addons enable metrics-server
 
 ## Containerize apps
 
-[Write Dockerfiles](doc/containers.md).
+[Write Dockerfiles](containers.md).
 
 > In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.  All your containers must restart in case of a crash or stop of one of its component parts.
 
