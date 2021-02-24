@@ -120,6 +120,7 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 #### Config
 
 - [NGINX default conf](https://tutoriel-nginx.readthedocs.io/fr/latest/Basic_Config.html)
+- [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
 
 > If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:  `$ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf`  [(Source)](https://hub.docker.com/_/nginx)
 

@@ -43,6 +43,7 @@
 - [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
 - [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 - [NGINX doc: ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
+- [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
 - [WordPress requirements](https://wordpress.org/about/requirements/)
 
 ### Organization
