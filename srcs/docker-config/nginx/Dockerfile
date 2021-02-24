@@ -4,7 +4,8 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages and backup default NGINX config
 RUN apk add --no-cache nginx=1.18.0-r13 openssl \
- && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+ && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
+ && rm /etc/nginx/conf.d/default.conf
 
 # Add new config
 COPY config/nginx.conf /etc/nginx/
