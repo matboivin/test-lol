@@ -29,6 +29,11 @@ Write Dockerfiles.
 
 - [X] Alpine 3.13 and not latest
 
+To make images smaller:  
+`apk update` + `rm /var/cache/apk/*` OR `apk add --no-cache`
+
+Source: [Alpine Dockerfile Advantages of --no-cache Vs. rm /var/cache/apk/*](https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk/49119046)
+
 ### Create group and user on Alpine
 
 `adduser`
@@ -92,36 +97,27 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 #### Requirements
 
 - [X] type LoadBalancer
-- [ ] NGINX conf (check php)
 - [X] ports 80 and 443
 - [X] The page displayed does not matter as long as it is not an http error
+- [ ] NGINX conf
 - [ ] allow access to a `/wordpress` route that makes a redirect 307 to `IP:WPPORT`
 - [ ] allow access to `/phpmyadmin` with a reverse proxy to `IP:PMAPORT`
-- [ ] cache
+- [X] 404 page
+
+#### Resources
 
 - [NGINX official Docker image](https://hub.docker.com/_/nginx)
-
-Containers have to be build using Alpine Linux.  
--> version 3.13
-
-- A container with a nginx server listening on ports 80 and 443.
-  - Port 80 will be in http and should be a systematic redirection of type 301 to 443, which will be in https.
-  - The page displayed does not matter as long as it is not an http error.
-  - This container will allow access to a /wordpress route that makes a redirect 307 to IP:WPPORT.
-  - It should also allow access to /phpmyadmin with a reverse proxy to IP:PMAPORT.
-
+- [Alpine Wiki: NGINX](https://wiki.alpinelinux.org/wiki/Nginx)
 - [How To Install Nginx web server on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-nginx-web-server-on-alpine-linux/)
+- [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
+- [NGINX doc: ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
+- [Help the World by Healing Your NGINX Configuration](https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/)
 
-To make images smaller:  
-`apk update` + `rm /var/cache/apk/*` OR `apk add --no-cache`
-
-- [Alpine Dockerfile Advantages of --no-cache Vs. rm /var/cache/apk/*](https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk/49119046)
-
-> If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:  `$ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf`  [(Source)](https://hub.docker.com/_/nginx)
+#### Config
 
 - [NGINX default conf](https://tutoriel-nginx.readthedocs.io/fr/latest/Basic_Config.html)
-- [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
-- [Alpine Wiki: NGINX](https://wiki.alpinelinux.org/wiki/Nginx)
+
+> If you wish to adapt the default configuration, use something like the following to copy it from a running nginx container:  `$ docker cp tmp-nginx-container:/etc/nginx/nginx.conf /host/path/nginx.conf`  [(Source)](https://hub.docker.com/_/nginx)
 
 > If you add a custom CMD in the Dockerfile, be sure to include -g daemon off; in the CMD in order for nginx to stay in the foreground, so that Docker can track the process properly (otherwise your container will stop immediately after starting)!  [(Source)](https://hub.docker.com/_/nginx)
 
@@ -129,8 +125,13 @@ Log files:
 - `/var/log/nginx/access.log`
 - `/var/log/nginx/error.log`
 
+server blocks -> pour encapsuler les détails de configuration et héberger plusieurs domaines sur un seul serveur  
+1 worker -> 1024 connections  
+
 #### Cache
 
+- [How to Configure Cache-Control Headers in NGINX](https://www.cloudsavvyit.com/3782/how-to-configure-cache-control-headers-in-nginx/)
+- [Add Cache-Control-Header / Expire-Header in NGINX](https://www.digitalocean.com/community/questions/add-cache-control-header-expire-header-in-nginx)
 - [How to Cache Content in NGINX](https://www.tecmint.com/cache-content-with-nginx/)
 
 #### Redir / reverse proxy
@@ -148,9 +149,14 @@ Log files:
 - [ ] ClusterIP
 - [ ] data persistence
 
+#### Resources
+
 - [MySQL official Docker image](https://registry.hub.docker.com/_/mysql/)
-- [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
 - [Alpine Wiki: MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
+- [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
+- [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
+
+#### Config
 
 Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 
@@ -158,8 +164,6 @@ Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
 - MYSQL_DATABASE
 - MYSQL_USER, MYSQL_PASSWORD
 - MYSQL_HOST
-
-[MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
 
 `/var/lib/mysql` inside the container: where MySQL by default will write its data files.
 
@@ -187,6 +191,19 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [ ] linked to MySQL
 - [ ] several users and an administrator
 
+#### Resources
+
+- [Alpine Wiki: WordPress](https://wiki.alpinelinux.org/wiki/WordPress)
+- [Custom WordPress Docker Setup](https://codingwithmanny.medium.com/custom-wordpress-docker-setup-8851e98e6b8)
+- [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
+- [How to Run WordPress in Kuberbetes](https://www.serverlab.ca/tutorials/containers/kubernetes/how-to-run-wordpress-in-kuberbetes/)
+- [How to install PHP 7 fpm on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/)
+- [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
+- [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
+- [Set Up Nginx FastCGI Cache to Reduce WordPress Server Response Time](https://www.linuxbabe.com/nginx/setup-nginx-fastcgi-cache)
+
+#### Config
+
 To run WordPress we recommend your host supports:
 
 - PHP 7.4 or greater
@@ -194,16 +211,7 @@ To run WordPress we recommend your host supports:
 - Nginx or Apache with mod_rewrite module
 - HTTPS support
 
-- [Custom WordPress Docker Setup](https://codingwithmanny.medium.com/custom-wordpress-docker-setup-8851e98e6b8)
-- [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
-- [How to Run WordPress in Kuberbetes](https://www.serverlab.ca/tutorials/containers/kubernetes/how-to-run-wordpress-in-kuberbetes/)
-- [Alpine Wiki: WordPress](https://wiki.alpinelinux.org/wiki/WordPress)
-
 packet `php7-mysql` -> deprecated
-
-- [How to install PHP 7 fpm on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-php-7-fpm-on-alpine-linux/)
-- [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
-- [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 
 ## PhpMyAdmin
 
@@ -216,15 +224,19 @@ packet `php7-mysql` -> deprecated
 - [ ] linked to MySQL
 - [ ] the root password of the MySQL service
 
-- [Alpine Wiki: PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
+#### Resources
+
 - [Official phpMyAdmin Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
+- [Alpine Wiki: PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
 - [Deploy PhpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
 
-- `PMA_HOST`: define address/host name of the MySQL server
-- `PMA_PORT`: define port of the MySQL server
+#### Config
 
 PhpMyAdmin is linked to an existing MySQL service.  
 PhpMyAdmin needs the root password of the MySQL service.  
+
+- `PMA_HOST`: define address/host name of the MySQL server
+- `PMA_PORT`: define port of the MySQL server
 
 ## FTPS server
 
@@ -233,11 +245,15 @@ PhpMyAdmin needs the root password of the MySQL service.
 - [ ] type LoadBalancer
 - [ ] port 21
 
-No persistence?
+#### Config
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
 
+No persistence?
+
 vsftpd (Very Secure FTP Daemon) -> server
+
+#### Resources
 
 - [Alpine Wiki: FTP](https://wiki.alpinelinux.org/wiki/FTP)
 - [How to Install and Configure an FTP server (vsftpd) with SSL/TLS on Ubuntu 20.04](https://www.howtoforge.com/tutorial/ubuntu-vsftpd/)

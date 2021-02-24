@@ -10,6 +10,7 @@ RUN apk add --no-cache nginx openssl \
 COPY config/nginx.conf /etc/nginx/
 # Add index page and favicon
 COPY config/index.html /var/www/
+COPY config/404.html /var/www/
 COPY config/favicon.ico /var/www/
 
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
