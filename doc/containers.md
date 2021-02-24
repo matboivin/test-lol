@@ -19,6 +19,8 @@ Write Dockerfiles.
 - minikube v1.17.1
 - kubectl v1.20.2
 - Alpine 3.13
+- NGINX 1.18.0-r13
+- openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4 or greater
 - MySQL 5.6 or greater OR MariaDB 10.1 or greater
@@ -112,6 +114,8 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
 - [NGINX doc: ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
 - [Help the World by Healing Your NGINX Configuration](https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/)
+- [Protéger Nginx des attaques DoS et bruteforce](https://www.malekal.com/proteger-nginx-attaques-dos-bruteforce/)
+- [How To Configure Nginx to use TLS 1.2 / 1.3 only](https://www.cyberciti.biz/faq/configure-nginx-to-use-only-tls-1-2-and-1-3/)
 
 #### Config
 

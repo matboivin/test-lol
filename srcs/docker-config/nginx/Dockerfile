@@ -3,7 +3,7 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages and backup default NGINX config
-RUN apk add --no-cache nginx openssl \
+RUN apk add --no-cache nginx=1.18.0-r13 openssl \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 
 # Add new config
