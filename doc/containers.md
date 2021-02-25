@@ -218,6 +218,8 @@ To run WordPress we recommend your host supports:
 
 packet `php7-mysql` -> deprecated
 
+robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](https://wpmarmite.com/robots-txt-wordpress/)
+
 ## PhpMyAdmin
 
 #### Requirements

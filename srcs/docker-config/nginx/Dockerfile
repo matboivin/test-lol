@@ -7,18 +7,17 @@ RUN apk add --no-cache nginx=1.18.0-r13 openssl \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
 
-# Add new config
+# Add config files
 COPY config/nginx.conf /etc/nginx/
-# Add index page and favicon
-COPY config/index.html /var/www/
-COPY config/404.html /var/www/
-COPY config/favicon.ico /var/www/
+COPY config/localhost.conf /etc/nginx/sites-available/
+COPY config/conf.d /etc/nginx/conf.d/
+# Add pages and favicon
+COPY www/ /var/www/localhost/
 
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
 RUN adduser -D -g 'www' www \
- && mkdir -p /var/www/ \
  && mkdir -p /run/nginx/ \
- && chown -R www:www /var/www \
+ && chown -R www:www /var/www/localhost/ \
  && chown -R www:www /run \
  && chown -R www:www /var/lib/nginx
 
