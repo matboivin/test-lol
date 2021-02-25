@@ -15,6 +15,16 @@ LEMP stack infrastructure in a kubernetes cluster.
 
 # Prep
 
+Add user42 to the Docker group:
+
+```console
+sudo usermod -aG docker $(whoami)
+su $(whoami)
+
+# Will also maybe require
+sudo systemctl restart docker
+```
+
 ## Versions
 
 - minikube v1.17.1
