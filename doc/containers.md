@@ -190,7 +190,7 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 
 - [X] type LoadBalancer
 - [X] port 5050
-- [ ] WordPress 5.6.2
+- [X] WordPress 5.6.2
 - [ ] PHP 7.4 or greater
 - [ ] `mod_rewrite` module
 - [ ] HTTPS support

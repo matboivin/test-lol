@@ -26,11 +26,11 @@ RUN adduser -D -g 'www' www \
 COPY gen_key.sh /tmp
 RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 
-# Get and setup WordPress
-RUN cd /var/www/ && wget https://wordpress.org/latest.tar.gz \
- && tar -xvf latest.tar.gz \
+# Get and setup WordPress 5.6.2
+RUN cd /var/www/ && wget https://wordpress.org/wordpress-5.6.2.tar.gz \
+ && tar -xvf wordpress-5.6.2.tar.gz \
  && chown -R www:www /var/www/wordpress \
- && rm latest.tar.gz
+ && rm wordpress-5.6.2.tar.gz
 #COPY config/wp-config.php /var/www/wordpress
 # WordPress styling
 #COPY config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
