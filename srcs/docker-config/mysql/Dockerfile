@@ -21,6 +21,7 @@ VOLUME ["/var/lib/mysql"]
 # Inform which ports are intended to be published
 EXPOSE 3306
 
-# Setup database
-COPY config/setup_db.sh /root/
-ENTRYPOINT ["sh", "/root/setup_db.sh"]
+# Copy init script
+COPY config/init_db.sh /root/
+
+ENTRYPOINT ["sh", "/root/init_db.sh"]

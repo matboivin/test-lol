@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Setup database
+# Init database
 
 # Install MariaDB/MySQL in /var/lib/mysql
 echo "⧗   Install MariaDB/MySQL system tables in '/var/lib/mysql' ..."

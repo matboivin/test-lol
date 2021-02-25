@@ -104,8 +104,8 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [X] NGINX conf
 - [ ] allow access to a `/wordpress` route that makes a redirect 307 to `IP:WPPORT`
 - [ ] allow access to `/phpmyadmin` with a reverse proxy to `IP:PMAPORT`
-- [X] 404 page, 50x page
-- [ ] Let's encrypt
+- [X] 404 page, 50x page, robots.txt
+- [ ] Letsencrypt
 
 #### Resources
 
@@ -117,6 +117,7 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [Help the World by Healing Your NGINX Configuration](https://www.nginx.com/blog/help-the-world-by-healing-your-nginx-configuration/)
 - [Protéger Nginx des attaques DoS et bruteforce](https://www.malekal.com/proteger-nginx-attaques-dos-bruteforce/)
 - [How To Configure Nginx to use TLS 1.2 / 1.3 only](https://www.cyberciti.biz/faq/configure-nginx-to-use-only-tls-1-2-and-1-3/)
+- [Nginx and Letsencrypt with certbot in docker alpine](https://geko.cloud/nginx-and-ssl-with-certbot-in-docker-alpine/)
 
 #### Config
 
