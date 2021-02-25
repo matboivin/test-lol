@@ -34,7 +34,7 @@ sudo systemctl restart docker
 - openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4 or greater
-- MySQL 5.6 or greater OR MariaDB 10.1 or greater
+- MariaDB 10.5.8
 
 ## YAML files
 

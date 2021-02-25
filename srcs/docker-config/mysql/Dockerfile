@@ -22,6 +22,6 @@ VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 
 # Copy init script
-COPY config/init_db.sh /root/
+COPY init_db.sh /root/
 
 ENTRYPOINT ["sh", "/root/init_db.sh"]
