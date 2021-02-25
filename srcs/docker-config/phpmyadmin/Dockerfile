@@ -4,12 +4,15 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Install necessary packages and backup default NGINX config
 RUN apk add --no-cache nginx=1.18.0-r13 \
-    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
 
-# Add new config
+# Add config files
 COPY config/nginx.conf /etc/nginx/
+COPY config/localhost.conf /etc/nginx/sites-available/
+COPY config/conf.d /etc/nginx/conf.d/
+# Add pages and favicon
+COPY www/ /var/www/localhost/
 
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
 RUN adduser -D -g 'www' www \

@@ -8,8 +8,12 @@ RUN apk add --no-cache nginx=1.18.0-r13 \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
 
-# Add new config
+# Add config files
 COPY config/nginx.conf /etc/nginx/
+COPY config/localhost.conf /etc/nginx/sites-available/
+COPY config/conf.d /etc/nginx/conf.d/
+# Add pages and favicon
+COPY www/ /var/www/localhost/
 
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
 RUN adduser -D -g 'www' www \
@@ -21,9 +25,6 @@ RUN adduser -D -g 'www' www \
 # Generate a self-signed certificate and private key using OpenSSL
 COPY gen_key.sh /tmp
 RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
-
-# Add index page
-COPY config/index.html /var/www/localhost
 
 # Get and setup WordPress
 RUN cd /var/www/ && wget https://wordpress.org/latest.tar.gz \
