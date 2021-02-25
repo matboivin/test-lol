@@ -33,7 +33,7 @@ sudo systemctl restart docker
 - NGINX 1.18.0-r13
 - openssl 1.1.1
 - WordPress 5.6.2
-- PHP 7.4 or greater
+- PHP 7.4.15
 - MariaDB 10.5.8
 
 ## YAML files

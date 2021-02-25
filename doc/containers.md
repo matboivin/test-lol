@@ -22,7 +22,7 @@ Write Dockerfiles.
 - NGINX 1.18.0-r13
 - openssl 1.1.1
 - WordPress 5.6.2
-- PHP 7.4 or greater
+- PHP 7.4.15
 - MariaDB 10.5.8
 
 ## Alpine
@@ -191,7 +191,7 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [X] type LoadBalancer
 - [X] port 5050
 - [X] WordPress 5.6.2
-- [ ] PHP 7.4 or greater
+- [X] PHP 7.4 or greater
 - [ ] `mod_rewrite` module
 - [ ] HTTPS support
 - [ ] NGINX conf (check php)
@@ -228,7 +228,7 @@ robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](h
 
 - [X] port 5000
 - [X] type LoadBalancer
-- [ ] PHP 7.4 or greater
+- [X] PHP 7.4 or greater
 - [ ] NGINX conf (check php)
 - [ ] linked to MySQL
 - [ ] the root password of the MySQL service
