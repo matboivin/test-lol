@@ -101,10 +101,11 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [X] type LoadBalancer
 - [X] ports 80 and 443
 - [X] The page displayed does not matter as long as it is not an http error
-- [ ] NGINX conf
+- [X] NGINX conf
 - [ ] allow access to a `/wordpress` route that makes a redirect 307 to `IP:WPPORT`
 - [ ] allow access to `/phpmyadmin` with a reverse proxy to `IP:PMAPORT`
-- [X] 404 page
+- [X] 404 page, 50x page
+- [ ] Let's encrypt
 
 #### Resources
 
