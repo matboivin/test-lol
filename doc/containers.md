@@ -280,7 +280,10 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 - [ ] linked to InfluxDB
 - [ ] one dashboard per service
 
-No Telegraf?
+#### Resources
+
+- [Monitorer votre infra avec Telegraf, InfluxDB et Grafana](https://blog.octo.com/monitorer-votre-infra-avec-telegraf-influxdb-et-grafana/)
+- [Monitoring Kubernetes with Grafana and InfluxDB](https://logz.io/blog/monitoring-kubernetes-grafana-influxdb/)
 
 ## InfluxDB
 
