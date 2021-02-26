@@ -20,9 +20,7 @@ COPY www/ /var/www/localhost/
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
 RUN adduser -D -g 'www' www \
  && mkdir -p /run/nginx/ \
- && chown -R www:www /var/www/localhost/ \
- && chown -R www:www /run \
- && chown -R www:www /var/lib/nginx
+ && chown -R www:www /var/www/localhost/ /run /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
 COPY gen_key.sh /tmp
