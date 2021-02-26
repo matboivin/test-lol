@@ -2,8 +2,11 @@ FROM alpine:3.13
 
 LABEL maintainer="mboivin@student.42.fr"
 
+# Environment Variables
+ENV NGINX_VERSION=1.18.0-r13
+
 # Install necessary packages and backup default NGINX config
-RUN apk add --no-cache nginx=1.18.0-r13 \
+RUN apk add --no-cache nginx=${NGINX_VERSION} \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
 

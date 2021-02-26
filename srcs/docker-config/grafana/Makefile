@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := mysql
-DOCKER_NAME := mysql1
+IMAGE := grafana
+DOCKER_NAME := grafana1
 TAG = dev
 
 docker-build:

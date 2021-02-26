@@ -25,7 +25,7 @@ Write Dockerfiles.
 - PHP 7.4.15
 - MariaDB 10.5.8
 - Grafana 7.4.3
-- InfluxDB v2. 0
+- InfluxDB 1.8.3-r2
 
 ## Alpine
 
@@ -293,6 +293,10 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 #### Requirements
 
-- [ ] InfluxDB v2. 0
+- [ ] InfluxDB 1.8.3-r2
 - [ ] ClusterIP
 - [ ] data persistence
+
+#### Resources
+
+- [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)

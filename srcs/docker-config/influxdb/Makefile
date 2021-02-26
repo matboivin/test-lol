@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := mysql
-DOCKER_NAME := mysql1
+IMAGE := influxdb
+DOCKER_NAME := influxdb1
 TAG = dev
 
 docker-build:

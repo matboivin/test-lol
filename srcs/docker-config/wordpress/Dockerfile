@@ -2,8 +2,12 @@ FROM alpine:3.13
 
 LABEL maintainer="mboivin@student.42.fr"
 
+# Environment Variables
+ENV NGINX_VERSION=1.18.0-r13
+ENV WORDPRESS_VERSION=5.6.2
+
 # Install necessary packages and backup default NGINX config
-RUN apk add --no-cache nginx=1.18.0-r13 \
+RUN apk add --no-cache nginx=${NGINX_VERSION} \
     php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
@@ -17,7 +21,7 @@ COPY www/ /var/www/localhost/
 
 # Create new user and group for NGINX, create app and data dirs, and grant permissions
 RUN adduser -D -g 'www' www \
- && mkdir -p /run/nginx/ \
+ && mkdir -p /run/nginx \
  && chown -R www:www /var/www/localhost/ \
  && chown -R www:www /run \
  && chown -R www:www /var/lib/nginx
@@ -26,11 +30,12 @@ RUN adduser -D -g 'www' www \
 COPY gen_key.sh /tmp
 RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 
-# Get and setup WordPress 5.6.2
-RUN cd /var/www/ && wget https://wordpress.org/wordpress-5.6.2.tar.gz \
- && tar -xvf wordpress-5.6.2.tar.gz \
+# Get and setup WordPress
+RUN mkdir -p /var/www/wordpress \
  && chown -R www:www /var/www/wordpress \
- && rm wordpress-5.6.2.tar.gz
+ && cd /var/www/wordpress && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
+ && tar -xvf wordpress-${WORDPRESS_VERSION}.tar.gz \
+ && rm wordpress-${WORDPRESS_VERSION}.tar.gz
 #COPY config/wp-config.php /var/www/wordpress
 # WordPress styling
 #COPY config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype

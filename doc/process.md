@@ -36,7 +36,7 @@ sudo systemctl restart docker
 - PHP 7.4.15
 - MariaDB 10.5.8
 - Grafana 7.4.3
-- InfluxDB v2. 0
+- InfluxDB 1.8.3-r2
 
 ## YAML files
 
