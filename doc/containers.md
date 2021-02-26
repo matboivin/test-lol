@@ -301,6 +301,8 @@ wget https://dl.grafana.com/oss/release/grafana-7.4.3.linux-amd64.tar.gz
 tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
 ```
 
+> You must restart Grafana for any configuration changes to take effect.  [(Source)](https://grafana.com/docs/grafana/latest/administration/configuration/)
+
 ## InfluxDB
 
 #### Requirements
