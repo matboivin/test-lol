@@ -24,6 +24,8 @@ Write Dockerfiles.
 - WordPress 5.6.2
 - PHP 7.4.15
 - MariaDB 10.5.8
+- Grafana 7.4.3
+- InfluxDB v2. 0
 
 ## Alpine
 
@@ -275,6 +277,7 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 #### Requirements
 
+- [ ] Grafana 7.4.3
 - [ ] type LoadBalancer
 - [ ] port 3000
 - [ ] linked to InfluxDB
@@ -284,10 +287,12 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 - [Monitorer votre infra avec Telegraf, InfluxDB et Grafana](https://blog.octo.com/monitorer-votre-infra-avec-telegraf-influxdb-et-grafana/)
 - [Monitoring Kubernetes with Grafana and InfluxDB](https://logz.io/blog/monitoring-kubernetes-grafana-influxdb/)
+- [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
 
 ## InfluxDB
 
 #### Requirements
 
+- [ ] InfluxDB v2. 0
 - [ ] ClusterIP
 - [ ] data persistence

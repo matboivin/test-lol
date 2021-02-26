@@ -35,6 +35,8 @@ sudo systemctl restart docker
 - WordPress 5.6.2
 - PHP 7.4.15
 - MariaDB 10.5.8
+- Grafana 7.4.3
+- InfluxDB v2. 0
 
 ## YAML files
 
