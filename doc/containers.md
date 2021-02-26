@@ -293,6 +293,7 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 - [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
 - [Grafana Labs: Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=linux)
 - [Grafana Labs: Install Grafana](https://grafana.com/docs/grafana/latest/installation/)
+- [Grafana Labs: Configure a Grafana Docker image](https://grafana.com/docs/grafana/latest/administration/configure-docker/)
 
 Select open-source version:
 
@@ -302,6 +303,26 @@ tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
 ```
 
 > You must restart Grafana for any configuration changes to take effect.  [(Source)](https://grafana.com/docs/grafana/latest/administration/configuration/)
+
+Set the default paths like the [Official Docker Image](https://grafana.com/docs/grafana/latest/administration/configure-docker/):
+
+- GF_PATHS_CONFIG `/etc/grafana/grafana.ini`
+- GF_PATHS_DATA `/var/lib/grafana`
+- GF_PATHS_HOME `/usr/share/grafana`
+- GF_PATHS_LOGS `/var/log/grafana`
+- GF_PATHS_PLUGINS `/var/lib/grafana/plugins`
+- GF_PATHS_PROVISIONING `/etc/grafana/provisioning`
+
+Do not change `defaults.ini`! Grafana defaults are stored in this file. Depending on your OS, make all configuration changes in either `custom.ini` or `grafana.ini`.  
+- Default configuration from `$WORKING_DIR/conf/defaults.ini`  
+- Custom configuration from `$WORKING_DIR/conf/custom.ini`  
+- The custom configuration file path can be overridden using the `--config` parameter
+
+Source: [Grafana Labs: Config file locations](https://grafana.com/docs/grafana/latest/administration/configuration/)
+
+To invoke Grafana CLI, add the path to the grafana binaries in your `PATH` environment variable. Alternately, if your current directory is the bin directory, use `./grafana-cli`. Otherwise, you can specify full path to the CLI. For example, on Linux `/usr/share/grafana/bin/grafana-cli` and on Windows `C:\Program Files\GrafanaLabs\grafana\bin\grafana-cli.exe`.
+
+Source: [Grafana Labs: Grafana CLI](https://grafana.com/docs/grafana/latest/administration/cli/)
 
 ## InfluxDB
 
