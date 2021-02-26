@@ -6,7 +6,7 @@ LABEL maintainer="mboivin@student.42.fr"
 ENV GRAFANA_VERSION=7.4.3
 
 # Install necessary packages
-RUN apk add update \
+RUN apk update \
  && cd /tmp/ \
  && wget https://dl.grafana.com/oss/release/grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz \
  && tar -zxvf grafana-${GRAFANA_VERSION}.linux-amd64.tar.gz \
