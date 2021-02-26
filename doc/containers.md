@@ -36,6 +36,9 @@ Write Dockerfiles.
 To make images smaller:  
 `apk update` + `rm /var/cache/apk/*` OR `apk add --no-cache`
 
+> The --no-cache option allows to not cache the index locally, which is useful for keeping containers small.  
+Literally it equals `apk update` in the beginning and `rm -rf /var/cache/apk/*` in the end.
+
 Source: [Alpine Dockerfile Advantages of --no-cache Vs. rm /var/cache/apk/*](https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk/49119046)
 
 ### Create group and user on Alpine
@@ -288,6 +291,15 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 - [Monitorer votre infra avec Telegraf, InfluxDB et Grafana](https://blog.octo.com/monitorer-votre-infra-avec-telegraf-influxdb-et-grafana/)
 - [Monitoring Kubernetes with Grafana and InfluxDB](https://logz.io/blog/monitoring-kubernetes-grafana-influxdb/)
 - [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
+- [Grafana Labs: Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=linux)
+- [Grafana Labs: Install Grafana](https://grafana.com/docs/grafana/latest/installation/)
+
+Select open-source version:
+
+```sh
+wget https://dl.grafana.com/oss/release/grafana-7.4.3.linux-amd64.tar.gz
+tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
+```
 
 ## InfluxDB
 

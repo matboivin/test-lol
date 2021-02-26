@@ -34,7 +34,7 @@ RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 RUN mkdir -p /var/www/wordpress \
  && chown -R www:www /var/www/wordpress \
  && cd /var/www/wordpress && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
- && tar -xvf wordpress-${WORDPRESS_VERSION}.tar.gz \
+ && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz
 #COPY config/wp-config.php /var/www/wordpress
 # WordPress styling
