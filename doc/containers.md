@@ -324,6 +324,8 @@ To invoke Grafana CLI, add the path to the grafana binaries in your `PATH` envir
 
 Source: [Grafana Labs: Grafana CLI](https://grafana.com/docs/grafana/latest/administration/cli/)
 
+- GF_SECURITY_ADMIN_PASSWORD__FILE `/run/secrets/<name of secret>`
+
 ## InfluxDB
 
 #### Requirements
