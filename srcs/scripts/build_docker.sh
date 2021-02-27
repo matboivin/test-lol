@@ -4,7 +4,7 @@
 
 # VARIABLES
 IMAGES_TAG=dev
-DOCKERFILE_PATH=srcs/docker-config
+DOCKERFILE_PATH=srcs/requirements
 
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
 echo "\n√   NGINX image was successfully built\n"

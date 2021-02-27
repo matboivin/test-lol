@@ -3,7 +3,7 @@
 # Setup ft_services project at 42
 
 # VARIABLES
-MANIFESTS_PATH=srcs
+MANIFESTS_PATH=srcs/manifests
 SCRIPTS_PATH=srcs/scripts
 
 echo "START FT_SERVICES\n"
