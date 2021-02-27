@@ -153,7 +153,9 @@ server blocks -> pour encapsuler les détails de configuration et héberger plus
 - [How to get phpmyadmin to work with both a reverse proxy and a plain IP:PMA_PORT connection?](https://serverfault.com/questions/1044014/how-to-get-phpmyadmin-to-work-with-both-a-reverse-proxy-and-a-plain-ippma-port)
 - [Wordpress on Docker behind nginx reverse proxy using SSL](https://stackoverflow.com/questions/63135042/wordpress-on-docker-behind-nginx-reverse-proxy-using-ssl)
 
-## MySQL
+## LEMP STACK
+
+### MySQL
 
 #### Requirements
 
@@ -189,7 +191,7 @@ kill  `cat /run/mysqld/mysqld.pid`
 
 Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/Mysql#Restore_root_password) -> store pid then kill process
 
-## WordPress
+### WordPress
 
 #### Requirements
 
@@ -227,7 +229,7 @@ packet `php7-mysql` -> deprecated
 
 robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](https://wpmarmite.com/robots-txt-wordpress/)
 
-## PhpMyAdmin
+### PhpMyAdmin
 
 #### Requirements
 
@@ -275,6 +277,8 @@ vsftpd (Very Secure FTP Daemon) -> server
 
 > Il existe plusieurs raisons pour lesquelles il est nécessaire de restreindre une session SFTP d’un utilisateur à un dossier particulier sur un serveur Linux. Entre autres, la préservation de l’intégrité des fichiers, la protection contre les logiciels malveillants, et surtout la protection du système.
 Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut avoir recours à un chroot jail.  Sur les systèmes d’exploitation basés sur Unix, un chroot jail est une fonctionnalité utilisée pour isoler un processus et ses enfants (child process) du reste du système d’exploitation. Pour des raisons de sécurité, c’est une fonctionnalité qui doit être employée exclusivement sur les processus n’utilisant pas le compte root.  [(Source)](https://homputersecurity.com/2019/05/14/mise-en-place-dune-restriction-chroot-jail-sur-un-dossier-nappartenant-pas-au-compte-root/)
+
+## TIG Stack
 
 ## Grafana
 
@@ -339,4 +343,55 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 
 #### Resources
 
+- [Official InfluxDB Docker image](https://hub.docker.com/_/influxdb)
 - [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)
+- [Get started with InfluxDB OSS v1.8](https://docs.influxdata.com/influxdb/v1.8/introduction/get-started/)
+- [How To Install InfluxDB 1.7 and 2.0 on Linux in 2019](https://devconnected.com/how-to-install-influxdb-on-ubuntu-debian-in-2019/#Option_2_Adding_the_repositories_to_your_package_manager)
+
+8086 -> HTTP API port  
+> The CLI communicates with InfluxDB directly by making requests to the InfluxDB API over port 8086 by default.
+
+- INFLUXDB_CONFIG_PATH `/etc/influxdb/influxdb.conf`
+
+`/usr/sbin/influxd`
+```
+Configure and start an InfluxDB server.
+
+Usage: influxd [[command] [arguments]]
+
+The commands are:
+
+    backup               downloads a snapshot of a data node and saves it to disk
+    config               display the default configuration
+    help                 display this help message
+    restore              uses a snapshot of a data node to rebuild a cluster
+    run                  run node with existing configuration
+    version              displays the InfluxDB version
+
+"run" is the default command.
+```
+
+`influxd run`
+```
+Runs the InfluxDB server.
+
+Usage: influxd run [flags]
+
+    -config <path>
+            Set the path to the configuration file.
+            This defaults to the environment variable INFLUXDB_CONFIG_PATH,
+            ~/.influxdb/influxdb.conf, or /etc/influxdb/influxdb.conf if a file
+            is present at any of these locations.
+            Disable the automatic loading of a configuration file using
+            the null device (such as /dev/null).
+    -pidfile <path>
+            Write process ID to a file.
+    -cpuprofile <path>
+            Write CPU profiling information to a file.
+    -memprofile <path>
+            Write memory usage information to a file.
+```
+
+`influxd` PID file -> `/var/log/influxdb/influxd.log`
+
+## Telegraf
