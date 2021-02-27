@@ -294,6 +294,7 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 - [Grafana Labs: Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=linux)
 - [Grafana Labs: Install Grafana](https://grafana.com/docs/grafana/latest/installation/)
 - [Grafana Labs: Configure a Grafana Docker image](https://grafana.com/docs/grafana/latest/administration/configure-docker/)
+- [Deploy InfluxDB and Grafana on Kubernetes to collect Twitter stats](https://opensource.com/article/19/2/deploy-influxdb-grafana-kubernetes)
 
 Select open-source version:
 
