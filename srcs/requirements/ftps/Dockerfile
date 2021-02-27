@@ -7,7 +7,8 @@ ENV FTP_USER=user42
 ENV FTP_PASSWD=user42
 
 # Install necessary packages and backup default vsftpd config
-RUN apk add --no-cache vsftpd vsftpd-doc \
+RUN apk update \
+ && apk add --no-cache vsftpd vsftpd-doc \
  && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.orig
 
 # Create group and user

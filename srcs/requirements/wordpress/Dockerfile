@@ -5,9 +5,11 @@ LABEL maintainer="mboivin@student.42.fr"
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
 ENV WORDPRESS_VERSION=5.6.2
+ENV SERVER_USER=www
 
 # Install necessary packages and backup default NGINX config
-RUN apk add --no-cache nginx=${NGINX_VERSION} \
+RUN apk update \
+ && apk add --no-cache nginx=${NGINX_VERSION} \
     php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
  && rm /etc/nginx/conf.d/default.conf
@@ -19,10 +21,15 @@ COPY config/conf.d /etc/nginx/conf.d/
 # Add pages and favicon
 COPY www/ /var/www/localhost/
 
-# Create new user and group for NGINX, create app and data dirs, and grant permissions
-RUN adduser -D -g 'www' www \
- && mkdir -p /run/nginx \
- && chown -R www:www /var/www/localhost/ /run /var/lib/nginx
+# Create group and user for NGINX, app dir, and grant permissions
+RUN addgroup --system $SERVER_USER \
+ && adduser \
+    --system \
+    --disabled-password \
+    --ingroup $SERVER_USER \
+    $SERVER_USER \
+ && mkdir -p /run/nginx/ \
+ && chown -R $SERVER_USER:$SERVER_USER /var/www/localhost/ /run /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
 COPY gen_key.sh /tmp

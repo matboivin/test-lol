@@ -24,7 +24,7 @@ Write Dockerfiles.
 - WordPress 5.6.2
 - PHP 7.4.15
 - MariaDB 10.5.8
-- Grafana 7.4.3
+- Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
 
 ## Alpine
@@ -280,7 +280,7 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 #### Requirements
 
-- [ ] Grafana 7.4.3
+- [X] Grafana 7.3.6-r0
 - [ ] type LoadBalancer
 - [ ] port 3000
 - [ ] linked to InfluxDB
@@ -323,6 +323,8 @@ Source: [Grafana Labs: Config file locations](https://grafana.com/docs/grafana/l
 To invoke Grafana CLI, add the path to the grafana binaries in your `PATH` environment variable. Alternately, if your current directory is the bin directory, use `./grafana-cli`. Otherwise, you can specify full path to the CLI. For example, on Linux `/usr/share/grafana/bin/grafana-cli` and on Windows `C:\Program Files\GrafanaLabs\grafana\bin\grafana-cli.exe`.
 
 Source: [Grafana Labs: Grafana CLI](https://grafana.com/docs/grafana/latest/administration/cli/)
+
+Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux binaries on Alpine](https://github.com/github/hub/issues/1818)
 
 - GF_SECURITY_ADMIN_PASSWORD__FILE `/run/secrets/<name of secret>`
 

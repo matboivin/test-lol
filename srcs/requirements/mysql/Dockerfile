@@ -9,7 +9,8 @@ ENV MYSQL_PASSWORD=user42
 ENV HOSTNAME=localhost
 
 # Install necessary packages
-RUN apk add --no-cache mysql mysql-client
+RUN apk update \
+ && apk add --no-cache mysql mysql-client
 
 # Create mysqld app dir
 RUN mkdir -p /run/mysqld \
