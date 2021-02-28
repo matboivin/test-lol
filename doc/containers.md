@@ -398,4 +398,12 @@ Usage: influxd run [flags]
 
 `influxd` PID file -> `/var/log/influxdb/influxd.log`
 
+To create an InfluxDB configuration file using Docker, run the following command:
+
+```console
+docker run --rm influxdb:dev influxd config > influxdb.conf
+```
+
+Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
+
 ## Telegraf

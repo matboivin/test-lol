@@ -12,11 +12,15 @@ ENV INFLUXDB_LOG_DIR=/var/log/influxdb
 RUN apk update \
  && apk add --no-cache influxdb=${INFLUXDB_VERSION}
 
-# Create InfluxDB directories and move config files
+# Create InfluxDB directories and delete default conf
 RUN mkdir -p "/etc/influxdb/" $INFLUXDB_DATA_DIR $INFLUXDB_LOG_DIR \
- && mv /etc/influxdb.conf $INFLUXDB_CONFIG_PATH
+ && rm /etc/influxdb.conf
+
+COPY influxdb.conf $INFLUXDB_CONFIG_PATH
 
 #RUN influxd run -pidfile=/var/log/influxdb/influxd.log &
+
+WORKDIR "/var/lib/influxdb"
 
 # Inform which ports are intended to be published
 EXPOSE 8086
