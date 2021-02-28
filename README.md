@@ -17,6 +17,7 @@ Don't copy. Learn.
 - MariaDB 10.5.8
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
+- Telegraf 1.17.0-r0
 
 ## Usage
 

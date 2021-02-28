@@ -26,6 +26,7 @@ Write Dockerfiles.
 - MariaDB 10.5.8
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
+- Telegraf 1.17.0-r0
 
 ## Alpine
 
@@ -242,7 +243,7 @@ robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](h
 
 #### Resources
 
-- [Official phpMyAdmin Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
+- [phpMyAdmin official Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
 - [Alpine Wiki: PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
 - [Deploy PhpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
 
@@ -354,7 +355,7 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 
 #### Resources
 
-- [Official InfluxDB Docker image](https://hub.docker.com/_/influxdb)
+- [InfluxDB official Docker image](https://hub.docker.com/_/influxdb)
 - [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)
 - [Get started with InfluxDB OSS v1.8](https://docs.influxdata.com/influxdb/v1.8/introduction/get-started/)
 - [How To Install InfluxDB 1.7 and 2.0 on Linux in 2019](https://devconnected.com/how-to-install-influxdb-on-ubuntu-debian-in-2019/#Option_2_Adding_the_repositories_to_your_package_manager)
@@ -417,6 +418,14 @@ docker run --rm influxdb:ft influxd config > influxdb.conf
 Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
 
 ## Telegraf
+
+#### Requirements
+
+- [ ] Telegraf 1.17.0-r0
+
+#### Resources
+
+- [Telegraf official Docker image](https://hub.docker.com/_/telegraf)
 
 ```console
 docker run --rm telegraf:ft telegraf config
