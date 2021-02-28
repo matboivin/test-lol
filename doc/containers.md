@@ -90,6 +90,10 @@ Read user:password from stdin and update /etc/passwd
 
 ### Directory structure
 
+#### /etc – Configuration Files
+
+The `/etc` directory contains configuration files, which can generally be edited by hand in a text editor. Note that the `/etc/` directory contains system-wide configuration files – user-specific configuration files are located in each user’s home directory.
+
 #### /var – Variable Data Files
 
 The `/var` directory is the writable counterpart to the `/usr` directory, which must be read-only in normal operation. Log files and everything else that would normally be written to `/usr` during normal operation are written to the /var directory. For example, you’ll find log files in `/var/log`.
@@ -426,6 +430,7 @@ Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconn
 #### Resources
 
 - [Telegraf official Docker image](https://hub.docker.com/_/telegraf)
+- [Telegraf configuration](https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md)
 
 ```console
 docker run --rm telegraf:ft telegraf config

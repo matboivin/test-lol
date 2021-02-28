@@ -14,7 +14,7 @@ RUN apk update \
  && apk add --no-cache influxdb=${INFLUXDB_VERSION}
 
 # Create InfluxDB directories and backup default conf
-RUN mkdir -p "/etc/influxdb/" $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
+RUN mkdir -p /etc/influxdb $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
  && mv /etc/influxdb.conf /etc/influxdb-default.conf \
  && mv /etc/influxdb-default.conf /etc/influxdb/
 
