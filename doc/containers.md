@@ -284,6 +284,13 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 - InfluxDB: Time series database
 - Grafana: Dashboard
 
+#### Resources
+
+- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#map-a-configuration-file-using-configmap)
+- [TIG, le trio Telegraf + InfluxDB + Grafana pour surveiller vos équipements](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
+
+> Le monitoring ou surpervision est une activité de surveillance et de mesure d’une activité informatique. Ces mesures permettent de construire des graphes afin de visualiser les performances et de voir les tendances, de détecter voire d’anticiper des anomalies ou des pannes et d’alerter en cas de dysfonctionnement.  [(Source)](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
+
 ## Grafana
 
 #### Requirements
@@ -351,6 +358,8 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 - [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)
 - [Get started with InfluxDB OSS v1.8](https://docs.influxdata.com/influxdb/v1.8/introduction/get-started/)
 - [How To Install InfluxDB 1.7 and 2.0 on Linux in 2019](https://devconnected.com/how-to-install-influxdb-on-ubuntu-debian-in-2019/#Option_2_Adding_the_repositories_to_your_package_manager)
+- [InfluxDB : une base de données time series open source ultra-rapide](https://www.journaldunet.fr/web-tech/guide-de-l-entreprise-digitale/1443846-influxdb-une-base-de-donnees-time-series-open-source-sur-optimisee/)
+- [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
 
 8086 -> HTTP API port  
 > The CLI communicates with InfluxDB directly by making requests to the InfluxDB API over port 8086 by default.
@@ -401,9 +410,13 @@ Usage: influxd run [flags]
 To create an InfluxDB configuration file using Docker, run the following command:
 
 ```console
-docker run --rm influxdb:dev influxd config > influxdb.conf
+docker run --rm influxdb:ft influxd config > influxdb.conf
 ```
 
 Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
 
 ## Telegraf
+
+```console
+docker run --rm telegraf:ft telegraf config
+```
