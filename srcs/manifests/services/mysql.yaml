@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:dev
+        image: mysql:ft
         imagePullPolicy: Never
         env:
         - name: MYSQL_ROOT_PASSWORD

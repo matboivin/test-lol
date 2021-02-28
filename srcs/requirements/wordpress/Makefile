@@ -2,7 +2,7 @@ SHELL = /bin/sh
 DOCKER_USER := mboivin
 IMAGE := wp
 DOCKER_NAME := wp1
-TAG = dev
+TAG = ft
 
 docker-build:
 	docker build -t $(IMAGE):$(TAG) .

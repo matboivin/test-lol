@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
       - name: wordpress
-        image: wordpress:dev
+        image: wordpress:ft
         imagePullPolicy: Never
         env:
         - name: WORDPRESS_DB_HOST

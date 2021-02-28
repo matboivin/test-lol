@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:dev
+        image: nginx:ft
         imagePullPolicy: Never
         ports:
         - containerPort: 80

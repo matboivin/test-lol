@@ -2,7 +2,7 @@ SHELL = /bin/sh
 DOCKER_USER := mboivin
 IMAGE := influxdb
 DOCKER_NAME := influxdb1
-TAG = dev
+TAG = ft
 
 docker-build:
 	docker build -t $(IMAGE):$(TAG) .
