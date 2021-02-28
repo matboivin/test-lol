@@ -35,9 +35,18 @@ The following objects are stored in `etcd`.
 - RoleBindings or ClusterRoleBindings: grant the permissions described by a Role or ClusterRole to a user or a service
 - [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/): describe filtering rules to apply between pods, or between a pod and external services
 - [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/): describes cluter-level security policies
+- [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/): used to separate configuration from code, representing configuration data as key-value pairs.
 
 `etcd` : the backend for service discovery and stores cluster state and configuration
 `kubectl`: CLI tool Kubernetes API
+
+To configure your apps in Kubernetes, you can use:
+
+- Environment variables
+- ConfigMaps
+- Secrets
+
+- [Learn how to configure Kubernetes apps using ConfigMap](https://itnext.io/learn-how-to-configure-your-kubernetes-apps-using-the-configmap-object-d8f30f99abeb)
 
 <p align="center">
   <img src="assets/service-pod.png" alt="service and pod" />
@@ -151,3 +160,13 @@ Services are introduced to provide reliable networking by bringing stable IP add
 By controlling traffic coming and going to the pod, a Kubernetes service provides a stable networking endpoint – a fixed IP, DNS, and port. Through a service, any pod can be added or removed without the fear that basic network information would change in any way.
 
 Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
+
+### ConfigMaps
+
+Create a ConfigMap from a file:
+
+```console
+kubectl create configmap name --from-file=file.conf
+```
+
+Source: [Create ConfigMaps from files](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files)

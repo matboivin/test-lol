@@ -15,12 +15,9 @@ RUN apk update \
 
 # Create InfluxDB directories and backup default conf
 RUN mkdir -p /etc/influxdb $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
- && mv /etc/influxdb.conf /etc/influxdb-default.conf \
- && mv /etc/influxdb-default.conf /etc/influxdb/
+ && mv /etc/influxdb.conf $INFLUXDB_CONFIG_PATH
 
-COPY influxdb.conf $INFLUXDB_CONFIG_PATH
-
-#RUN influxd run -config /etc/influxdb/influxdb.conf -pidfile=/var/log/influxdb/influxd.log &
+#RUN influxd run -pidfile=/var/log/influxdb/influxd.log &
 
 VOLUME ["/var/lib/influxdb"]
 

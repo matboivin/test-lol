@@ -17,6 +17,7 @@ jobs:
         with:
           manifests: |
               srcs/manifests/00-namespace.yaml
+              srcs/manifests/configmaps/influxdb-config.yaml
               srcs/manifests/configmaps/metallb-config.yaml
               srcs/manifests/services/mysql.yaml
               srcs/manifests/services/nginx.yaml
