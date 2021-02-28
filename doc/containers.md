@@ -280,6 +280,10 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 ## TIG Stack
 
+- Telegraf: Agent to collect the cluster data
+- InfluxDB: Time series database
+- Grafana: Dashboard
+
 ## Grafana
 
 #### Requirements

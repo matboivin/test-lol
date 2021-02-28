@@ -16,7 +16,7 @@ RUN apk update \
 RUN mkdir -p "/etc/influxdb/" $INFLUXDB_DATA_DIR $INFLUXDB_LOG_DIR \
  && mv /etc/influxdb.conf $INFLUXDB_CONFIG_PATH
 
-#RUN influxd run -pidfile=/var/log/influxdb/influxd.log
+#RUN influxd run -pidfile=/var/log/influxdb/influxd.log &
 
 # Inform which ports are intended to be published
 EXPOSE 8086

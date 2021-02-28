@@ -1,56 +1,28 @@
 # Process
 
-LEMP stack infrastructure in a kubernetes cluster.
+Kubernetes cluster composed of:
+- a LEMP stack
+- a TIG stack
+- a FTP server
 
 **Table of Contents**
 
-1. [Prep](#prep)
-    1. [Versions](#versions)
-    2. [YAML files](#versions)
-2. [Steps](#steps)
-    1. [Installation](#installation)
-    2. [Start cluster](#start-cluster)
-    3. [Containerize apps](#containerize-apps)
-    4. [Load balancer](#load-balancer)
-
-# Prep
-
-Add user42 to the Docker group:
-
-```console
-sudo usermod -aG docker $(whoami)
-su $(whoami)
-
-# Will also maybe require
-sudo systemctl restart docker
-```
-
-## Versions
-
-- minikube v1.17.1
-- kubectl v1.20.2
-- Alpine 3.13
-- NGINX 1.18.0-r13
-- openssl 1.1.1
-- WordPress 5.6.2
-- PHP 7.4.15
-- MariaDB 10.5.8
-- Grafana 7.3.6-r0
-- InfluxDB 1.8.3-r2
-
-## YAML files
-
-> The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
-
-# Steps
+1. [Installation](#installation)
+2. [Start cluster](#start-cluster)
+3. [Containerize apps](#containerize-apps)
+4. [Load balancer](#load-balancer)
 
 ## Installation
 
 #### Requirements
 
-- [X] 42VM requires 2 CPU.
-- [X] minikube v1.17.1
-- [X] kubectl v1.20.2
+- 2 CPUs or more
+- 2GB of free memory
+- 20GB of free disk space
+- Internet connection
+- Container or virtual machine manager, such as: Docker, Hyperkit, Hyper-V, KVM, Parallels, Podman, VirtualBox, or VMWare
+
+Source: [minikube start](https://minikube.sigs.k8s.io/docs/start/)
 
 Add user42 to the docker group:
 
@@ -62,22 +34,6 @@ su $(whoami)
 sudo systemctl restart docker
 ```
 
-- [Kubernetes Documentation: Pick up the right solution](https://kubernetes.io/fr/docs/setup/pick-right-solution/)
-- [Kubernetes Documentation: Install tools](https://kubernetes.io/docs/tasks/tools/)
-
-> Minikube est la solution adaptée pour les petits projets basés sur les conteneurs. Par exemple, quand on souhaite mettre en place un cluster Kubernetes privé, il n’est plus nécessaire de travailler avec un serveur complet ou sur le cloud. Minikube se passe de grandes infrastructures et peut facilement déployer des clusters locaux.  
-Un ordinateur et un cluster avec un seul nœud : c’est tout ce dont Minikube a besoin. Ces prérequis minimaux s’adressent en premier lieu aux petits projets privés de développeurs, qui peuvent déployer leurs créations très simplement grâce à Minikube. Il n’y a besoin ni de serveur, ni de cloud : le cluster Kubernetes s’exécute uniquement sur l’hôte local. Minikube fonctionne par défaut avec une VirtualBox, qui sert de VM d’environnement d’exécution.
-
-Source: [Minikube : un environnement Kubernetes maximal pour une charge de travail allégée](https://www.ionos.fr/digitalguide/serveur/outils/minikube-de-kubernetes/)
-
-- 2 CPUs or more
-- 2GB of free memory
-- 20GB of free disk space
-- Internet connection
-- Container or virtual machine manager, such as: Docker, Hyperkit, Hyper-V, KVM, Parallels, Podman, VirtualBox, or VMWare
-
-Source: [minikube start](https://minikube.sigs.k8s.io/docs/start/)
-
 Install [jq](https://stedolan.github.io/jq/) to format output:
 
 ```console
@@ -85,6 +41,14 @@ kubectl version -o json | jq
 ```
 
 ## Start cluster
+
+- [Kubernetes Documentation: Pick up the right solution](https://kubernetes.io/fr/docs/setup/pick-right-solution/)
+- [Kubernetes Documentation: Install tools](https://kubernetes.io/docs/tasks/tools/)
+
+> Minikube est la solution adaptée pour les petits projets basés sur les conteneurs. Par exemple, quand on souhaite mettre en place un cluster Kubernetes privé, il n’est plus nécessaire de travailler avec un serveur complet ou sur le cloud. Minikube se passe de grandes infrastructures et peut facilement déployer des clusters locaux.  
+Un ordinateur et un cluster avec un seul nœud : c’est tout ce dont Minikube a besoin. Ces prérequis minimaux s’adressent en premier lieu aux petits projets privés de développeurs, qui peuvent déployer leurs créations très simplement grâce à Minikube. Il n’y a besoin ni de serveur, ni de cloud : le cluster Kubernetes s’exécute uniquement sur l’hôte local. Minikube fonctionne par défaut avec une VirtualBox, qui sert de VM d’environnement d’exécution.
+
+Source: [Minikube : un environnement Kubernetes maximal pour une charge de travail allégée](https://www.ionos.fr/digitalguide/serveur/outils/minikube-de-kubernetes/)
 
 ```console
 minikube start
@@ -110,6 +74,8 @@ minikube addons enable metrics-server
 [Write Dockerfiles](containers.md).
 
 > In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.  All your containers must restart in case of a crash or stop of one of its component parts.
+
+> The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
 #### Requirements
 
