@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := influxdb
-DOCKER_NAME := telegraph1
+IMAGE := telegraf
+DOCKER_NAME := telegraf1
 TAG = ft
 
 docker-build:
