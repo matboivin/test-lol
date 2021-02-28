@@ -6,21 +6,25 @@ LABEL maintainer="mboivin@student.42.fr"
 ENV INFLUXDB_VERSION=1.8.3-r2
 ENV INFLUXDB_CONFIG_PATH=/etc/influxdb/influxdb.conf
 ENV INFLUXDB_DATA_DIR=/var/lib/influxdb/data
+ENV INFLUXDB_DATA_WAL_DIR=/var/lib/influxdb/wal
 ENV INFLUXDB_LOG_DIR=/var/log/influxdb
 
 # Install necessary packages
 RUN apk update \
  && apk add --no-cache influxdb=${INFLUXDB_VERSION}
 
-# Create InfluxDB directories and delete default conf
-RUN mkdir -p "/etc/influxdb/" $INFLUXDB_DATA_DIR $INFLUXDB_LOG_DIR \
- && rm /etc/influxdb.conf
+# Create InfluxDB directories and backup default conf
+RUN mkdir -p "/etc/influxdb/" $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
+ && mv /etc/influxdb.conf /etc/influxdb-default.conf \
+ && /etc/influxdb-default.conf /etc/influxdb/
 
 COPY influxdb.conf $INFLUXDB_CONFIG_PATH
 
-#RUN influxd run -pidfile=/var/log/influxdb/influxd.log &
+#RUN influxd run -config /etc/influxdb/influxdb.conf -pidfile=/var/log/influxdb/influxd.log &
 
-WORKDIR "/var/lib/influxdb"
+VOLUME ["/var/lib/influxdb"]
 
 # Inform which ports are intended to be published
 EXPOSE 8086
+
+#CMD ["influxd"]

@@ -360,6 +360,7 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 - [How To Install InfluxDB 1.7 and 2.0 on Linux in 2019](https://devconnected.com/how-to-install-influxdb-on-ubuntu-debian-in-2019/#Option_2_Adding_the_repositories_to_your_package_manager)
 - [InfluxDB : une base de données time series open source ultra-rapide](https://www.journaldunet.fr/web-tech/guide-de-l-entreprise-digitale/1443846-influxdb-une-base-de-donnees-time-series-open-source-sur-optimisee/)
 - [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
+[InfluxDB v1.8 Docker Alpine config](https://github.com/influxdata/influxdata-docker/blob/master/influxdb/1.8/alpine/influxdb.conf)
 
 8086 -> HTTP API port  
 > The CLI communicates with InfluxDB directly by making requests to the InfluxDB API over port 8086 by default.

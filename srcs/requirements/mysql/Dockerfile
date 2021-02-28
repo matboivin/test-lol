@@ -25,4 +25,4 @@ EXPOSE 3306
 # Copy init script
 COPY init_db.sh /root/
 
-ENTRYPOINT ["sh", "/root/init_db.sh"]
+ENTRYPOINT ["sh", "/root/init_mysql_db.sh"]
