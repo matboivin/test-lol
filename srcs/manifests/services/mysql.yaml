@@ -8,6 +8,7 @@ metadata:
 spec:
   ports:
     - port: 3306
+      protocol: TCP
   selector:
     app: wordpress
     tier: backend
@@ -60,7 +61,7 @@ spec:
               key: wordpress_db_pass
         ports:
         - containerPort: 3306
-          name: mysql
+          name: mysql-port
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql

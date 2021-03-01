@@ -6,6 +6,7 @@ metadata:
   labels:
     app: nginx
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
       protocol: TCP
@@ -15,7 +16,6 @@ spec:
       name: https
   selector:
     app: nginx
-  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment

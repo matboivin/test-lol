@@ -8,6 +8,8 @@ metadata:
 spec:
   ports:
   - port: 8086
+    targetPort: influxdb-port
+    protocol: TCP
     name: api
   selector:
     app: influxdb
@@ -53,7 +55,7 @@ spec:
           #env:
           ports:
             - containerPort: 8086
-              name: api
+              name: influxdb-port
           volumeMounts:
             - mountPath: /var/lib/influxdb
               name: influxdb-data

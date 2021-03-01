@@ -6,12 +6,15 @@ metadata:
   labels:
     app: wordpress
 spec:
+  type: LoadBalancer
   ports:
     - port: 5050
+      targetPort: wordpress-port
+      protocol: TCP
+      name: http
   selector:
     app: wordpress
     tier: frontend
-  type: LoadBalancer
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -62,4 +65,4 @@ spec:
               key: wordpress_db_pass
         ports:
         - containerPort: 5050
-          name: wordpress
+          name: wordpress-port

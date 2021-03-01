@@ -48,6 +48,7 @@
 - [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
 - [Nginx location match tester](https://nginx.viraptor.info/)
 - [WordPress requirements](https://wordpress.org/about/requirements/)
+- [Using Kubernetes Port, TargetPort, and NodePort](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
 
 ### Organization
 
