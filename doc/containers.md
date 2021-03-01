@@ -431,7 +431,7 @@ The config is mounted as a ConfigMap.
 
 #### Requirements
 
-- [ ] Telegraf 1.17.0-r0
+- [X] Telegraf 1.17.0-r0
 
 #### Resources
 

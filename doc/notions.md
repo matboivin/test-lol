@@ -35,6 +35,7 @@
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
 - [matchLabels, labels, and selectors explained in detail, for beginners](https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362)
 - [Learn how to configure Kubernetes apps using ConfigMap](https://itnext.io/learn-how-to-configure-your-kubernetes-apps-using-the-configmap-object-d8f30f99abeb)
+- [Kubernetes Design and Development Explained](https://thenewstack.io/kubernetes-design-and-development-explained/)
 
 ### Bookmarks
 

@@ -1,17 +1,19 @@
 # Kubernetes
 
+A lot of the following is from articles written by [phoenixNAP](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams) which provides helpful resources I recommend for this project.
+
 > Kubernetes is a tool used to manage clusters of containerized applications. In computing, this process is often referred to as orchestration.  Much as a conductor would, Kubernetes coordinates lots of microservices that together form a useful application. Kubernetes automatically and perpetually monitors the cluster and makes adjustments to its components.  
 Kubernetes, or k8s for short, is a system for automating application deployment. Modern applications are dispersed across clouds, virtual machines, and servers. Administering apps manually is no longer a viable option.  
 K8s transforms virtual and physical machines into a unified API surface. A developer can then use the Kubernetes API to deploy, scale, and manage containerized applications. [(Source)](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)  
 
-It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation. [(Source)](https://en.wikipedia.org/wiki/Kubernetes)
+It was originally designed by Google and is now maintained by the [Cloud Native Computing Foundation](https://en.wikipedia.org/wiki/Kubernetes).
 
 We interact with the Kubernetes API that gives access to the resources describing the [cluster](https://en.wikipedia.org/wiki/Computer_cluster) configuration.
 
 Kubernetes has a decentralized architecture that does not handle tasks sequentially. It functions based on a declarative model and implements the concept of a ‘desired state.’ These steps illustrate the basic Kubernetes process:
 
 1. An administrator creates and places the desired state of an application into a manifest file.
-2. The file is provided to the Kubernetes API Server using a CLI or UI. Kubernetes’ default command-line tool is called kubectl. In case you need a comprehensive list of kubectl commands, check out our Kubectl Cheat Sheet.
+2. The file is provided to the Kubernetes API Server using a CLI or UI. Kubernetes’ default command-line tool is called kubectl. In case you need a comprehensive list of kubectl commands, check out our [Kubectl Cheat Sheet](https://phoenixnap.com/kb/kubectl-commands-cheat-sheet).
 3. Kubernetes stores the file (an application’s desired state) in a database called the Key-Value Store (etcd).
 4. Kubernetes then implements the desired state on all the relevant applications within the cluster.
 5. Kubernetes continuously monitors the elements of the cluster to make sure the current state of the application does not vary from the desired state.
@@ -24,7 +26,7 @@ Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https:
 
 ## Objects
 
-The following objects are stored in `etcd`.
+The following objects are stored in `etcd` (key-value pairs database).
 
 - [node](https://kubernetes.io/docs/concepts/architecture/nodes/): a machine in the cluster
 - [Pod](https://kubernetes.io/docs/concepts/workloads/pods/): multiple containers running on the same node and sharing the same resources
@@ -46,7 +48,7 @@ To configure your apps in Kubernetes, you can use:
 - ConfigMaps
 - Secrets
 
-- [Learn how to configure Kubernetes apps using ConfigMap](https://itnext.io/learn-how-to-configure-your-kubernetes-apps-using-the-configmap-object-d8f30f99abeb)
+Resource: [Learn how to configure Kubernetes apps using ConfigMap](https://itnext.io/learn-how-to-configure-your-kubernetes-apps-using-the-configmap-object-d8f30f99abeb)
 
 <p align="center">
   <img src="assets/service-pod.png" alt="service and pod" />
@@ -88,6 +90,32 @@ Source: [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https:
 ### API Server
 
 The API Server is the front-end of the control plane and the only component in the control plane that we interact with directly. Internal system components, as well as external user components, all communicate via the same API.
+
+Resources:
+- [Kubernetes Documentation: Kubernetes API Overview](https://kubernetes.io/docs/reference/using-api/)
+- [API groups](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#-strong-api-groups-strong-)
+
+To get API resources supported by your Kubernetes cluster:
+
+```console
+kubectl api-resources -o wide
+```
+
+To get API versions supported by your Kubernetes cluster:
+
+```console
+kubectl api-versions
+```
+
+```console
+kubectl explain <resource>
+kubectl explain deploy --api-version apps/v1
+```
+
+Resources:
+- [Which API Group in k8s](https://stackoverflow.com/questions/57821065/which-api-group-in-k8s)
+- [Kubernetes API Resources: Which Group and Version to Use?](https://akomljen.com/kubernetes-api-resources-which-group-and-version-to-use/)
+
 
 ### Key-Value Store (etcd)
 
@@ -170,3 +198,5 @@ kubectl create configmap name --from-file=file.conf
 ```
 
 Source: [Create ConfigMaps from files](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files)
+
+> The Kubernetes API allows storing of information that may be interesting to workloads. For example, the Kubernetes API can be used to store secrets or config maps. Secrets could be any sensitive data that you wouldn’t want in your container images, including passwords, certificates and other sensitive information. And config maps can contain configuration information that should remain independent of container images, such as application startup and other similar parameters.  [(Source)](https://thenewstack.io/kubernetes-design-and-development-explained/)
