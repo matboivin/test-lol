@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  namespace: ft-services
+  labels:
+    app: influxdb
+spec:
+  ports:
+  - port: 8086
+    name: api
+  selector:
+    app: influxdb
+    tier: backend
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb
+  namespace: ft-services
+  labels:
+    app: influxdb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  namespace: ft-services
+  labels:
+    app: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: influxdb
+        tier: backend
+    spec:
+      containers:
+        - image: influxdb:ft
+          name: influxdb
+          imagePullPolicy: Never
+          #env:
+          ports:
+            - containerPort: 8086
+              name: api
+          volumeMounts:
+            - mountPath: /var/lib/influxdb
+              name: influxdb-data
+            - mountPath: /etc/influxdb
+              name: influxdb-config
+              subPath: influxdb.conf
+              readOnly: true
+      volumes:
+        - name: influxdb-data
+          persistentVolumeClaim:
+            claimName: influxdb-data
+        - name: influxdb-config
+          configMap:
+            name: influxdb-config
