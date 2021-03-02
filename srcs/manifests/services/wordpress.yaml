@@ -3,15 +3,12 @@ kind: Service
 metadata:
   name: wordpress-service
   namespace: ft-services
-  labels:
-    app: wordpress
 spec:
   type: LoadBalancer
   ports:
     - port: 5050
       targetPort: wordpress-port
       protocol: TCP
-      name: http
   selector:
     app: wordpress
     tier: frontend
@@ -35,8 +32,6 @@ kind: Deployment
 metadata:
   name: wordpress
   namespace: ft-services
-  labels:
-    app: wordpress
 spec:
   replicas: 1
   selector:
@@ -52,8 +47,8 @@ spec:
         tier: frontend
     spec:
       containers:
-      - name: wordpress
-        image: wordpress:ft
+      - image: wordpress:ft
+        name: wordpress
         imagePullPolicy: Never
         env:
         - name: WORDPRESS_DB_HOST

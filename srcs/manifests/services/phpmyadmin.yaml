@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: phpmyadmin-service
   namespace: ft-services
-  labels:
-    app: phpmyadmin
 spec:
   type: LoadBalancer
   ports:
@@ -19,8 +17,6 @@ kind: Deployment
 metadata:
   name: phpmyadmin-deployment
   namespace: ft-services
-  labels:
-    app: phpmyadmin
 spec:
   replicas: 1
   selector:
@@ -34,8 +30,8 @@ spec:
         app: phpmyadmin
     spec:
       containers:
-      - name: phpmyadmin
-        image: phpmyadmin:ft
+      - image: phpmyadmin:ft
+        name: phpmyadmin
         imagePullPolicy: Never
         env:
         - name: MYSQL_ROOT_PASSWORD

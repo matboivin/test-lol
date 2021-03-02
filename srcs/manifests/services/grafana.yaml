@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: grafana-service
   namespace: ft-services
-  labels:
-    app: grafana
 spec:
   type: LoadBalancer
   ports:
@@ -19,8 +17,6 @@ kind: Deployment
 metadata:
   name: grafana-deployment
   namespace: ft-services
-  labels:
-    app: grafana
 spec:
   selector:
     matchLabels:
@@ -36,7 +32,6 @@ spec:
       - image: grafana:ft
         name: grafana
         imagePullPolicy: Never
-        #env:
         ports:
         - containerPort: 3000
           name: grafana-port

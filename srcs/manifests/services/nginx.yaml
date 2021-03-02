@@ -3,15 +3,15 @@ kind: Service
 metadata:
   name: nginx-service
   namespace: ft-services
-  labels:
-    app: nginx
 spec:
   type: LoadBalancer
   ports:
     - port: 80
+      targetPort: nginx-http-port
       protocol: TCP
       name: http
     - port: 443
+      targetPort: nginx-https-port
       protocol: TCP
       name: https
   selector:
@@ -33,9 +33,11 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:ft
+      - image: nginx:ft
+        name: nginx
         imagePullPolicy: Never
         ports:
         - containerPort: 80
+          name: nginx-http-port
         - containerPort: 443
+          name: nginx-https-port

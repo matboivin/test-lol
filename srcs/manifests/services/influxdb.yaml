@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: influxdb-service
   namespace: ft-services
-  labels:
-    app: grafana
 spec:
   ports:
   - port: 8086
@@ -34,8 +32,6 @@ kind: Deployment
 metadata:
   name: influxdb
   namespace: ft-services
-  labels:
-    app: grafana
 spec:
   replicas: 1
   selector:
@@ -49,8 +45,8 @@ spec:
         tier: backend
     spec:
       containers:
-      - name: influxdb
-        image: influxdb:ft
+      - image: influxdb:ft
+        name: influxdb
         imagePullPolicy: Never
         ports:
         - containerPort: 8086

@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: vsftpd-service
   namespace: ft-services
-  labels:
-    app: vsftpd
 spec:
   type: LoadBalancer
   ports:
@@ -12,24 +10,22 @@ spec:
     targetPort: vsftpd-port
     protocol: TCP
   selector:
-    app: vsftpd
+    app: ftps-server
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: vsftpd-deployment
   namespace: ft-services
-  labels:
-    app: vsftpd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vsftpd
+      app: ftps-server
   template:
     metadata:
       labels:
-        app: ftps
+        app: ftps-server
     spec:
       containers:
       - image: ftps:ft
@@ -40,6 +36,7 @@ spec:
           name: vsftpd-port
         volumeMounts:
         - mountPath: /var/ftp
+          name: vsftpd-anon-root
     volumes:
       - name: vsftpd-config
         configMap:
