@@ -1,14 +1,14 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := wordpress
-DOCKER_NAME := wordpress1
+IMAGE := nginx
+DOCKER_NAME := nginx1
 TAG = ft
 
 docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -it -p 5050:5050 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
+	docker run -it -p 80:80 -p 443:443 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
 
 up: docker-build docker-run
 

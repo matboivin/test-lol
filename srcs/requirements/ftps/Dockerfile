@@ -23,10 +23,10 @@ RUN mkdir -p /var/ftp \
     $FTP_USER \
  && echo "$FTP_USER:$FTP_PASSWD" | chpasswd
 
-# Add new config
-COPY config/vsftpd.conf /etc/vsftpd/
 
 VOLUME ["/var/ftp"]
+
+WORKDIR /var/ftp
 
 # Inform which ports are intended to be published
 EXPOSE 20 21

@@ -1,23 +1,36 @@
 SHELL = /bin/zsh
 SCRIPTS_PATH=srcs/scripts
-
-all:
-	@zsh setup.sh
+DOCKERFILE_PATH=srcs/requirements
+MANIFESTS_PATH=srcs/manifests
 
 install:
 	@zsh $(SCRIPTS_PATH)/install_minikube.sh
+	@make -C $(DOCKERFILE_PATH)/nginx docker-build
+	@make -C $(DOCKERFILE_PATH)/mysql docker-build
+	@make -C $(DOCKERFILE_PATH)/phpmyadmin docker-build
+	@make -C $(DOCKERFILE_PATH)/wordpress docker-build
+	@make -C $(DOCKERFILE_PATH)/influxdb docker-build
+	@make -C $(DOCKERFILE_PATH)/telegraf docker-build
+	@make -C $(DOCKERFILE_PATH)/grafana docker-build
+	@make -C $(DOCKERFILE_PATH)/ftps docker-build
 
-docker-build:
-	@zsh $(SCRIPTS_PATH)/build_docker.sh
+start:
+	@echo "⧗   Start the cluster ...\n"
+	minikube start --driver=docker
+	eval $(minikube docker-env)
+	minikube addons enable metrics-server
+	minikube addons enable dashboard
+	minikube addons enable metallb
+	@zsh $(SCRIPTS_PATH)/install_kubectl.sh
 
-docker-stop:
-	docker stop $(docker ps -a -q)
+all:
+	@kubectl apply -f $(MANIFESTS_PATH) --recursive
 
-docker-rm:
-	docker rm $(docker ps -a -q)
+list:
+	minikube service list
 
-docker-rmi:
-	docker rmi $(docker images -q)
+watch:
+	kubectl get pods -A --watch
 
 stop:
 	minikube stop
@@ -25,6 +38,4 @@ stop:
 clean:
 	@zsh $(SCRIPTS_PATH)/clean.sh
 
-re: clean all
-
-.PHONY: install stop clean re
+.PHONY: install start stop list watch clean

@@ -32,12 +32,12 @@ spec:
         app: ftps
     spec:
       containers:
-        - image: ftps:ft
-          name: ftps
-          imagePullPolicy: Never
-          #env:
-          ports:
-            - containerPort: 21
-              name: ftps-port
-          volumeMounts:
-            - mountPath: /var/ftp
+      - image: ftps:ft
+        name: ftps
+        imagePullPolicy: Never
+        #env:
+        ports:
+        - containerPort: 21
+          name: ftps-port
+        volumeMounts:
+        - mountPath: /var/ftp
