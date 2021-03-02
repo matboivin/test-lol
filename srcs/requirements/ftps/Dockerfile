@@ -3,8 +3,8 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
-ENV FTP_USER=user42
-ENV FTP_PASSWD=user42
+ENV SRV_USER=user42
+ENV SRV_PASSWD=user42
 
 # Install necessary packages and backup default vsftpd config
 RUN apk update \
@@ -13,16 +13,15 @@ RUN apk update \
 
 # Create group and user
 RUN mkdir -p /var/ftp \
- && addgroup --system $FTP_USER \
+ && addgroup --system $SRV_USER \
  && adduser \
     --system \
     --disabled-password \
-    --home /home/$FTP_USER \
+    --home /home/$SRV_USER \
     --shell /sbin/nologin \
-    --ingroup $FTP_USER \
-    $FTP_USER \
- && echo "$FTP_USER:$FTP_PASSWD" | chpasswd
-
+    --ingroup $SRV_USER \
+    $SRV_USER \
+ && echo "$SRV_USER:$SRV_PASSWD" | chpasswd
 
 VOLUME ["/var/ftp"]
 

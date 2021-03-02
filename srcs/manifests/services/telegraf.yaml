@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: telegraf
+  name: telegraf-deployment
   namespace: ft-services
   labels:
-    app: telegraf
+    app: grafana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: telegraf
+      app: grafana
   template:
     metadata:
       labels:
-        app: telegraf
+        app: grafana
     spec:
       containers:
-      - image: telegraf:ft
-        name: telegraf
+      - name: telegraf
+        image: telegraf:ft
         imagePullPolicy: Never
     volumes:
     - name: telegraf-config

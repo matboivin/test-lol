@@ -128,6 +128,7 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [Protéger Nginx des attaques DoS et bruteforce](https://www.malekal.com/proteger-nginx-attaques-dos-bruteforce/)
 - [How To Configure Nginx to use TLS 1.2 / 1.3 only](https://www.cyberciti.biz/faq/configure-nginx-to-use-only-tls-1-2-and-1-3/)
 - [Nginx and Letsencrypt with certbot in docker alpine](https://geko.cloud/nginx-and-ssl-with-certbot-in-docker-alpine/)
+- [Kubernetes Documentation: Connecting Applications with Services](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
 
 #### Config
 
@@ -265,6 +266,7 @@ PhpMyAdmin needs the root password of the MySQL service.
 
 - [X] type LoadBalancer
 - [X] port 21
+- [ ] FTPS
 
 #### Config
 

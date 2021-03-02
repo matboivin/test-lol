@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress
+  name: wordpress-service
   namespace: ft-services
   labels:
     app: wordpress
@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wp-pv-claim
+  name: wordpress-pv-claim
   namespace: ft-services
   labels:
     app: wordpress
@@ -41,7 +41,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress
+      app: wordpress-deployment
       tier: frontend
   strategy:
     type: Recreate

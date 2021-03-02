@@ -19,12 +19,13 @@ jobs:
               srcs/manifests/00-namespace.yaml
               srcs/manifests/configmaps/influxdb-config.yaml
               srcs/manifests/configmaps/metallb-config.yaml
-              srcs/manifests/services/ftps.yaml
+              srcs/manifests/configmaps/vsftpd-config.yaml
               srcs/manifests/services/grafana.yaml
               srcs/manifests/services/influxdb.yaml
               srcs/manifests/services/mysql.yaml
               srcs/manifests/services/nginx.yaml
               srcs/manifests/services/phpmyadmin.yaml
               srcs/manifests/services/telegraf.yaml
+              srcs/manifests/services/vsftpd.yaml
               srcs/manifests/services/wordpress.yaml
               srcs/manifests/secrets/wordpress-db.yaml
