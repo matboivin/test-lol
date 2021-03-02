@@ -263,8 +263,8 @@ PhpMyAdmin needs the root password of the MySQL service.
 
 #### Requirements
 
-- [ ] type LoadBalancer
-- [ ] port 21
+- [X] type LoadBalancer
+- [X] port 21
 
 #### Config
 
@@ -293,6 +293,7 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 
 - [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#map-a-configuration-file-using-configmap)
 - [TIG, le trio Telegraf + InfluxDB + Grafana pour surveiller vos équipements](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
+- [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://blog.gojekengineering.com/diy-set-up-telegraf-influxdb-grafana-on-kubernetes-d55e32f8ce48)
 
 > Le monitoring ou surpervision est une activité de surveillance et de mesure d’une activité informatique. Ces mesures permettent de construire des graphes afin de visualiser les performances et de voir les tendances, de détecter voire d’anticiper des anomalies ou des pannes et d’alerter en cas de dysfonctionnement.  [(Source)](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
 

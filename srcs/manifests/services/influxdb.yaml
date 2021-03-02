@@ -49,24 +49,24 @@ spec:
         tier: backend
     spec:
       containers:
-        - image: influxdb:ft
-          name: influxdb
-          imagePullPolicy: Never
-          #env:
-          ports:
-            - containerPort: 8086
-              name: influxdb-port
-          volumeMounts:
-            - mountPath: /var/lib/influxdb
-              name: influxdb-data
-            - mountPath: /etc/influxdb
-              name: influxdb-config
-              subPath: influxdb.conf
-              readOnly: true
-      volumes:
-        - name: influxdb-data
-          persistentVolumeClaim:
-            claimName: influxdb-data
-        - name: influxdb-config
-          configMap:
-            name: influxdb-config
+      - image: influxdb:ft
+        name: influxdb
+        imagePullPolicy: Never
+        #env:
+        ports:
+        - containerPort: 8086
+          name: influxdb-port
+        volumeMounts:
+        - mountPath: /var/lib/influxdb
+          name: influxdb-data
+        - mountPath: /etc/influxdb
+          name: influxdb-config
+          subPath: influxdb.conf
+          readOnly: true
+    volumes:
+      - name: influxdb-data
+        persistentVolumeClaim:
+          claimName: influxdb-data
+      - name: influxdb-config
+        configMap:
+          name: influxdb-config

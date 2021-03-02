@@ -12,7 +12,8 @@ RUN apk update \
  && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.orig
 
 # Create group and user
-RUN addgroup --system $FTP_USER \
+RUN mkdir -p /var/ftp \
+ && addgroup --system $FTP_USER \
  && adduser \
     --system \
     --disabled-password \
@@ -24,6 +25,8 @@ RUN addgroup --system $FTP_USER \
 
 # Add new config
 COPY config/vsftpd.conf /etc/vsftpd/
+
+VOLUME ["/var/ftp"]
 
 # Inform which ports are intended to be published
 EXPOSE 20 21
