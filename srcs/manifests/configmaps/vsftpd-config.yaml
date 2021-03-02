@@ -14,6 +14,6 @@ data:
     connect_from_port_20=YES
     xferlog_file=/var/log/vsftpd.log
     xferlog_std_format=YES
-    ftpd_banner=Welcome to my FTP service.
+    ftpd_banner=Welcome to 42 FTP service.
     chroot_local_user=YES
     listen=YES

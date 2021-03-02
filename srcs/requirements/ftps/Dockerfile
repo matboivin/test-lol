@@ -23,9 +23,14 @@ RUN mkdir -p /var/ftp \
     $SRV_USER \
  && echo "$SRV_USER:$SRV_PASSWD" | chpasswd
 
+# Add basic config
+COPY vsftpd.conf /etc/vsftpd/
+
 VOLUME ["/var/ftp"]
 
 WORKDIR /var/ftp
 
 # Inform which ports are intended to be published
 EXPOSE 20 21
+
+ENTRYPOINT ["vsftpd" "/etc/vsftpd/vsftpd.conf"]
