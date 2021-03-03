@@ -30,8 +30,7 @@ COPY config/conf.d /etc/nginx/conf.d/
 COPY www/ $WP_ROOT_DIR
 
 # Get and setup WordPress
-RUN chown -R www:www $WP_ROOT_DIR \
- && cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
+RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz
 #COPY config/wp-config.php $WP_ROOT_DIR
