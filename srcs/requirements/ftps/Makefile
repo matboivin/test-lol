@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -it -p 20:20 -p 21:21 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
+	docker run -it -p 21:21 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
 
 up: docker-build docker-run
 
