@@ -5,7 +5,7 @@ LABEL maintainer="mboivin@student.42.fr"
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
 ENV WORDPRESS_VERSION=5.6.2
-ENV SERVER_USER=www
+ENV SERVER_USER=nginx
 
 # Install necessary packages and backup default NGINX config
 RUN apk update \
@@ -22,13 +22,7 @@ COPY config/conf.d /etc/nginx/conf.d/
 COPY www/ /var/www/localhost/
 
 # Create group and user for NGINX, app dir, and grant permissions
-RUN addgroup --system $SERVER_USER \
- && adduser \
-    --system \
-    --disabled-password \
-    --ingroup $SERVER_USER \
-    $SERVER_USER \
- && mkdir -p /run/nginx/ \
+RUN mkdir -p /run/nginx/ \
  && chown -R $SERVER_USER:$SERVER_USER /var/www/localhost/ /run /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
