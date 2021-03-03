@@ -27,7 +27,7 @@ RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-COPY www/ $WP_ROOT_DIR
+COPY www/ /var/www/localhost
 
 # Get and setup WordPress
 RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \

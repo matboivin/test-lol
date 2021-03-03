@@ -26,7 +26,7 @@ RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-COPY www/ $PMA_ROOT_DIR
+COPY www/ /var/www/localhost
 
 # Get and set up phpMyAdmin
 RUN cd $PMA_ROOT_DIR && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz \
