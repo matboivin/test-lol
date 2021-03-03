@@ -14,6 +14,7 @@ Don't copy. Learn.
 - openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4.15
+- phpMyAdmin 5.1.0
 - MariaDB 10.5.8
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2

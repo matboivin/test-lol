@@ -9,7 +9,7 @@ Write Dockerfiles.
 3. [NGINX](#nginx)
 4. [MySQL](#mysql)
 5. [WordPress](#wordpress)
-6. [PhpMyAdmin](#phpmyadmin)
+6. [phpMyAdmin](#phpmyadmin)
 7. [FTPS server](#ftps-server)
 8. [Grafana](#grafana)
 9. [InfluxDB](#influxdb)
@@ -23,6 +23,7 @@ Write Dockerfiles.
 - openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4.15
+- phpMyAdmin 5.1.0
 - MariaDB 10.5.8
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
@@ -115,7 +116,6 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [ ] allow access to a `/wordpress` route that makes a redirect 307 to `IP:WPPORT`
 - [ ] allow access to `/phpmyadmin` with a reverse proxy to `IP:PMAPORT`
 - [X] 404 page, 50x page, robots.txt
-- [ ] Letsencrypt
 
 #### Resources
 
@@ -205,9 +205,8 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [X] port 5050
 - [X] WordPress 5.6.2
 - [X] PHP 7.4 or greater
-- [ ] `mod_rewrite` module
+- [X] NGINX conf, `mod_rewrite` module
 - [ ] HTTPS support
-- [ ] NGINX conf (check php)
 - [ ] linked to MySQL
 - [ ] several users and an administrator
 
@@ -221,6 +220,7 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 - [Set Up Nginx FastCGI Cache to Reduce WordPress Server Response Time](https://www.linuxbabe.com/nginx/setup-nginx-fastcgi-cache)
+- [Converting Apache Rewrite Rules to NGINX Rewrite Rules](https://www.nginx.com/blog/converting-apache-to-nginx-rewrite-rules/)
 
 #### Config
 
@@ -235,27 +235,28 @@ packet `php7-mysql` -> deprecated
 
 robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](https://wpmarmite.com/robots-txt-wordpress/)
 
-### PhpMyAdmin
+### phpMyAdmin
 
 #### Requirements
 
+- [X] phpMyAdmin 5.1.0
 - [X] port 5000
 - [X] type LoadBalancer
 - [X] PHP 7.4 or greater
-- [ ] NGINX conf (check php)
+- [X] NGINX conf
 - [ ] linked to MySQL
 - [ ] the root password of the MySQL service
 
 #### Resources
 
 - [phpMyAdmin official Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
-- [Alpine Wiki: PhpMyAdmin](https://wiki.alpinelinux.org/wiki/PhpMyAdmin)
-- [Deploy PhpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
+- [Alpine Wiki: phpMyAdmin](https://wiki.alpinelinux.org/wiki/phpMyAdmin)
+- [Deploy phpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
 
 #### Config
 
-PhpMyAdmin is linked to an existing MySQL service.  
-PhpMyAdmin needs the root password of the MySQL service.  
+phpMyAdmin is linked to an existing MySQL service.  
+phpMyAdmin needs the root password of the MySQL service.  
 
 - `PMA_HOST`: define address/host name of the MySQL server
 - `PMA_PORT`: define port of the MySQL server
@@ -305,8 +306,8 @@ Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut 
 #### Requirements
 
 - [X] Grafana 7.3.6-r0
-- [ ] type LoadBalancer
-- [ ] port 3000
+- [X] type LoadBalancer
+- [X] port 3000
 - [ ] linked to InfluxDB
 - [ ] one dashboard per service
 
@@ -357,7 +358,7 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 
 #### Requirements
 
-- [ ] InfluxDB 1.8.3-r2
+- [X] InfluxDB 1.8.3-r2
 - [ ] ClusterIP
 - [ ] data persistence
 
