@@ -37,9 +37,9 @@ RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
 COPY config/ /etc/vsftpd/
 COPY user_conf/ /etc/vsftpd/vsftpd_user_conf
 
-WORKDIR "/home/$FTP_USER"
+WORKDIR /etc/vsftpd
 
 # Inform which ports are intended to be published
 EXPOSE 21
 
-#ENTRYPOINT ["/usr/sbin/vsftpd" "/etc/vsftpd/vsftpd.conf"]
+ENTRYPOINT ["/usr/sbin/vsftpd" "/etc/vsftpd/vsftpd.conf"]
