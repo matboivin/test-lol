@@ -10,7 +10,7 @@ ENV SRV_ROOT_DIR=/var/www/localhost
 # Install necessary packages and backup default NGINX config
 RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
- && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig \
+ && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf
 
 # Create group and user for NGINX, app dir, and grant permissions

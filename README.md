@@ -16,6 +16,7 @@ Don't copy. Learn.
 - PHP 7.4.15
 - phpMyAdmin 5.1.0
 - MariaDB 10.5.8
+- vsftpd 3.0.3-r6
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
 - Telegraf 1.17.0-r0

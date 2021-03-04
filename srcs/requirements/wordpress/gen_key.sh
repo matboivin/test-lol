@@ -8,9 +8,9 @@ KEY_FILE=localhost.key
 
 apk update && apk add --no-cache openssl
 cd $CERT_PATH
-openssl req -x509 -days 90 \
-    -out $CERT_FILE \
+openssl req -x509 -sha256 -nodes -days 90 \
+    -newkey rsa:2048 \
     -keyout $KEY_FILE \
-    -newkey rsa:2048 -nodes -sha256 \
-    -subj '/CN=localhost' \
+    -out $CERT_FILE \
+    -subj '/C=FR/CN=localhost' \
 && chown 0600 $CERT_PATH/$KEY_FILE $CERT_PATH/$CERT_FILE

@@ -1,0 +1,11 @@
+########################################
+#                                      #
+#          user42 configuration        #
+#                                      #
+########################################
+
+# Set local root
+local_root=/home/user42
+
+# Uncomment this to enable any form of FTP write command.
+write_enable=YES

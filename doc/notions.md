@@ -50,6 +50,7 @@
 - [Nginx location match tester](https://nginx.viraptor.info/)
 - [WordPress requirements](https://wordpress.org/about/requirements/)
 - [Using Kubernetes Port, TargetPort, and NodePort](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
+- [19 Practical Examples of Openssl Command in Linux and Unix](https://sysaix.com/19-practical-examples-of-openssl-command-in-linux-and-unix)
 
 ### Organization
 
