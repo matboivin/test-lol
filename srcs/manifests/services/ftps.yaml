@@ -4,13 +4,13 @@ metadata:
   name: ftps-service
   namespace: ft-services
 spec:
-  type: LoadBalancer
   ports:
   - port: 21
     targetPort: ftps-port
     protocol: TCP
   selector:
     app: ftps-server
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -12,6 +12,7 @@ spec:
   selector:
     app: grafana
     tier: backend
+  clusterIP: None
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,12 +26,12 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 2Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: influxdb
+  name: influxdb-deployment
   namespace: ft-services
 spec:
   replicas: 1
@@ -52,7 +53,7 @@ spec:
         imagePullPolicy: Never
         envFrom:
         - secretRef:
-          name: influxdb-secrets
+            name: influxdb-secrets
         ports:
         - containerPort: 8086
           name: influxdb-port
@@ -63,7 +64,7 @@ spec:
           name: influxdb-config
           subPath: influxdb.conf
           readOnly: true
-    volumes:
+      volumes:
       - name: influxdb-data
         persistentVolumeClaim:
           claimName: influxdb-pv-claim

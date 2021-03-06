@@ -8,13 +8,16 @@ SCRIPTS_PATH=srcs/scripts
 
 echo "START FT_SERVICES\n"
 
+# CLEAN
+minikube delete
+
 # INSTALL
 echo "Launch minikube\n"
 zsh $SCRIPTS_PATH/install_minikube.sh
 
 # Start cluster
 echo "⧗   Start the cluster ...\n"
-minikube start --driver=docker
+minikube start --driver=docker --kubernetes-version v1.20.2
 # Configure environment to use minikube’s Docker daemon
 eval $(minikube docker-env)
 # Check kubectl version
@@ -31,6 +34,9 @@ zsh $SCRIPTS_PATH/build_docker.sh
 
 # CLUSTER
 echo "\nConfigure cluster\n"
-kubectl apply -f $MANIFESTS_PATH --recursive
+kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
+kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
+kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
+kubectl apply -f $(MANIFESTS_PATH)/services --recursive
 
 #minikube dashboard

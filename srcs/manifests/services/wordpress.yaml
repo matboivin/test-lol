@@ -30,13 +30,13 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
   namespace: ft-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress-deployment
+      app: wordpress
       tier: frontend
   strategy:
     type: Recreate

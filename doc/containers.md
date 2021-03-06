@@ -20,7 +20,6 @@ Write Dockerfiles.
 - kubectl v1.20.2
 - Alpine 3.13
 - NGINX 1.18.0-r13
-- openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4.15
 - phpMyAdmin 5.1.0
@@ -29,6 +28,7 @@ Write Dockerfiles.
 - Grafana 7.3.6-r0
 - InfluxDB 1.8.3-r2
 - Telegraf 1.17.0-r0
+- openssl 1.1.1
 
 ## Alpine
 
@@ -37,7 +37,7 @@ Write Dockerfiles.
 - [X] Alpine 3.13 and not latest
 
 To make images smaller:  
-`apk update` + `rm /var/cache/apk/*` OR `apk add --no-cache`
+`apk update` + (`rm /var/cache/apk/*` OR `apk add --no-cache`)
 
 > The --no-cache option allows to not cache the index locally, which is useful for keeping containers small.  
 Literally it equals `apk update` in the beginning and `rm -rf /var/cache/apk/*` in the end.

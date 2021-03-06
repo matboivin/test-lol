@@ -3,10 +3,6 @@
 - Automation of application management and deployment
 - Container orchestration
 
-## Articles
-
-- MISC 112
-
 ## Links
 
 ### References
@@ -70,8 +66,6 @@
 - CVE-2020-8558
 - [Guide de sécurité et de renforcement du serveur Web Nginx](https://geekflare.com/fr/nginx-webserver-security-hardening-guide/)
 
-### Samples
+## Articles
 
-- [daxio/k8s-lemp](https://github.com/daxio/k8s-lemp)
-- [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
-- [ container-examples / alpine-mysql](https://github.com/container-examples/alpine-mysql/)
+- MISC 112

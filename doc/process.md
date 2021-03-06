@@ -50,6 +50,8 @@ Un ordinateur et un cluster avec un seul nœud : c’est tout ce dont Minikube a
 
 Source: [Minikube : un environnement Kubernetes maximal pour une charge de travail allégée](https://www.ionos.fr/digitalguide/serveur/outils/minikube-de-kubernetes/)
 
+**TL;DR** Minikube runs a single node cluster in a VM for a local usage on your laptop.
+
 ```console
 minikube start
 
@@ -88,20 +90,28 @@ minikube addons enable metrics-server
 
 - [ ] Redirection
 - [ ] No NodePort
-- [ ] No Ingress
+- [X] No Ingress
 - [ ] No `kubectl port-forward`
+
+#### Resources
+
+- [MetalLB documentation: MetalLB installation](https://metallb.universe.tf/installation/)
+- [MetalLB documentation: IP address sharing](https://metallb.universe.tf/usage/#ip-address-sharing)
+- [Kubernetes Documentation: Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+- [Ce qu’il faut savoir sur MetalLB](https://www.objectif-libre.com/fr/blog/2019/06/11/metallb/)
+- [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
+- [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
 
 > Make sure that each redirection toward a service is done using a load balancer. FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
 
 > Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
 Your Load Balancer should be the only entry point for the Cluster.
 
-- [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
-
 > Un  mécanisme  souple,  implémenté  sous  forme  d’un  protocole  distinct  et  appelé  ARP  (Address Resolution Protocol) permet de déterminer dynamiquement l’adresse MAC à partir de l’adresse IP d’un hôte.  [(Source)](http://www.gipsa-lab.grenoble-inp.fr/~christian.bulfone/MIASHS-L3/PDF/2-Le_protocole_IP.pdf)
 
-- [Ce qu’il faut savoir sur MetalLB](https://www.objectif-libre.com/fr/blog/2019/06/11/metallb/)
-- [MetalLB installation](https://metallb.universe.tf/installation/)
+**TL;DR** MetalLB is a bare metal load balancer. Its role is to distribute the requests between services of our cluster, depending on the ability of these services to fulfill requests. It ensures no service becomes overworked, reduces incidents and minimizes response time.
+
+`type: LoadBalancer` -> exposes the service externally using a load balancer
 
 ```
 # see what changes would be made, returns nonzero returncode if different
@@ -120,5 +130,3 @@ kubectl apply -f - -n kube-system
 ```console
 kubectl get pods -n metallb-system
 ```
-
-- [Multi-cluster testing with kind and MetalLB](https://banzaicloud.com/blog/multi-cluster-testing/)

@@ -11,7 +11,6 @@ Don't copy. Learn.
 - kubectl v1.20.2
 - Alpine 3.13
 - NGINX 1.18.0-r13
-- openssl 1.1.1
 - WordPress 5.6.2
 - PHP 7.4.15
 - phpMyAdmin 5.1.0

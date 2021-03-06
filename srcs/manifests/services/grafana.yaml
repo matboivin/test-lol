@@ -4,13 +4,13 @@ metadata:
   name: grafana-service
   namespace: ft-services
 spec:
-  type: LoadBalancer
   ports:
   - port: 3000
     targetPort: grafana-port
     protocol: TCP
   selector:
     app: grafana
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment

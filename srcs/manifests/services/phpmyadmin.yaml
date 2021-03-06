@@ -4,13 +4,13 @@ metadata:
   name: phpmyadmin-service
   namespace: ft-services
 spec:
-  type: LoadBalancer
   ports:
     - port: 5000
       targetPort: phpmyadmin-port
       protocol: TCP
   selector:
     app: phpmyadmin
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment

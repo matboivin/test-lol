@@ -3,7 +3,7 @@ SCRIPTS_PATH=srcs/scripts
 DOCKERFILE_PATH=srcs/requirements
 MANIFESTS_PATH=srcs/manifests
 
-install:
+install: clean
 	@zsh $(SCRIPTS_PATH)/install_minikube.sh
 	@make -C $(DOCKERFILE_PATH)/nginx docker-build
 	@make -C $(DOCKERFILE_PATH)/mysql docker-build
@@ -16,12 +16,11 @@ install:
 
 start:
 	@echo "⧗   Start the cluster ...\n"
-	minikube start --driver=docker
+	minikube start --driver=docker --kubernetes-version v1.20.2
 	eval $(minikube docker-env)
 	minikube addons enable metrics-server
 	minikube addons enable dashboard
 	minikube addons enable metallb
-	@zsh $(SCRIPTS_PATH)/install_kubectl.sh
 
 all:
 	kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
@@ -39,6 +38,6 @@ stop:
 	minikube stop
 
 clean:
-	@zsh $(SCRIPTS_PATH)/clean.sh
+	minikube delete
 
 .PHONY: install start stop list watch clean

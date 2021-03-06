@@ -35,7 +35,7 @@ spec:
         imagePullPolicy: Never
         envFrom:
         - secretRef:
-          name: influxdb-secrets
+            name: influxdb-secrets
         ports:
         - containerPort: 8125
           name: telegraf-port
@@ -44,8 +44,8 @@ spec:
           name: telegraf-config
           subPath: telegraf.conf
           readOnly: true
-    volumes:
-    - name: telegraf-config
-      configMap:
-        name: telegraf-config
+      volumes:
+      - name: telegraf-config
+        configMap:
+          name: telegraf-config
  

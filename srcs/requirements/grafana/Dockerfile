@@ -9,6 +9,7 @@ ENV GF_PATHS_DATA=/var/lib/grafana
 ENV GF_PATHS_HOME=/usr/share/grafana
 ENV GF_PATHS_LOGS=/var/log/grafana
 ENV GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+ENV GF_PATHS_DASHBOARDS=/var/lib/grafana/dashboards
 ENV GF_PATHS_PROVISIONING=/etc/grafana/provisioning
 # Log to /var/log/grafana/grafana.log
 ENV GF_LOG_MODE=file
@@ -18,7 +19,7 @@ RUN apk update \
  && apk add --no-cache grafana=${GRAFANA_VERSION}
 
 # Create Grafana directories and move config files
-RUN mkdir -p $GF_PATHS_LOGS $GF_PATHS_PLUGINS $GF_PATHS_PROVISIONING \
+RUN mkdir -p $GF_PATHS_LOGS $GF_PATHS_PLUGINS $GF_PATHS_DASHBOARDS $GF_PATHS_PROVISIONING \
  && mv /etc/grafana.ini $GF_PATHS_CONFIG
 # && chown -R grafana:grafana $GF_PATHS_HOME $GF_PATHS_LOGS $GF_PATHS_DATA $GF_PATHS_PLUGINS $GF_PATHS_PROVISIONING
 
