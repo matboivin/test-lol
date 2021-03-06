@@ -7,7 +7,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 21
-    targetPort: vsftpd-port
+    targetPort: ftps-port
     protocol: TCP
   selector:
     app: ftps-server
@@ -22,6 +22,8 @@ spec:
   selector:
     matchLabels:
       app: ftps-server
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -33,4 +35,4 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-          name: vsftpd-port
+          name: ftps-port

@@ -22,6 +22,8 @@ spec:
     matchLabels:
       app: grafana
   minReadySeconds: 5
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

@@ -38,6 +38,8 @@ spec:
     matchLabels:
       app: grafana
       tier: backend
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
