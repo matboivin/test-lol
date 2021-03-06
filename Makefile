@@ -2,6 +2,7 @@ SHELL = /bin/zsh
 SCRIPTS_PATH=srcs/scripts
 DOCKERFILE_PATH=srcs/requirements
 MANIFESTS_PATH=srcs/manifests
+NAMESPACE_DEV=ft-services
 
 install: clean
 	@zsh $(SCRIPTS_PATH)/install_minikube.sh
@@ -27,6 +28,7 @@ all:
 	kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
 	kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
 	kubectl apply -f $(MANIFESTS_PATH)/services --recursive
+	kubectl config set-context --current --namespace=$(NAMESPACE_DEV)
 
 list:
 	minikube service list
