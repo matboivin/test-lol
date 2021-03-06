@@ -14,7 +14,7 @@ spec:
   selector:
     app: grafana
     tier: backend
-  clusterIP: None
+  type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

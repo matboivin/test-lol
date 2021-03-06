@@ -167,7 +167,7 @@ server blocks -> pour encapsuler les détails de configuration et héberger plus
 #### Requirements
 
 - [X] MariaDB 10.5.8
-- [ ] ClusterIP
+- [X] ClusterIP
 - [ ] data persistence
 
 #### Resources
@@ -269,7 +269,7 @@ phpMyAdmin needs the root password of the MySQL service.
 - [X] vsftpd 3.0.3-r6
 - [X] type LoadBalancer
 - [X] port 21
-- [ ] FTPS
+- [X] FTPS
 
 #### Config
 
@@ -367,7 +367,7 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 #### Requirements
 
 - [X] InfluxDB 1.8.3-r2
-- [ ] ClusterIP
+- [X] ClusterIP
 - [ ] data persistence
 
 #### Resources
