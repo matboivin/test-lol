@@ -6,6 +6,8 @@
 IMAGES_TAG=ft
 DOCKERFILE_PATH=srcs/requirements
 
+eval $(minikube docker-env)
+
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
 echo "\n√   NGINX image was successfully built\n"
 

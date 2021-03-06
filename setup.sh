@@ -35,12 +35,12 @@ zsh $SCRIPTS_PATH/build_docker.sh
 
 # CLUSTER
 echo "\nConfigure cluster\n"
-kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
-kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
-kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
-kubectl apply -f $(MANIFESTS_PATH)/services --recursive
+kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
+kubectl apply -f $MANIFESTS_PATH/secrets --recursive
+kubectl apply -f $MANIFESTS_PATH/configmaps --recursive
+kubectl apply -f $MANIFESTS_PATH/services --recursive
 
 # Set context to use ft-services as permanent namespace
-kubectl config set-context --current --namespace=$(NAMESPACE_DEV)
+kubectl config set-context --current --namespace=$NAMESPACE_DEV
 
 #minikube dashboard

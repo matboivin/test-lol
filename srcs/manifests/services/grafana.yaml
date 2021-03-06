@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: grafana-service
   namespace: ft-services
+  annotations: 
+    metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:
   - port: 3000

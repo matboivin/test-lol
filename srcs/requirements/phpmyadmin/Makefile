@@ -2,7 +2,7 @@ SHELL = /bin/sh
 DOCKER_USER := mboivin
 IMAGE := phpmyadmin
 DOCKER_NAME := phpmyadmin1
-TAG = dev
+TAG = ft
 
 docker-build:
 	docker build -t $(IMAGE):$(TAG) .
