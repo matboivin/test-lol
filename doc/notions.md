@@ -56,6 +56,7 @@
 - [A Better Way of Organizing Your Kubernetes Manifest Files](https://boxunix.com/2020/05/15/a-better-way-of-organizing-your-kubernetes-manifest-files/)
 - [Helm docs: The Chart File Structure](https://helm.sh/docs/topics/charts/)
 - [Six Strategies for Application Deployment](https://thenewstack.io/deployment-strategies/)
+- [Utiliser des scripts d’entrypoint Docker flexible](https://www.camptocamp.com/fr/actualites-evenements/utiliser-des-scripts-dentrypoint-docker-flexible)
 
 ### Security
 
