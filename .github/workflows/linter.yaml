@@ -27,4 +27,5 @@ jobs:
               srcs/manifests/services/phpmyadmin.yaml
               srcs/manifests/services/telegraf.yaml
               srcs/manifests/services/wordpress.yaml
-              srcs/manifests/secrets/wordpress-db.yaml
+              srcs/manifests/secrets/influxdb-secrets.yaml
+              srcs/manifests/secrets/wordpress-secrets.yaml

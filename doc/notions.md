@@ -45,6 +45,7 @@
 - [Kubernetes Documentation: Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/)
 - [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
 - [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
+- [Kubernetes Documentation: Distribute Credentials Securely Using Secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
 - [NGINX doc: ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html)
 - [NGINXConfig](https://www.digitalocean.com/community/tools/nginx)
 - [Nginx location match tester](https://nginx.viraptor.info/)

@@ -290,6 +290,7 @@ vsftpd (Very Secure FTP Daemon) -> server
 - [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
 - [VSFTP (avec certificat SSL)](http://ressources-info.fr/tutoriels-systemes/afficher/8/)
 - [Ftps server doesn't work properly using kubernetes](https://stackoverflow.com/questions/60458028/ftps-server-doesnt-work-properly-using-kubernetes)
+- [Telegraf configuration](https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md)
 
 > Il existe plusieurs raisons pour lesquelles il est nécessaire de restreindre une session SFTP d’un utilisateur à un dossier particulier sur un serveur Linux. Entre autres, la préservation de l’intégrité des fichiers, la protection contre les logiciels malveillants, et surtout la protection du système.
 Pour restreindre les accès SFTP d’un utilisateur à un seul dossier, on peut avoir recours à un chroot jail.  Sur les systèmes d’exploitation basés sur Unix, un chroot jail est une fonctionnalité utilisée pour isoler un processus et ses enfants (child process) du reste du système d’exploitation. Pour des raisons de sécurité, c’est une fonctionnalité qui doit être employée exclusivement sur les processus n’utilisant pas le compte root.  [(Source)](https://homputersecurity.com/2019/05/14/mise-en-place-dune-restriction-chroot-jail-sur-un-dossier-nappartenant-pas-au-compte-root/)
@@ -378,6 +379,7 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 - [InfluxDB : une base de données time series open source ultra-rapide](https://www.journaldunet.fr/web-tech/guide-de-l-entreprise-digitale/1443846-influxdb-une-base-de-donnees-time-series-open-source-sur-optimisee/)
 - [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
 - [InfluxDB v1.8 Docker Alpine config](https://github.com/influxdata/influxdata-docker/blob/master/influxdb/1.8/alpine/influxdb.conf)
+- [Monitor Docker](https://docs.influxdata.com/influxdb/v2.0/monitor-alert/templates/infrastructure/docker/)
 
 8086 -> HTTP API port  
 > The CLI communicates with InfluxDB directly by making requests to the InfluxDB API over port 8086 by default.

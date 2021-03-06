@@ -24,7 +24,10 @@ start:
 	@zsh $(SCRIPTS_PATH)/install_kubectl.sh
 
 all:
-	@kubectl apply -f $(MANIFESTS_PATH) --recursive
+	kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
+	kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
+	kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
+	kubectl apply -f $(MANIFESTS_PATH)/services --recursive
 
 list:
 	minikube service list

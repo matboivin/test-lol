@@ -48,6 +48,9 @@ spec:
       - image: influxdb:ft
         name: influxdb
         imagePullPolicy: Never
+        envFrom:
+        - secretRef:
+          name: influxdb-secrets
         ports:
         - containerPort: 8086
           name: influxdb-port

@@ -16,4 +16,4 @@ RUN mkdir -p /etc/telegraf \
  && mv /etc/telegraf.conf $TELEGRAF_CONFIG_PATH
 
 # Inform which ports are intended to be published
-EXPOSE 8125/udp 8092/udp 8094
+EXPOSE 8125/udp

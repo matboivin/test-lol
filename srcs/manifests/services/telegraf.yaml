@@ -1,3 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: telegraf-service
+  namespace: ft-services
+spec:
+  ports:
+  - port: 8125
+    targetPort: telegraf-port
+    protocol: UDP
+    name: statsd
+  selector:
+    app: telegraf
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,6 +31,17 @@ spec:
       - image: telegraf:ft
         name: telegraf
         imagePullPolicy: Never
+        envFrom:
+        - secretRef:
+          name: influxdb-secrets
+        ports:
+        - containerPort: 8125
+          name: telegraf-port
+        volumeMounts:
+        - mountPath: /etc/telegraf
+          name: telegraf-config
+          subPath: telegraf.conf
+          readOnly: true
     volumes:
     - name: telegraf-config
       configMap:
