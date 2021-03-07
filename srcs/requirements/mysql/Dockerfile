@@ -27,4 +27,4 @@ COPY init_mysql_db.sh /root/
 RUN sh /root/init_mysql_db.sh
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

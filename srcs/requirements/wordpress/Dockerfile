@@ -43,4 +43,4 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
 EXPOSE 5050
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

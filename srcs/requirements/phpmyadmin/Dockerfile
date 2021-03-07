@@ -38,4 +38,4 @@ RUN cd $PMA_ROOT_DIR && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSI
 EXPOSE 5000
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

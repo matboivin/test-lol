@@ -29,4 +29,4 @@ WORKDIR $GF_PATHS_HOME
 EXPOSE 3000
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

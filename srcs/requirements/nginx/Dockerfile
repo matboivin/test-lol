@@ -31,4 +31,4 @@ COPY www/ $SRV_ROOT_DIR
 EXPOSE 80 443
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

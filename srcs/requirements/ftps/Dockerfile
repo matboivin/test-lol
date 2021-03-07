@@ -43,4 +43,4 @@ WORKDIR /etc/vsftpd
 EXPOSE 21
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]

@@ -19,4 +19,4 @@ RUN mkdir -p /etc/telegraf \
 EXPOSE 8125/udp
 
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]
