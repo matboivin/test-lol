@@ -9,7 +9,7 @@ sleep 5
 
 # Start mysqld in background
 echo "⧗   Start mysqld in background ..."
-/usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
+/usr/bin/mysqld --user=mysql --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
 sleep 5
 
 # Create database
