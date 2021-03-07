@@ -24,4 +24,5 @@ VOLUME ["/var/lib/influxdb"]
 # Inform which ports are intended to be published
 EXPOSE 8086
 
-#CMD ["influxd"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

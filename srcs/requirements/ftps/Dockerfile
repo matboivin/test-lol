@@ -42,4 +42,5 @@ WORKDIR /etc/vsftpd
 # Inform which ports are intended to be published
 EXPOSE 21
 
-ENTRYPOINT ["/usr/sbin/vsftpd" "/etc/vsftpd/vsftpd.conf"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -30,5 +30,5 @@ COPY www/ $SRV_ROOT_DIR
 # Inform which ports are intended to be published
 EXPOSE 80 443
 
-# Run server
-CMD ["nginx", "-g", "daemon off;"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

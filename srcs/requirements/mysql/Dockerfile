@@ -24,5 +24,7 @@ EXPOSE 3306
 
 # Copy init script
 COPY init_mysql_db.sh /root/
+RUN sh /root/init_mysql_db.sh
 
-ENTRYPOINT ["sh", "/root/init_mysql_db.sh"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

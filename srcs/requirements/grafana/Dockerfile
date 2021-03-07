@@ -27,3 +27,6 @@ WORKDIR $GF_PATHS_HOME
 
 # Inform which ports are intended to be published
 EXPOSE 3000
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

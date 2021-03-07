@@ -42,5 +42,5 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
 # Inform which ports are intended to be published
 EXPOSE 5050
 
-# Run server
-CMD ["nginx", "-g", "daemon off;"]
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -18,6 +18,4 @@ mysql -e "CREATE DATABASE $MYSQL_DATABASE;GRANT ALL PRIVILEGES ON $MYSQL_DATABAS
 # Kill mysqld
 kill `cat /run/mysqld/mysqld.pid`
 sleep 5
-# Restart mysqld
 echo "√   Done"
-/usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid

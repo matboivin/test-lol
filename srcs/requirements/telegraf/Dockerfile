@@ -17,3 +17,6 @@ RUN mkdir -p /etc/telegraf \
 
 # Inform which ports are intended to be published
 EXPOSE 8125/udp
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
