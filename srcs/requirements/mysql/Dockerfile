@@ -12,12 +12,15 @@ ENV MYSQL_DB_PASS=user42
 # Install necessary packages
 RUN apk update \
  && apk add --no-cache mariadb=${MYSQL_VERSION} mariadb-client=${MYSQL_VERSION} \
- && mkdir -p /root/scripts /etc/mysql/ /run/mysqld /var/log/mysql \
- && chown -R mysql:mysql /etc/mysql/ /run/mysqld /var/log/mysql
+ && mkdir -p /etc/mysql/ /run/mysqld /var/log/mysql \
+ && chown -R mysql:mysql /etc/mysql/ /run/mysqld /var/log/mysql \
+ && mkdir -p /root/scripts
+
+# Add necessary scripts
+COPY scripts/ /root/scripts/
 
 # Copy basic config
 COPY config/my.cnf /etc/my.cnf
-COPY scripts/ /root/scripts/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]

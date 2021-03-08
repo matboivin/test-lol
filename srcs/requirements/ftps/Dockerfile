@@ -11,7 +11,11 @@ ENV FTP_ANON_DIR=/var/ftp
 # Install necessary packages and backup default vsftpd config
 RUN apk update \
  && apk add --no-cache vsftpd=${FTP_VERSION} \
- && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.default
+ && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.default \
+ && mkdir -p /root/scripts
+
+# Add necessary scripts
+COPY scripts/ /root/scripts/
 
 # Create group and user
 RUN mkdir -p /etc/vsftpd/vsftpd_user_conf $FTP_ANON_DIR \
@@ -42,5 +46,5 @@ WORKDIR /etc/vsftpd
 # Inform which ports are intended to be published
 EXPOSE 21
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

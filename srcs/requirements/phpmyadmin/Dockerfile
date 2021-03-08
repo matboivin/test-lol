@@ -12,15 +12,18 @@ ENV PMA_ROOT_DIR=/var/www/localhost/phpmyadmin
 RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
- && rm /etc/nginx/conf.d/default.conf
+ && rm /etc/nginx/conf.d/default.conf \
+ && mkdir -p /root/scripts
+
+# Add necessary scripts
+COPY scripts/ /root/scripts/
 
 # Create group and user for NGINX, app dir, and grant permissions
 RUN mkdir -p /run/nginx/ $PMA_ROOT_DIR \
  && chown -R $SERVER_USER:$SERVER_USER /var/www/localhost/ /run /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
-COPY gen_key.sh /tmp
-RUN sh /tmp/gen_key.sh && rm /tmp/gen_key.sh
+RUN sh /root/scripts/gen_key.sh
 
 # Add config and HTML files
 COPY config/nginx.conf /etc/nginx/
@@ -37,5 +40,5 @@ RUN cd $PMA_ROOT_DIR && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSI
 # Inform which ports are intended to be published
 EXPOSE 5000
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]

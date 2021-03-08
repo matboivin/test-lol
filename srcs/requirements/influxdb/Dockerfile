@@ -11,7 +11,11 @@ ENV INFLUXDB_LOG_DIR=/var/log/influxdb
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache influxdb=${INFLUXDB_VERSION}
+ && apk add --no-cache influxdb=${INFLUXDB_VERSION} \
+ && mkdir -p /root/scripts
+
+# Add necessary scripts
+COPY scripts/ /root/scripts/
 
 # Create InfluxDB directories and backup default conf
 RUN mkdir -p /etc/influxdb $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
@@ -24,5 +28,5 @@ VOLUME ["/var/lib/influxdb"]
 # Inform which ports are intended to be published
 EXPOSE 8086
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+CMD ["/usr/sbin/influxd"]

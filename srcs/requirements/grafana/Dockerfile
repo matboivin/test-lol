@@ -16,7 +16,11 @@ ENV GF_LOG_MODE=file
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache grafana=${GRAFANA_VERSION}
+ && apk add --no-cache grafana=${GRAFANA_VERSION} \
+ && mkdir -p /root/scripts
+
+# Add necessary scripts
+COPY scripts/ /root/scripts/
 
 # Create Grafana directories and move config files
 RUN mkdir -p $GF_PATHS_LOGS $GF_PATHS_PLUGINS $GF_PATHS_DASHBOARDS $GF_PATHS_PROVISIONING \
@@ -28,5 +32,5 @@ WORKDIR $GF_PATHS_HOME
 # Inform which ports are intended to be published
 EXPOSE 3000
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+CMD ["/usr/sbin/grafana-server", "-homepath $GF_PATHS_HOME"]
