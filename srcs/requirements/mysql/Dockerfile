@@ -3,22 +3,21 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
-ENV MARIADB_VERSION=10.5.8-r0
+ENV MYSQL_VERSION=10.5.8-r0
+ENV MYSQL_ROOT_PASS=toor
 ENV MYSQL_DATABASE=wordpress_db
-ENV MYSQL_USER=user42
-ENV MYSQL_PASSWORD=user42
-ENV HOSTNAME=localhost
+ENV MYSQL_DB_USER=user42
+ENV MYSQL_DB_PASS=user42
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache mariadb=${MARIADB_VERSION} mariadb-client=${MARIADB_VERSION}
-
-# Create mysqld app dir
-RUN mkdir -p /run/mysqld /var/lib/mysql/mysql \
- && chown -R mysql:mysql /run/mysqld /var/lib/mysql
+ && apk add --no-cache mariadb=${MYSQL_VERSION} mariadb-client=${MYSQL_VERSION} \
+ && mkdir -p /etc/mysql/ /run/mysqld /var/log/mysql \
+ && chown -R mysql:mysql /etc/mysql/ /run/mysqld /var/log/mysql
 
 # Copy basic config
 COPY config/my.cnf /etc/my.cnf
+COPY scripts/ /root/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]
@@ -26,9 +25,5 @@ VOLUME ["/var/lib/mysql"]
 # Inform which ports are intended to be published
 EXPOSE 3306
 
-# Copy init script
-COPY init_mysql_db.sh /root/
-RUN sh /root/init_mysql_db.sh
-
-COPY entrypoint.sh /entrypoint.sh
-#ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/root/entrypoint.sh"]
+CMD ["/usr/bin/mysqld_safe", "--user=mysql"]
