@@ -6,13 +6,12 @@
 MINIKUBE_VERSION=v1.17.1
 BIN_PATH=/usr/local/bin
 
-# Check directory exists
-if [ ! -d "$BIN_PATH" ]; then
-    mkdir -p $BIN_PATH
-fi
-
 # Install minikube if the version is not the one expected
-if ! [[ $(minikube version) =~ "$MINIKUBE_VERSION" ]]; then
+if ! [[ $(minikube version) =~ "$MINIKUBE_VERSION" ]] || [ $? -eq 127 ]; then
+    # Check directory exists
+    if [ ! -d "$BIN_PATH" ]; then
+        mkdir -p $BIN_PATH
+    fi
     sudo rm -rf $BIN_PATH/minikube
     echo "⧗   Downloading minikube with curl ...\n"
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/$MINIKUBE_VERSION/minikube-linux-amd64

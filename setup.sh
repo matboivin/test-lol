@@ -9,12 +9,10 @@ NAMESPACE_DEV=ft-services
 
 echo "START FT_SERVICES\n"
 
-# CLEAN
-minikube delete
-
 # INSTALL
 echo "Launch minikube\n"
 zsh $SCRIPTS_PATH/install_minikube.sh
+minikube delete
 
 # Start cluster
 echo "⧗   Start the cluster ...\n"
