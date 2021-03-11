@@ -254,16 +254,6 @@ PHP requirements [(Source)](https://make.wordpress.org/hosting/handbook/handbook
 - xml – Used for XML parsing, such as from a third-party site.
 - zip – Used for decompressing Plugins, Themes, and WordPress update packages.
 
-```
-php7 php7-fpm php7-curl php7-dom
-
-php7-intl php7-bcmath  php7-xmlreader
-php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
-php7-pdo_mysql php7-mysqli php7-mysqlnd \
-php7-gd php7-mcrypt \
- php7-opcache php7-ctype  \
-```
-
 ### phpMyAdmin
 
 #### Requirements
