@@ -21,7 +21,7 @@ Write Dockerfiles.
 - Alpine 3.13
 - NGINX 1.18.0-r13
 - WordPress 5.6.2
-- PHP 7.4.15
+- PHP 7.4.15-r0
 - phpMyAdmin 5.1.0
 - MariaDB 10.5.8
 - vsftpd 3.0.3-r6
@@ -222,6 +222,7 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [How To Deploy a PHP Application with Kubernetes on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-php-application-with-kubernetes-on-ubuntu-16-04)
 - [Set Up Nginx FastCGI Cache to Reduce WordPress Server Response Time](https://www.linuxbabe.com/nginx/setup-nginx-fastcgi-cache)
 - [Converting Apache Rewrite Rules to NGINX Rewrite Rules](https://www.nginx.com/blog/converting-apache-to-nginx-rewrite-rules/)
+- [WordPress documentation: Server Environment](https://make.wordpress.org/hosting/handbook/handbook/server-environment/)
 
 #### Config
 
@@ -235,6 +236,33 @@ To run WordPress we recommend your host supports:
 packet `php7-mysql` -> deprecated
 
 robots.txt: [Le fichier robots.txt de votre site WordPress est-il optimisé ?](https://wpmarmite.com/robots-txt-wordpress/)
+
+PHP requirements [(Source)](https://make.wordpress.org/hosting/handbook/handbook/server-environment/):
+
+- curl – Performs remote request operations.
+- dom – Used to validate Text Widget content and to automatically configure IIS7+.
+- exif – Works with metadata stored in images.
+- fileinfo – Used to detect mimetype of file uploads.
+- hash – Used for hashing, including passwords and update packages.
+- json – Used for communications with other servers.
+- mbstring – Used to properly handle UTF8 text.
+- mysqli – Connects to MySQL for database interactions.
+- sodium – Validates Signatures and provides securely random bytes.
+- openssl – Permits SSL-based connections to other hosts.
+- pcre – Increases performance of pattern matching in code searches.
+- imagick – Provides better image quality for media uploads. See WP_Image_Editor is incoming! for details. Smarter image resizing (for smaller images) and PDF thumbnail support, when Ghost Script is also available.
+- xml – Used for XML parsing, such as from a third-party site.
+- zip – Used for decompressing Plugins, Themes, and WordPress update packages.
+
+```
+php7 php7-fpm php7-curl php7-dom
+
+php7-intl php7-bcmath  php7-xmlreader
+php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
+php7-pdo_mysql php7-mysqli php7-mysqlnd \
+php7-gd php7-mcrypt \
+ php7-opcache php7-ctype  \
+```
 
 ### phpMyAdmin
 
@@ -394,12 +422,12 @@ Usage: influxd [[command] [arguments]]
 
 The commands are:
 
-    backup               downloads a snapshot of a data node and saves it to disk
-    config               display the default configuration
-    help                 display this help message
-    restore              uses a snapshot of a data node to rebuild a cluster
-    run                  run node with existing configuration
-    version              displays the InfluxDB version
+- backup- - -downloads a snapshot of a data node and saves it to disk
+- config- - -display the default configuration
+- help- - - -  display this help message
+- restore- - -   uses a snapshot of a data node to rebuild a cluster
+- run- - - -   run node with existing configuration
+- version- - -   displays the InfluxDB version
 
 "run" is the default command.
 ```
@@ -410,19 +438,19 @@ Runs the InfluxDB server.
 
 Usage: influxd run [flags]
 
-    -config <path>
-            Set the path to the configuration file.
-            This defaults to the environment variable INFLUXDB_CONFIG_PATH,
-            ~/.influxdb/influxdb.conf, or /etc/influxdb/influxdb.conf if a file
-            is present at any of these locations.
-            Disable the automatic loading of a configuration file using
-            the null device (such as /dev/null).
-    -pidfile <path>
-            Write process ID to a file.
-    -cpuprofile <path>
-            Write CPU profiling information to a file.
-    -memprofile <path>
-            Write memory usage information to a file.
+- -config <path>
+- - - Set the path to the configuration file.
+- - - This defaults to the environment variable INFLUXDB_CONFIG_PATH,
+- - - ~/.influxdb/influxdb.conf, or /etc/influxdb/influxdb.conf if a file
+- - - is present at any of these locations.
+- - - Disable the automatic loading of a configuration file using
+- - - the null device (such as /dev/null).
+- -pidfile <path>
+- - - Write process ID to a file.
+- -cpuprofile <path>
+- - - Write CPU profiling information to a file.
+- -memprofile <path>
+- - - Write memory usage information to a file.
 ```
 
 `influxd` PID file -> `/var/log/influxdb/influxd.log`

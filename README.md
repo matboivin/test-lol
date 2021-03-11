@@ -12,7 +12,7 @@ Don't copy. Learn.
 - Alpine 3.13
 - NGINX 1.18.0-r13
 - WordPress 5.6.2
-- PHP 7.4.15
+- PHP 7.4.15-r0
 - phpMyAdmin 5.1.0
 - MariaDB 10.5.8
 - vsftpd 3.0.3-r6

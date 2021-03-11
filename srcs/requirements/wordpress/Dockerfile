@@ -4,6 +4,7 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
+ENV PHP_VERSION=7.4.15-r0
 ENV WORDPRESS_VERSION=5.6.2
 ENV SERVER_USER=nginx
 ENV WP_ROOT_DIR=/var/www/localhost/wordpress
@@ -11,7 +12,8 @@ ENV WP_ROOT_DIR=/var/www/localhost/wordpress
 # Install necessary packages and backup default NGINX config
 RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
-    php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib \
+    php7=${PHP_VERSION} php7-fpm=${PHP_VERSION} \
+    php7-=${PHP_VERSION} \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
  && mkdir -p /root/scripts

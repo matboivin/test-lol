@@ -12,8 +12,8 @@ ENV MYSQL_DB_PASS=user42
 # Install necessary packages
 RUN apk update \
  && apk add --no-cache mariadb=${MYSQL_VERSION} mariadb-client=${MYSQL_VERSION} \
- && mkdir -p /etc/mysql/ /run/mysqld /var/log/mysql \
- && chown -R mysql:mysql /etc/mysql/ /run/mysqld /var/log/mysql \
+ && mkdir -p /etc/mysql/ /var/log/mysql \
+ && chown -R mysql:mysql /etc/mysql/ /var/log/mysql \
  && mkdir -p /root/scripts
 
 # Add necessary scripts
