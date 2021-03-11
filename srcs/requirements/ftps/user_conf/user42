@@ -5,7 +5,7 @@
 ########################################
 
 # Set local root
-local_root=/home/user42
+local_root=/home/user42/files
 
 # Uncomment this to enable any form of FTP write command.
 write_enable=YES

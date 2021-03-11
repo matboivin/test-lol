@@ -8,11 +8,10 @@ ENV TELEGRAF_CONFIG_PATH=/etc/telegraf/telegraf.conf
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache telegraf=${TELEGRAF_VERSION} \
- && mkdir -p /root/scripts
+ && apk add --no-cache telegraf=${TELEGRAF_VERSION}
 
 # Add necessary scripts
-COPY scripts/ /root/scripts/
+COPY scripts/ /opt/
 
 # Create Telegraf directories and backup default conf
 RUN mkdir -p /etc/telegraf \
@@ -22,5 +21,5 @@ RUN mkdir -p /etc/telegraf \
 # Inform which ports are intended to be published
 EXPOSE 8125/udp
 
-ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
 CMD ["/usr/bin/telegraf ", "--config $TELEGRAF_CONFIG_PATH"]

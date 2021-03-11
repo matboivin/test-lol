@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -it -p 80:80 -p 5050:5050 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
+	docker run -it -p 5050:5050 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
 
 up: docker-build docker-run
 

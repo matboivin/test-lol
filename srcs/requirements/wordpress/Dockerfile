@@ -16,18 +16,17 @@ RUN apk update \
     php7-curl php7-dom php7-exif php7-fileinfo php7-json php7-mbstring \
     php7-mysqli php7-sodium php7-openssl php7-imagick php7-xml php7-zip \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
- && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /root/scripts
+ && rm /etc/nginx/conf.d/default.conf
 
 # Add necessary scripts
-COPY scripts/ /root/scripts/
+COPY scripts/ /opt/
 
 # Create group and user for NGINX, app dir, and grant permissions
 RUN mkdir -p /run/nginx/ $WP_ROOT_DIR \
  && chown -R $SERVER_USER:$SERVER_USER /var/www/localhost/ /run /var/lib/nginx
 
 # Generate a self-signed certificate and private key using OpenSSL
-RUN sh /root/scripts/gen_key.sh
+RUN sh /opt/gen_key.sh
 
 # Add config and HTML files
 COPY config/nginx.conf /etc/nginx/
@@ -48,5 +47,5 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
 # Inform which ports are intended to be published
 EXPOSE 5050
 
-ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
-CMD ["/usr/sbin/php7-fpm"]
+ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+#CMD ["/usr/sbin/php7-fpm"]

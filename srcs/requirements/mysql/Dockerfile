@@ -13,11 +13,10 @@ ENV MYSQL_DB_PASS=user42
 RUN apk update \
  && apk add --no-cache mariadb=${MYSQL_VERSION} mariadb-client=${MYSQL_VERSION} \
  && mkdir -p /etc/mysql/ /var/log/mysql \
- && chown -R mysql:mysql /etc/mysql/ /var/log/mysql \
- && mkdir -p /root/scripts
+ && chown -R mysql:mysql /etc/mysql/ /var/log/mysql
 
 # Add necessary scripts
-COPY scripts/ /root/scripts/
+COPY scripts/ /opt/
 
 # Copy basic config
 COPY config/my.cnf /etc/my.cnf
@@ -28,5 +27,5 @@ VOLUME ["/var/lib/mysql"]
 # Inform which ports are intended to be published
 EXPOSE 3306
 
-ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
 CMD ["/usr/bin/mysqld_safe", "--user=mysql"]
