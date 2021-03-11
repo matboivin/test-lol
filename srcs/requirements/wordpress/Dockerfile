@@ -39,7 +39,6 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz
 #COPY config/wp-config.php $WP_ROOT_DIR
-# WordPress styling
 #COPY theme/cyanotype $WP_ROOT_DIR/wp-content/themes/cyanotype
 #COPY www/favicon.ico $WP_ROOT_DIR/wp-content/uploads/2020/05/
 #COPY theme/42wallpaper.jpg $WP_ROOT_DIR/wp-content/uploads/2020/05/
@@ -48,4 +47,4 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
 EXPOSE 5050
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-#CMD ["/usr/sbin/php7-fpm"]
+CMD ["/usr/sbin/php7-fpm"]
