@@ -11,4 +11,6 @@ if [[ -f "$STARTUP_FILE" ]]; then
   chmod +x "$STARTUP_FILE" && ."$STARTUP_FILE"
 fi
 
+nginx -g "daemon off;"
+
 exec "$@"

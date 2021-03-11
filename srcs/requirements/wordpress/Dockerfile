@@ -12,8 +12,9 @@ ENV WP_ROOT_DIR=/var/www/localhost/wordpress
 # Install necessary packages and backup default NGINX config
 RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
-    php7=${PHP_VERSION} php7-fpm=${PHP_VERSION} \
-    php7-=${PHP_VERSION} \
+    php7 php7-fpm \
+    php7-curl php7-dom php7-exif php7-fileinfo php7-json php7-mbstring \
+    php7-mysqli php7-sodium php7-openssl php7-imagick php7-xml php7-zip \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
  && mkdir -p /root/scripts
@@ -32,7 +33,7 @@ RUN sh /root/scripts/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-COPY www/ /var/www/localhost
+COPY www/ $WP_ROOT_DIR
 
 # Get and setup WordPress
 RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
@@ -48,4 +49,4 @@ RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}
 EXPOSE 5050
 
 ENTRYPOINT ["sh", "/root/scripts/entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/sbin/php7-fpm"]
