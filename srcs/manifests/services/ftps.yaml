@@ -8,7 +8,13 @@ metadata:
 spec:
   ports:
   - port: 21
-    targetPort: ftps-port
+    targetPort: listen-port
+    protocol: TCP
+  - port: 21000
+    targetPort: pasv-min-port
+    protocol: TCP
+  - port: 21100
+    targetPort: pasv-max-port
     protocol: TCP
   selector:
     app: ftps-server
@@ -37,4 +43,8 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-          name: ftps-port
+          name: listen-port
+        - containerPort: 21000
+          name: pasv-min-port
+        - containerPort: 21100
+          name: pasv-max-port
