@@ -1,5 +1,5 @@
-Contact: dev@student.42.fr
-Preferred-Languages: fr
+Contact: poorsysadmin@student.42.fr
+Preferred-Languages: fr, en
 
 Canonical: https://IP/.well-known/security.txt
 
