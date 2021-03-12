@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Docker startup
+# Init database
 
 # Data dir
 if [ ! -d /var/lib/mysql/mysql ]; then

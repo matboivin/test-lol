@@ -27,4 +27,4 @@ VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["mysqld_safe", "--user=mysql"]
+CMD ["mysqld_safe"]
