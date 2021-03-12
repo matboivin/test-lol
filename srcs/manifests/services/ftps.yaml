@@ -10,12 +10,15 @@ spec:
   - port: 21
     targetPort: listen-port
     protocol: TCP
+    name: ftp
   - port: 21000
     targetPort: pasv-min-port
     protocol: TCP
+    name: ftp-pasv-min
   - port: 21100
     targetPort: pasv-max-port
     protocol: TCP
+    name: ftp-pasv-max
   selector:
     app: ftps-server
   type: LoadBalancer

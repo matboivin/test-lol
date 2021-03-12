@@ -23,19 +23,19 @@ COPY scripts/ /opt/
 RUN sh /opt/gen_key.sh
 
 # Add config and HTML files
-COPY config/nginx.conf /etc/nginx/
-COPY config/localhost.conf /etc/nginx/sites-available/
-COPY config/conf.d /etc/nginx/conf.d/
-COPY www/ /var/www/localhost
+COPY srv-config/nginx.conf /etc/nginx/
+COPY srv-config/localhost.conf /etc/nginx/sites-available/
+COPY srv-config/conf.d /etc/nginx/conf.d/
 
 # Get and setup WordPress
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz
-COPY config/wp-config.php /var/www/wordpress
-#COPY theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
+COPY www/ /var/www/wordpress
+#COPY wp-config/wp-config.php /var/www/wordpress
+#COPY wp-config/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 #COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2020/05/
-#COPY theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2020/05/
+#COPY wp-config/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2020/05/
 
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www/localhost /var/www/wordpress
 
