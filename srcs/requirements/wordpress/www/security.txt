@@ -1,0 +1,8 @@
+Contact: poorsysadmin@student.42.fr
+Preferred-Languages: fr, en
+
+Canonical: https://IP/.well-known/security.txt
+
+Acknowledgments: one man army
+
+Expires: Sat, 1 Jan 2022 00:00 +0100
