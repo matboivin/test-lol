@@ -176,6 +176,8 @@ server blocks -> pour encapsuler les détails de configuration et héberger plus
 - [Alpine Wiki: MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
 - [MySQL Docker Containers: Understanding the Basics](https://severalnines.com/database-blog/mysql-docker-containers-understanding-basics)
 - [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
+- [SSL Configuration Generator](https://ssl-config.mozilla.org/)
+- [How to set up MariaDB SSL and secure connections from clients](https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/)
 
 #### Config
 
@@ -225,6 +227,8 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [WordPress documentation: Server Environment](https://make.wordpress.org/hosting/handbook/handbook/server-environment/)
 
 #### Config
+
+- [NGINX WordPress config](https://www.nginx.com/resources/wiki/start/topics/recipes/wordpress/)
 
 To run WordPress we recommend your host supports:
 

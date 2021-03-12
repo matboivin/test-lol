@@ -4,7 +4,6 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV MYSQL_VERSION=10.5.8-r0
-ENV MYSQL_ROOT_PASS=toor
 ENV MYSQL_DATABASE=wordpress_db
 ENV MYSQL_DB_USER=user42
 ENV MYSQL_DB_PASS=user42

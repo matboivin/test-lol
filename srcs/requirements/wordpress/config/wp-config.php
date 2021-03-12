@@ -29,7 +29,7 @@ define( 'DB_USER', 'user42' );
 define( 'DB_PASSWORD', 'user42' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mysql' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -82,11 +82,9 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', true );
 
-/** Set the site URL */
-define( 'WP_HOME', 'http://localhost/wordpress' );
-define( 'WP_SITEURL', 'http://localhost/wordpress' );
+define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
-/* That's all, stop editing! Happy publishing. */
+define( 'WP_ALLOW_REPAIR', true );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {

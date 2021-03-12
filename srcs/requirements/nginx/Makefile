@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -it -p 80:80 -p 443:443 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
+	docker run -p 80:80 -p 443:443 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
 
 up: docker-build docker-run
 

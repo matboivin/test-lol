@@ -65,6 +65,7 @@
 - [gke-auditor](https://github.com/google/gke-auditor)
 - CVE-2020-8558
 - [Guide de sécurité et de renforcement du serveur Web Nginx](https://geekflare.com/fr/nginx-webserver-security-hardening-guide/)
+- [security.txt](https://tools.ietf.org/html/draft-foudil-securitytxt-11)
 
 ## Articles
 
