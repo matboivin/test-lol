@@ -4,7 +4,6 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
-ENV PHP_VERSION=7.4.15-r0
 ENV WORDPRESS_VERSION=5.6.2
 ENV SERVER_USER=nginx
 ENV WP_ROOT_DIR=/var/www/localhost/wordpress
@@ -22,8 +21,7 @@ RUN apk update \
 COPY scripts/ /opt/
 
 # Create group and user for NGINX, app dir, and grant permissions
-RUN mkdir -p /run/nginx/ $WP_ROOT_DIR \
- && chown -R $SERVER_USER:$SERVER_USER /var/www/localhost/ /run /var/lib/nginx
+RUN mkdir -p /run/nginx/ /var/www/localhost
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh
@@ -35,16 +33,18 @@ COPY config/conf.d /etc/nginx/conf.d/
 COPY www/ $WP_ROOT_DIR
 
 # Get and setup WordPress
-RUN cd $WP_ROOT_DIR && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
+RUN cd /var/www/localhost && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz
-#COPY config/wp-config.php $WP_ROOT_DIR
+COPY config/wp-config.php $WP_ROOT_DIR
 #COPY theme/cyanotype $WP_ROOT_DIR/wp-content/themes/cyanotype
 #COPY www/favicon.ico $WP_ROOT_DIR/wp-content/uploads/2020/05/
 #COPY theme/42wallpaper.jpg $WP_ROOT_DIR/wp-content/uploads/2020/05/
 
+RUN chown -R $SERVER_USER:$SERVER_USER /run /var/lib/nginx /var/www/localhost
+
 # Inform which ports are intended to be published
 EXPOSE 5050
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["/usr/sbin/php7-fpm"]
+#ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+#CMD ["php-fpm7"]

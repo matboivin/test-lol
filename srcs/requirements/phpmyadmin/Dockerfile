@@ -4,7 +4,6 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
-ENV PHP_VERSION=7.4.15-r0
 ENV PMA_VERSION=5.1.0
 ENV SERVER_USER=nginx
 ENV PMA_ROOT_DIR=/var/www/localhost/phpmyadmin
@@ -45,4 +44,4 @@ RUN cd $PMA_ROOT_DIR && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSI
 EXPOSE 5000
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["/usr/sbin/php7-fpm"]
+CMD ["php-fpm7"]

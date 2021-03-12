@@ -6,12 +6,12 @@
 if [ ! -d /var/lib/mysql/mysql ]; then
 	# Install MariaDB/MySQL in /var/lib/mysql
 	echo "⧗   Install MariaDB/MySQL system tables in '/var/lib/mysql' ..."
-	/usr/bin/mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+	mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
 	sleep 4
 
 	# Start mysqld in background
 	echo "⧗   Start mysqld in background ..."
-	/usr/bin/mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
+	mysqld_safe --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
 	sleep 2
 
 	# Create database
