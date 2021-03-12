@@ -39,7 +39,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
+              name: mysql-secrets
               key: wordpress_db_pass
         - name: PMA_HOST
           value: mysql

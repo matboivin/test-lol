@@ -8,11 +8,11 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: nginxhttp-port
+      targetPort: srv-http-port
       protocol: TCP
       name: http
     - port: 443
-      targetPort: nginxhttps-port
+      targetPort: srv-https-port
       protocol: TCP
       name: https
   selector:
@@ -42,6 +42,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 80
-          name: nginxhttp-port
+          name: srv-http-port
         - containerPort: 443
-          name: nginxhttps-port
+          name: srv-https-port
