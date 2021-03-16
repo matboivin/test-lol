@@ -179,6 +179,7 @@ server blocks -> pour encapsuler les détails de configuration et héberger plus
 - [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
 - [SSL Configuration Generator](https://ssl-config.mozilla.org/)
 - [How to set up MariaDB SSL and secure connections from clients](https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/)
+- [Creating Database for WordPress](https://wordpress.org/support/article/creating-database-for-wordpress/)
 
 #### Config
 
@@ -275,7 +276,11 @@ PHP requirements [(Source)](https://make.wordpress.org/hosting/handbook/handbook
 
 - [phpMyAdmin official Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
 - [Alpine Wiki: phpMyAdmin](https://wiki.alpinelinux.org/wiki/phpMyAdmin)
+- [Arch Wiki: phpMyAdmin](https://wiki.archlinux.org/index.php/PhpMyAdmin)
 - [Deploy phpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
+- [How to Install phpMyAdmin on Debian 10 (Buster)](https://phoenixnap.com/kb/how-to-install-phpmyadmin-on-debian-10)
+- [phpMyAdmin blowfish secret generator](https://phpsolved.com/phpmyadmin-blowfish-secret-generator/)
+- [Mise en place de phpMyAdmin sous debian 10](https://fr-wiki.ikoula.com/fr/Mise_en_place_de_phpMyAdmin_sous_debian_10)
 
 #### Config
 
