@@ -130,3 +130,8 @@ kubectl apply -f - -n kube-system
 ```console
 kubectl get pods -n metallb-system
 ```
+
+Debug MetalLB:
+```console
+kubectl logs controller-foo -n metallb-system
+```

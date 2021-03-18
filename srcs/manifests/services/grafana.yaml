@@ -23,7 +23,6 @@ spec:
   selector:
     matchLabels:
       app: grafana
-  minReadySeconds: 5
   strategy:
     type: Recreate
   template:
@@ -39,19 +38,3 @@ spec:
         ports:
         - containerPort: 3000
           name: grafana-port
-        volumeMounts:
-        - mountPath: /etc/grafana/provisioning
-          name: grafana-volume
-          subPath: provisioning/
-        - mountPath: /var/lib/grafana/dashboards
-          name: grafana-volume
-          subPath: dashboards/
-        - mountPath: /etc/grafana/grafana.ini
-          name: grafana-volume
-          subPath: grafana.ini
-          readOnly: true
-      restartPolicy: Always
-      volumes:
-      - name: grafana-volume
-        hostPath:
-          path: /grafana

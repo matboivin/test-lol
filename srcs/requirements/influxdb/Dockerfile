@@ -20,7 +20,7 @@ COPY scripts/ /opt/
 RUN mkdir -p /etc/influxdb $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
  && mv /etc/influxdb.conf $INFLUXDB_CONFIG_PATH
 
-#RUN influxd run -pidfile=/var/log/influxdb/influxd.log &
+#RUN influxd run -config=$INFLUXDB_CONFIG_PATH -pidfile=/var/log/influxdb/influxd.log &
 
 VOLUME ["/var/lib/influxdb"]
 
@@ -28,4 +28,4 @@ VOLUME ["/var/lib/influxdb"]
 EXPOSE 8086
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["/usr/sbin/influxd"]
+CMD ["influxd", "run", "-config=$INFLUXDB_CONFIG_PATH"]
