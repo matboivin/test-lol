@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: wordpress-service
   namespace: ft-services
-  annotations: 
+  annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   type: LoadBalancer

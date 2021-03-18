@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nginx-service
   namespace: ft-services
-  annotations: 
+  annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:

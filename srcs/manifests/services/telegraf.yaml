@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: telegraf-service
   namespace: ft-services
-  annotations: 
-    metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:
   - port: 8125
