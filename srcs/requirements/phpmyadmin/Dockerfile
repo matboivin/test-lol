@@ -24,16 +24,16 @@ COPY scripts/ /opt/
 RUN sh /opt/gen_key.sh
 
 # Add config and HTML files
-COPY srv-config/nginx.conf /etc/nginx/
-COPY srv-config/localhost.conf /etc/nginx/sites-available/
-COPY srv-config/conf.d /etc/nginx/conf.d/
+COPY config/nginx.conf /etc/nginx/
+COPY config/localhost.conf /etc/nginx/sites-available/
+COPY config/conf.d /etc/nginx/conf.d/
 
 # Get and set up phpMyAdmin
 RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz \
  && tar -xvf phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz --strip 1 \
  && rm phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz
 COPY www/ /var/www/phpmyadmin
-COPY pma-config/config.inc.php /var/www/phpmyadmin
+COPY config/config.inc.php /var/www/phpmyadmin
 
 # Grant permissions
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www/localhost /var/www/phpmyadmin
