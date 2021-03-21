@@ -74,6 +74,19 @@ $cfg['UploadDir'] = '';
 $cfg['SaveDir'] = '';
 
 /**
+ * Setting this to true allows phpMyAdmin to be included inside a frame,
+ * and is a potential security hole allowing cross-frame scripting attacks or clickjacking.
+ * Setting this to ‘sameorigin’ prevents phpMyAdmin to be included from another document in a frame,
+ * unless that document belongs to the same domain.
+ */
+$cfg['AllowThirdPartyFraming'] = false;
+
+/**
+ * The complete URL (with full path) to your phpMyAdmin installation’s directory.
+ */
+$cfg['PmaAbsoluteUri'] = 'http://localhost/';
+
+/**
  * Whether to display icons or text or both icons and text in table row
  * action segment. Value can be either of 'icons', 'text' or 'both'.
  * default = 'both'

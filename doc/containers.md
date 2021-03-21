@@ -131,6 +131,7 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 - [How To Configure Nginx to use TLS 1.2 / 1.3 only](https://www.cyberciti.biz/faq/configure-nginx-to-use-only-tls-1-2-and-1-3/)
 - [Nginx and Letsencrypt with certbot in docker alpine](https://geko.cloud/nginx-and-ssl-with-certbot-in-docker-alpine/)
 - [Kubernetes Documentation: Connecting Applications with Services](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
+- [How to set up an easy and secure reverse proxy with Docker, Nginx & Letsencrypt](https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/)
 
 #### Config
 
@@ -281,6 +282,7 @@ PHP requirements [(Source)](https://make.wordpress.org/hosting/handbook/handbook
 - [How to Install phpMyAdmin on Debian 10 (Buster)](https://phoenixnap.com/kb/how-to-install-phpmyadmin-on-debian-10)
 - [phpMyAdmin blowfish secret generator](https://phpsolved.com/phpmyadmin-blowfish-secret-generator/)
 - [Mise en place de phpMyAdmin sous debian 10](https://fr-wiki.ikoula.com/fr/Mise_en_place_de_phpMyAdmin_sous_debian_10)
+- [There is mismatch between HTTPS indicated on the server and client](https://stackoverflow.com/questions/56655548/there-is-mismatch-between-https-indicated-on-the-server-and-client)
 
 #### Config
 
