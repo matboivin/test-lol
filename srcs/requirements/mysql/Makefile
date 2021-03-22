@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -p 3306:3306 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
+	docker run -it -e MYSQL_ROOT_PASSWORD=user42 -p 3306:3306 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
 
 up: docker-build docker-run
 

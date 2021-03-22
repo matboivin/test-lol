@@ -2,7 +2,8 @@
 #
 # Init database
 
-# Data dir
+TMP_FILE=tmp_init.sql
+
 if [ ! -d /var/lib/mysql/mysql ]; then
 	# Install MariaDB/MySQL in /var/lib/mysql
 	echo "⧗   Install MariaDB/MySQL system tables in '/var/lib/mysql' ..."
@@ -16,22 +17,25 @@ if [ ! -d /var/lib/mysql/mysql ]; then
 
 	# Create database
 	echo "⧗   Create database ..."
-	mysql -e "CREATE DATABASE $MYSQL_DATABASE;GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';FLUSH PRIVILEGES;"
+
+	cat << EOF > $TMP_FILE
+USE mysql;
+FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY "$MYSQL_ROOT_PASSWORD" WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' WITH GRANT OPTION;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+
+CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE\`;
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+EOF
+
+	mysql -u root < $TMP_FILE
+	rm $TMP_FILE
 	# Kill mysqld
 	kill `cat /run/mysqld/mysqld.pid`
 	sleep 2
-fi
-
-# App state dir
-if [ ! -d "/run/mysqld" ]; then
-	mkdir -p /run/mysqld
-	chown -R mysql:mysql /run/mysqld
-fi
-
-# Logging dir
-if [ ! -d "/var/log/mysql" ]; then
-	mkdir -p /var/log/mysql
-	chown -R mysql:mysql /var/log/mysql
 fi
 
 chown -R mysql:mysql /var/lib/mysql

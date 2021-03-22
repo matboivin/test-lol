@@ -5,12 +5,12 @@ LABEL maintainer="mboivin@student.42.fr"
 # Environment Variables
 ENV MYSQL_VERSION=10.5.8-r0
 ENV MYSQL_DATABASE=wordpress
-ENV MYSQL_DB_USER=user42
-ENV MYSQL_DB_PASS=user42
+ENV MYSQL_USER=user42
+ENV MYSQL_PASSWORD=user42
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache mariadb=${MYSQL_VERSION} mariadb-client=${MYSQL_VERSION} \
+ && apk add --no-cache mysql=${MYSQL_VERSION} mysql-client=${MYSQL_VERSION} \
  && mkdir -p /etc/mysql/ /var/log/mysql \
  && chown -R mysql:mysql /etc/mysql/ /var/log/mysql
 
