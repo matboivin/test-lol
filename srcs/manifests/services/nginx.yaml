@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-srv
+  name: nginx
   namespace: ft-services
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:
     - port: 80
-      targetPort: srv-http-port
+      targetPort: http-port
       protocol: TCP
       name: http
     - port: 443
-      targetPort: srv-https-port
+      targetPort: https-port
       protocol: TCP
       name: https
   selector:
@@ -22,7 +22,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
   namespace: ft-services
 spec:
   replicas: 1
@@ -42,6 +42,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 80
-          name: srv-http-port
+          name: http-port
         - containerPort: 443
-          name: srv-https-port
+          name: https-port

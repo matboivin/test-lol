@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-srv
+  name: wordpress
   namespace: ft-services
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
@@ -32,7 +32,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: wordpress
   namespace: ft-services
 spec:
   replicas: 1
@@ -54,7 +54,7 @@ spec:
         imagePullPolicy: Never
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql
+          value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
