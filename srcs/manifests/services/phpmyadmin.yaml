@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin-service
+  name: phpmyadmin-svc
   namespace: ft-services
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:
     - port: 5000
-      targetPort: phpmyadmin-port
+      targetPort: pma-port
       protocol: TCP
   selector:
     app: phpmyadmin
@@ -42,9 +42,9 @@ spec:
               name: mysql-secrets
               key: wordpress_db_pass
         - name: PMA_HOST
-          value: mysql-service
+          value: mysql-srv
         - name: PMA_PORT
           value: "3306"
         ports:
         - containerPort: 5000
-          name: phpmyadmin-port
+          name: pma-port

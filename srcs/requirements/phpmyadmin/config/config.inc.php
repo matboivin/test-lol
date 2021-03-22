@@ -82,11 +82,6 @@ $cfg['SaveDir'] = '';
 $cfg['AllowThirdPartyFraming'] = false;
 
 /**
- * The complete URL (with full path) to your phpMyAdmin installation’s directory.
- */
-$cfg['PmaAbsoluteUri'] = 'http://localhost/';
-
-/**
  * Whether to display icons or text or both icons and text in table row
  * action segment. Value can be either of 'icons', 'text' or 'both'.
  * default = 'both'
