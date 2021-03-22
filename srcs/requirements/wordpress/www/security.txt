@@ -1,7 +1,7 @@
-Contact: poorsysadmin@student.42.fr
+Contact: poorsysadmin@mydomain
 Preferred-Languages: fr, en
 
-Canonical: https://IP/.well-known/security.txt
+Canonical: https://mydomain/.well-known/security.txt
 
 Acknowledgments: one man army
 
