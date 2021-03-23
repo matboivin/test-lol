@@ -32,7 +32,7 @@ $cfg['Servers'][$i]['port'] = 3306;
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 /**
  * phpMyAdmin configuration storage settings.
@@ -41,8 +41,8 @@ $cfg['Servers'][$i]['AllowNoPassword'] = false;
 /* User used to manipulate with storage */
 // $cfg['Servers'][$i]['controlhost'] = '';
 // $cfg['Servers'][$i]['controlport'] = '';
-$cfg['Servers'][$i]['controluser'] = 'user42';
-$cfg['Servers'][$i]['controlpass'] = 'user42';
+// $cfg['Servers'][$i]['controluser'] = 'user42';
+// $cfg['Servers'][$i]['controlpass'] = 'user42';
 
 /* Storage database and tables */
 // $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
