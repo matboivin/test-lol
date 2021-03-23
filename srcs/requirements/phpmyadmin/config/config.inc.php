@@ -25,14 +25,18 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['user'] = '__MYSQL_USER__';
+$cfg['Servers'][$i]['password'] = '__MYSQL_PASSWORD__';
+$cfg['Servers'][$i]['only_db'] = '__MYSQL_DB__';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'mysql-svc';
-$cfg['Servers'][$i]['port'] = 3306;
+$cfg['Servers'][$i]['host'] = '__PMA_HOST__';
+$cfg['Servers'][$i]['port'] = __PMA_PORT__;
 $cfg['Servers'][$i]['connect_type'] = 'tcp';
 $cfg['Servers'][$i]['compress'] = false;
+/* Select mysql if your server does not have mysqli */
 $cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /**
  * phpMyAdmin configuration storage settings.
@@ -41,8 +45,8 @@ $cfg['Servers'][$i]['AllowNoPassword'] = true;
 /* User used to manipulate with storage */
 // $cfg['Servers'][$i]['controlhost'] = '';
 // $cfg['Servers'][$i]['controlport'] = '';
-// $cfg['Servers'][$i]['controluser'] = 'user42';
-// $cfg['Servers'][$i]['controlpass'] = 'user42';
+// $cfg['Servers'][$i]['controluser'] = 'pma';
+// $cfg['Servers'][$i]['controlpass'] = 'pmapass';
 
 /* Storage database and tables */
 // $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';

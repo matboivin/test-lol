@@ -39,7 +39,7 @@ COPY config/wp-config.php /var/www/wordpress
 
 # Create group and user for NGINX
 RUN adduser -D -g 'www' www \
- && chown -R www:www /run /var/lib/nginx /var/www/localhost /var/www/wordpress
+ && chown -R www:www /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published
 EXPOSE 5050

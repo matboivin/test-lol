@@ -30,3 +30,4 @@ jobs:
               srcs/manifests/services/wordpress.yaml
               srcs/manifests/secrets/influxdb-secrets.yaml
               srcs/manifests/secrets/mysql-secrets.yaml
+              srcs/manifests/secrets/mysql-wp-secrets.yaml

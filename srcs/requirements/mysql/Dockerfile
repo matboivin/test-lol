@@ -4,9 +4,6 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV MYSQL_VERSION=10.5.8-r0
-ENV MYSQL_DATABASE=wordpress
-ENV MYSQL_USER=user42
-ENV MYSQL_PASSWORD=user42
 
 # Install necessary packages
 RUN apk update \
