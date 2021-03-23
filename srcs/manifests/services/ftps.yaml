@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftps
+  name: ftps-svc
   namespace: ft-services
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
@@ -20,25 +20,25 @@ spec:
     protocol: TCP
     name: ftp-pasv-max
   selector:
-    app: ftps-server
+    app: vsftpd
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps
+  name: ftps-deployment
   namespace: ft-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ftps-server
+      app: vsftpd
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ftps-server
+        app: vsftpd
     spec:
       containers:
       - image: ftps:ft

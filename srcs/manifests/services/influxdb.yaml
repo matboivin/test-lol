@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: influxdb
+  name: influxdb-svc
   namespace: ft-services
 spec:
   ports:
@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     name: api
   selector:
-    app: grafana
+    app: influxdb
     tier: backend
   type: ClusterIP
 ---
@@ -20,7 +20,7 @@ metadata:
   name: influxdb-pv-claim
   namespace: ft-services
   labels:
-    app: grafana
+    app: influxdb
 spec:
   accessModes:
     - ReadWriteOnce
@@ -31,20 +31,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: influxdb
+  name: influxdb-deployment
   namespace: ft-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: grafana
+      app: influxdb
       tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: grafana
+        app: influxdb
         tier: backend
     spec:
       containers:

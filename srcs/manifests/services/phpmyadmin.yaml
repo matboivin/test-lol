@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin
+  name: phpmyadmin-svc
   namespace: ft-services
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
@@ -17,7 +17,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phpmyadmin
+  name: phpmyadmin-deployment
   namespace: ft-services
 spec:
   replicas: 1
@@ -42,7 +42,7 @@ spec:
               name: mysql-secrets
               key: wordpress_db_pass
         - name: PMA_HOST
-          value: mysql
+          value: mysql-svc
         - name: PMA_PORT
           value: "3306"
         ports:

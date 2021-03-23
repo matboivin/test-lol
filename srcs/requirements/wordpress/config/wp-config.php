@@ -29,7 +29,7 @@ define( 'DB_USER', 'user42' );
 define( 'DB_PASSWORD', 'user42' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'mysql' );
+define( 'DB_HOST', 'mysql-svc' );
 define( 'DB_PORT', '3306' );
 
 /** Database Charset to use in creating database tables. */
@@ -86,6 +86,8 @@ define( 'WP_DEBUG', true );
 define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 define( 'WP_ALLOW_REPAIR', true );
+
+define( 'UPLOADS', 'wp-content/uploads' );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {

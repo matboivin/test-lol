@@ -16,7 +16,7 @@ zsh $SCRIPTS_PATH/install_minikube.sh
 minikube delete
 
 # Start cluster
-echo "⧗   Start the cluster ...\n"
+echo "\n⧗   Start the cluster ...\n"
 minikube start --driver=docker --kubernetes-version v1.20.2
 MINIKUBE_IP="$(minikube ip)"
 # Configure environment to use minikube’s Docker daemon
@@ -47,5 +47,7 @@ kubectl config set-context --current --namespace=$PROJECT_NAMESPACE
 
 # PRINT INFORMATIONS
 echo "\n√   DONE\n\n    IP is: $MINIKUBE_IP"
+echo "\n    For WordPress and phpMyAdmin:"
+echo "    - User: user42\n    - Password: user42"
 
 #minikube dashboard

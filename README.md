@@ -45,3 +45,9 @@ Install [jq](https://stedolan.github.io/jq/) to format output:
 ```console
 kubectl version -o json | jq
 ```
+
+### Acknowledgements
+
+School project done at [42 Paris](https://www.42.fr).
+
+WordPress theme: [Cyanotype](https://wordpress.org/themes/cyanotype/) By Automattic.
