@@ -30,7 +30,8 @@ COPY config/conf.d /etc/nginx/conf.d/
 # Get and setup WordPress
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
- && rm wordpress-${WORDPRESS_VERSION}.tar.gz
+ && rm wordpress-${WORDPRESS_VERSION}.tar.gz \
+ && mkdir -p /var/www/wordpress/wp-content/uploads
 COPY www/ /var/www/wordpress
 COPY config/wp-config.php /var/www/wordpress
 #COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2021/03/
@@ -38,7 +39,7 @@ COPY config/wp-config.php /var/www/wordpress
 #COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 
 # Create server user
-RUN adduser --disabled-password --no-create-home --uid 1000 www-data --ingroup www-data \
+RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
  && chown -R www-data:www-data /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published

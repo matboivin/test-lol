@@ -36,7 +36,7 @@ COPY www/ /var/www/phpmyadmin
 COPY config/config.inc.php /var/www/phpmyadmin
 
 # Create server user
-RUN adduser --disabled-password --no-create-home --uid 1000 www-data --ingroup www-data \
+RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
  && chown -R www-data:www-data /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published

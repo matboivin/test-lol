@@ -129,4 +129,3 @@ dmypy.json
 .pyre/
 
 minikube
-srcs/manifests/configmaps/metallb-config.yaml

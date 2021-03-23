@@ -87,12 +87,11 @@ define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 define( 'WP_ALLOW_REPAIR', true );
 
-define( 'UPLOADS', 'wp-content/uploads' );
-
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
         define( 'ABSPATH', __DIR__ . '/' );
 }
 
 /** Sets up WordPress vars and included files. */
+define( 'UPLOADS', 'wp-content/uploads' );
 require_once ABSPATH . 'wp-settings.php';
