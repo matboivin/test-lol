@@ -37,10 +37,12 @@ COPY config/wp-config.php /var/www/wordpress
 #COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 #COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 
-RUN chown -R nginx:nginx /run /var/lib/nginx /var/www/localhost /var/www/wordpress
+# Create group and user for NGINX
+RUN adduser -D -g 'www' www \
+ && chown -R www:www /run /var/lib/nginx /var/www/localhost /var/www/wordpress
 
 # Inform which ports are intended to be published
 EXPOSE 5050
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/sh", "-c", "php-fpm7; nginx -g 'daemon off;'"]

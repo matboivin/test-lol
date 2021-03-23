@@ -35,11 +35,12 @@ RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA
 COPY www/ /var/www/phpmyadmin
 COPY config/config.inc.php /var/www/phpmyadmin
 
-# Grant permissions
-RUN chown -R nginx:nginx /run /var/lib/nginx /var/www/localhost /var/www/phpmyadmin
+# Create group and user for NGINX
+RUN adduser -D -g 'www' www \
+ && chown -R www:www /run /var/lib/nginx /var/www/localhost /var/www/phpmyadmin
 
 # Inform which ports are intended to be published
 EXPOSE 5000
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/sh", "-c", "php-fpm7; nginx -g 'daemon off;'"]

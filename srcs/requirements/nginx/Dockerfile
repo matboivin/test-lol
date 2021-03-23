@@ -24,8 +24,9 @@ COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
 COPY www/ /var/www/localhost
 
-# Grant permissions
-RUN chown -R nginx:nginx /var/www/localhost /run /var/lib/nginx
+# Create group and user for NGINX
+RUN adduser -D -g 'www' www \
+ && chown -R www:www /run /var/lib/nginx /var/www/localhost
 
 # Inform which ports are intended to be published
 EXPOSE 80 443
