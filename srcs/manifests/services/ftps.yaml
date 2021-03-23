@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
   - port: 21
-    targetPort: listen-port
+    targetPort: ftp-port
     protocol: TCP
     name: ftp
   - port: 21000
@@ -46,7 +46,7 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 21
-          name: listen-port
+          name: ftp-port
         - containerPort: 21000
           name: pasv-min-port
         - containerPort: 21100
