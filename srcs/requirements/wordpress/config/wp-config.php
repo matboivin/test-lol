@@ -81,12 +81,14 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-
 define( 'WP_ENVIRONMENT_TYPE', 'development' );
-
 define( 'WP_DEBUG', true );
-define('WP_DEBUG_DISPLAY', true);
+define( 'WP_DEBUG_LOG', true );
 define( 'WP_ALLOW_REPAIR', true );
+
+/** Prevents plugins and themes breaking. */
+define( 'CONCATENATE_SCRIPTS', false );
+define( 'WP_MEMORY_LIMIT', '64M' );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {

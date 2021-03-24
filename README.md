@@ -11,7 +11,7 @@ Don't copy. Learn.
 - kubectl v1.20.2
 - Alpine 3.13
 - NGINX 1.18.0-r13
-- WordPress 5.6.2
+- WordPress 5.7
 - PHP 7.4.15-r0
 - phpMyAdmin 5.1.0
 - MariaDB 10.5.8

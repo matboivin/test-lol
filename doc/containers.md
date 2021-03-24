@@ -21,7 +21,7 @@ Write Dockerfiles.
 - kubectl v1.20.2
 - Alpine 3.13
 - NGINX 1.18.0-r13
-- WordPress 5.6.2
+- WordPress 5.7
 - PHP 7.4.15-r0
 - phpMyAdmin 5.1.0
 - MariaDB 10.5.8
@@ -212,8 +212,8 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [X] WordPress 5.6.2
 - [X] PHP 7.4 or greater
 - [X] NGINX conf, `mod_rewrite` module
-- [ ] HTTPS support
-- [ ] linked to MySQL
+- [X] HTTPS support
+- [X] linked to MySQL
 - [ ] several users and an administrator
 
 #### Resources
@@ -270,8 +270,8 @@ PHP requirements [(Source)](https://make.wordpress.org/hosting/handbook/handbook
 - [X] type LoadBalancer
 - [X] PHP 7.4 or greater
 - [X] NGINX conf
-- [ ] linked to MySQL
-- [ ] the root password of the MySQL service
+- [X] linked to MySQL
+- [X] the root password of the MySQL service
 
 #### Resources
 

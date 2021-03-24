@@ -4,7 +4,7 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV NGINX_VERSION=1.18.0-r13
-ENV WORDPRESS_VERSION=5.6.2
+ENV WORDPRESS_VERSION=5.7
 
 # Install necessary packages and backup default NGINX config
 RUN apk update \
