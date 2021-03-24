@@ -81,10 +81,11 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
 
 define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
+define( 'WP_DEBUG', true );
+define('WP_DEBUG_DISPLAY', true);
 define( 'WP_ALLOW_REPAIR', true );
 
 /** Absolute path to the WordPress directory. */
