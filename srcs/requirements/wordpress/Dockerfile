@@ -9,7 +9,7 @@ ENV WORDPRESS_VERSION=5.7
 # Install necessary packages and backup default NGINX config
 RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
-    php7 php7-fpm \
+    php7 php7-fpm php7-ctype \
     php7-curl php7-dom php7-exif php7-fileinfo php7-json php7-mbstring \
     php7-mysqli php7-sodium php7-openssl php7-imagick php7-xml php7-zip \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
