@@ -37,15 +37,9 @@ spec:
         imagePullPolicy: Never
         env:
         - name: PMA_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_ROOT_HOST
+          value: mysql-svc
         - name: PMA_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_ROOT_PORT
+          value: "3306"
         envFrom:
         - configMapRef:
             name: mysql-wp-config

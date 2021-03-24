@@ -59,15 +59,9 @@ spec:
               name: mysql-wp-config
               key: MYSQL_DATABASE
         - name: WORDPRESS_DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_ROOT_HOST
+          value: mysql-svc
         - name: WORDPRESS_DB_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_ROOT_PORT
+          value: "3306"
         - name: WORDPRESS_DB_USER
           valueFrom:
             secretKeyRef:

@@ -19,7 +19,6 @@ jobs:
               srcs/manifests/00-namespace.yaml
               srcs/manifests/configmaps/influxdb-config.yaml
               srcs/manifests/configmaps/metallb-config.yaml
-              srcs/manifests/configmaps/mysql-config.yaml
               srcs/manifests/configmaps/mysql-wp-config.yaml
               srcs/manifests/configmaps/telegraf-config.yaml
               srcs/manifests/services/ftps.yaml

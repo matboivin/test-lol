@@ -31,12 +31,12 @@ COPY config/conf.d /etc/nginx/conf.d/
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz \
- && mkdir -p /var/www/wordpress/wp-content/uploads
+ && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/
 COPY www/ /var/www/wordpress
 COPY config/wp-config.php /var/www/wordpress
-#COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2021/03/
-#COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
-#COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
+COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
+COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2021/03/
+COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 
 # Create server user
 RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
