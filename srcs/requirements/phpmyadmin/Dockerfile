@@ -23,9 +23,13 @@ COPY scripts/ /opt/
 RUN sh /opt/gen_key.sh
 
 # Add config and HTML files
+# NGINX
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
+# PHP-FPM
+COPY config/php-fpm.conf /etc/php7/
+COPY config/www.conf /etc/php7/php-fpm.d/
 
 # Get and set up phpMyAdmin
 RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz \
@@ -34,9 +38,8 @@ RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA
 COPY www/ /var/www/phpmyadmin
 COPY config/config.inc.php /var/www/phpmyadmin
 
-# Create server user
-RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
- && chown -R www-data:www-data /run /var/lib/nginx /var/www
+# Grant permissions to server user
+RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published
 EXPOSE 5000

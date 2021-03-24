@@ -24,9 +24,8 @@ COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
 COPY www/ /var/www/localhost
 
-# Create server user
-RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
- && chown -R www-data:www-data /run /var/lib/nginx /var/www
+# Grant permissions to server user
+RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published
 EXPOSE 80 443

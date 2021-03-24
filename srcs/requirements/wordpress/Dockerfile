@@ -12,9 +12,11 @@ RUN apk update \
     php7 php7-common php7-iconv php7-json php7-gd php7-curl php7-xml php7-mysqli \
     php7-imap php7-cgi fcgi php7-pdo php7-pdo_mysql php7-soap php7-xmlrpc php7-posix \
     php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom php7-fpm php7-opcache \
+    php7-exif php7-fileinfo php7-mbstring php7-sodium php7-openssl php7-zip php7-simplexml \
+    php7-xmlreader php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /run/nginx/ /var/www/localhost
+ && mkdir -p /run/nginx /var/www/localhost
 
 # Add necessary scripts
 COPY scripts/ /opt/
@@ -22,10 +24,14 @@ COPY scripts/ /opt/
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh
 
-# Add config and HTML files
+# Add config files
+# NGINX
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
+# PHP-FPM
+COPY config/php-fpm.conf /etc/php7/
+COPY config/www.conf /etc/php7/php-fpm.d/
 
 # Get and setup WordPress
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
@@ -38,9 +44,8 @@ COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2021/03/
 COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 
-# Create server user
-RUN adduser --system --disabled-password --no-create-home --uid 82 www-data --ingroup www-data \
- && chown -R www-data:www-data /run /var/lib/nginx /var/www
+# Grant permissions to server user
+RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 
 # Inform which ports are intended to be published
 EXPOSE 5050
