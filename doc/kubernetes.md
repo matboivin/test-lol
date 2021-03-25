@@ -4,7 +4,7 @@
 - k8s for short
 - Container orchestration tool
 - Manage containerized applications and automate their administration (deployment, scaling, monitoring, ...)
-- Originally designed by Google and is now maintained by the [Cloud Native Computing Foundation](https://en.wikipedia.org/wiki/Kubernetes)
+- Originally designed by Google and is now maintained by the [Cloud Native Computing Foundation](https://www.cncf.io/)
 
 **Table of Contents**
 
@@ -13,13 +13,13 @@
 3. [Services](#services)
 4. [Configuration](#configuration)
 
+## Components
+
 <p align="center">
   <img src="assets/components-of-kubernetes.png" alt="Kubernetes cluster components" />
 </p>
 
 Images source: [Kubernetes documentation: Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/)
-
-## Components
 
 Kubernetes cluster -> set of worker machines, called Nodes, and a Control Plane.
 

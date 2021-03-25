@@ -1,7 +1,7 @@
 # Process
 
 Kubernetes cluster composed of:
-- a LEMP stack + PMA
+- a LEMP stack + PMA + WordPress
 - a TIG stack
 - a FTP server
 
