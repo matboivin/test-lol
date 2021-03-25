@@ -1,4 +1,5 @@
 SHELL = /bin/zsh
+KUBECTL_VERSION=v1.20.2
 SCRIPTS_PATH=srcs/scripts
 DOCKERFILE_PATH=srcs/requirements
 MANIFESTS_PATH=srcs/manifests
@@ -18,7 +19,7 @@ install: clean
 
 start:
 	@echo "⧗   Start the cluster ...\n"
-	minikube start --driver=docker --kubernetes-version v1.20.2
+	minikube start --driver=docker --kubernetes-version=$(KUBECTL_VERSION)
 	minikube addons enable metrics-server
 	minikube addons enable dashboard
 	minikube addons enable metallb

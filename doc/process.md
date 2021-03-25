@@ -1,7 +1,7 @@
 # Process
 
 Kubernetes cluster composed of:
-- a LEMP stack
+- a LEMP stack + PMA
 - a TIG stack
 - a FTP server
 
@@ -24,7 +24,7 @@ Kubernetes cluster composed of:
 
 Source: [minikube start](https://minikube.sigs.k8s.io/docs/start/)
 
-Add user42 to the docker group:
+Add `user42` to the docker group:
 
 ```console
 sudo usermod -aG docker $(whoami)
@@ -52,19 +52,6 @@ Source: [Minikube : un environnement Kubernetes maximal pour une charge de trava
 
 **TL;DR** Minikube runs a single node cluster in a VM for a local usage on your laptop.
 
-```console
-minikube start
-
-# Or to specify VM pilote
-minikube start --vm-driver=<pilote name>
-```
-
-Open the Kubernetes dashboard in a browser:
-
-```console
-minikube dashboard
-```
-
 Some dashboard features require the metrics-server addon. To enable all features please run:
 
 ```console
@@ -73,25 +60,31 @@ minikube addons enable metrics-server
 
 ## Containerize apps
 
-[Write Dockerfiles](containers.md).
-
-> In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.  All your containers must restart in case of a crash or stop of one of its component parts.
-
-> The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
-
 #### Requirements
 
 - [ ] Data persistence
 - [ ] Restart in case of crash
+- [X] No NodePort
+- [Write Dockerfiles](containers.md)
+
+> In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.  All your containers must restart in case of a crash or stop of one of its component parts.
+
+> FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
+
+`type: LoadBalancer` -> exposes the service externally using a load balancer
 
 ## Load balancer
 
 #### Requirements
 
-- [ ] Redirection
-- [ ] No NodePort
+- [X] Redirection
 - [X] No Ingress
-- [ ] No `kubectl port-forward`
+- [X] No `kubectl port-forward`
+
+> Make sure that each redirection toward a service is done using a load balancer. FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
+
+> Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
+Your Load Balancer should be the only entry point for the Cluster.
 
 #### Resources
 
@@ -102,36 +95,12 @@ minikube addons enable metrics-server
 - [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
 - [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
 
-> Make sure that each redirection toward a service is done using a load balancer. FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
+<p align="center">
+  <img src="assets/service-pod-ip.png" alt="service and pod with IP address" />
+</p>
 
-> Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
-Your Load Balancer should be the only entry point for the Cluster.
-
-> Un  mécanisme  souple,  implémenté  sous  forme  d’un  protocole  distinct  et  appelé  ARP  (Address Resolution Protocol) permet de déterminer dynamiquement l’adresse MAC à partir de l’adresse IP d’un hôte.  [(Source)](http://www.gipsa-lab.grenoble-inp.fr/~christian.bulfone/MIASHS-L3/PDF/2-Le_protocole_IP.pdf)
+Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 
 **TL;DR** MetalLB is a bare metal load balancer. Its role is to distribute the requests between services of our cluster, depending on the ability of these services to fulfill requests. It ensures no service becomes overworked, reduces incidents and minimizes response time.
 
-`type: LoadBalancer` -> exposes the service externally using a load balancer
-
-```
-# see what changes would be made, returns nonzero returncode if different
-kubectl get configmap kube-proxy -n kube-system -o yaml | \
-sed -e "s/strictARP: false/strictARP: true/" | \
-kubectl diff -f - -n kube-system
-
-# actually apply the changes, returns nonzero returncode on errors only
-kubectl get configmap kube-proxy -n kube-system -o yaml | \
-sed -e "s/strictARP: false/strictARP: true/" | \
-kubectl apply -f - -n kube-system
-```
-
 > The controller helps in the IP address assignment, whereas the speaker advertises layer -2 address.
-
-```console
-kubectl get pods -n metallb-system
-```
-
-Debug MetalLB:
-```console
-kubectl logs controller-foo -n metallb-system
-```

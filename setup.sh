@@ -3,6 +3,7 @@
 # Setup ft_services project at 42
 
 # VARIABLES
+KUBECTL_VERSION=v1.20.2
 MANIFESTS_PATH=srcs/manifests
 SCRIPTS_PATH=srcs/scripts
 PROJECT_NAMESPACE=ft-services
@@ -17,7 +18,7 @@ minikube delete
 
 # Start cluster
 echo "\n⧗   Start the cluster ...\n"
-minikube start --driver=docker --kubernetes-version v1.20.2
+minikube start --driver=docker --kubernetes-version=$KUBECTL_VERSION
 MINIKUBE_IP="$(minikube ip)"
 # Configure environment to use minikube’s Docker daemon
 eval $(minikube docker-env)
