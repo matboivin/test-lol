@@ -6,6 +6,7 @@ NAMESPACE_DEV=ft-services
 
 all: install start
 	@eval $(minikube docker-env)
+	@zsh $(SCRIPTS_PATH)/build_docker.sh
 	kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
 	kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
 	kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
@@ -21,7 +22,6 @@ start:
 	minikube addons enable metrics-server
 	minikube addons enable dashboard
 	minikube addons enable metallb
-	@zsh $(SCRIPTS_PATH)/build_docker.sh
 
 list:
 	minikube service list

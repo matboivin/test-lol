@@ -6,16 +6,7 @@
 IMAGES_TAG=ft
 DOCKERFILE_PATH=srcs/requirements
 
-eval $(minikube docker-env)
-
-# docker build -t influxdb:$IMAGES_TAG $DOCKERFILE_PATH/influxdb
-# echo "\n√   InfluxDB image was successfully built\n"
-
-# docker build -t telegraf:$IMAGES_TAG $DOCKERFILE_PATH/telegraf
-# echo "\n√   Telegraf image was successfully built\n"
-
-# docker build -t grafana:$IMAGES_TAG $DOCKERFILE_PATH/grafana
-# echo "\n√   Grafana image was successfully built\n"
+echo "\n⧗   Build docker images\n"
 
 docker build -t mysql:$IMAGES_TAG $DOCKERFILE_PATH/mysql
 echo "\n√   MySQL image was successfully built\n"
@@ -31,3 +22,12 @@ echo "\n√   NGINX image was successfully built\n"
 
 # docker build -t ftps:$IMAGES_TAG $DOCKERFILE_PATH/ftps
 # echo "\n√   FTPS server image was successfully built\n"
+
+# docker build -t influxdb:$IMAGES_TAG $DOCKERFILE_PATH/influxdb
+# echo "\n√   InfluxDB image was successfully built\n"
+
+# docker build -t telegraf:$IMAGES_TAG $DOCKERFILE_PATH/telegraf
+# echo "\n√   Telegraf image was successfully built\n"
+
+# docker build -t grafana:$IMAGES_TAG $DOCKERFILE_PATH/grafana
+# echo "\n√   Grafana image was successfully built\n"
