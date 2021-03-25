@@ -14,8 +14,9 @@ RUN apk update \
 # Add necessary scripts
 COPY scripts/ /opt/
 
-# Copy basic config
+# Copy config
 COPY config/my.cnf /etc/my.cnf
+COPY config/wordpress.sql /opt/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]

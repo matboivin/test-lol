@@ -2,8 +2,6 @@
 #
 # Init database
 
-TMP_FILE=tmp_init
-
 if [ ! -d "/var/lib/mysql/mysql" ]; then
   # Install MariaDB/MySQL in /var/lib/mysql
   echo "⧗   Install MariaDB/MySQL system tables in '/var/lib/mysql' ..."
@@ -13,9 +11,13 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
     mkdir -p /run/mysqld
   fi
 
+  # Start mysqld in background
+  /usr/bin/mysqld --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
+  sleep 2
+
   # Create database
   echo "⧗   Create database ..."
-  cat << EOF > $TMP_FILE
+  cat << EOF > init.sql
 USE mysql;
 FLUSH PRIVILEGES;
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY "$MYSQL_ROOT_PASSWORD" WITH GRANT OPTION;
@@ -26,8 +28,11 @@ CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
 GRANT ALL ON \`$MYSQL_DATABASE\`.* to '$MYSQL_USER'@'%' WITH GRANT OPTION;
 EOF
 
-  /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $TMP_FILE
-  rm -f $TMP_FILE
+  mysql --user=root --password="$MYSQL_ROOT_PASSWORD" < init.sql
+  mysql --user=root --password="$MYSQL_ROOT_PASSWORD" $MYSQL_DATABASE < /opt/wordpress.sql
+  # Kill mysqld
+  kill  `cat /run/mysqld/mysqld.pid`
+  rm -f init.sql /opt/wordpress.sql
 fi
 
 chown -R mysql:mysql /var/lib/mysql

@@ -41,7 +41,6 @@ RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar
 COPY www/ /var/www/wordpress
 COPY config/wp-config.php /var/www/wordpress
 COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
-COPY www/favicon.ico /var/www/wordpress/wp-content/uploads/2021/03/
 COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 
 # Grant permissions to server user
