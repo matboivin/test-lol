@@ -8,10 +8,17 @@
 
 > The resources will be created in the order they appear in the file. Therefore, it's best to specify the service first, since that will ensure the scheduler can spread the pods associated with the service as they are created by the controller(s), such as Deployment.  [(Source)](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
+To get API resources supported by your Kubernetes cluster:
+
+```console
+kubectl api-resources -o wide
+```
+
 | NAME                   | SHORTNAMES | APIGROUP | NAMESPACED | KIND                  | VERBS                                                        |
 | :--------------------  | :--------- | :------- | :--------- | :-------------------- | :----------------------------------------------------------- |
 | configmaps             | cm         |          | true       | ConfigMap             | [create delete deletecollection get list patch update watch] |
 | deployments            | deploy     | apps     | true       | Deployment            | [create delete deletecollection get list patch update watch] |
+| statefulsets           | sts        | apps     | true       | StatefulSet           | [create delete deletecollection get list patch update watch] |
 | namespaces             | ns         |          | false      | Namespace             | [create delete get list patch update watch]                  |
 | persistentvolumeclaims | pvc        |          | true       | PersistentVolumeClaim | [create delete deletecollection get list patch update watch] |
 | persistentvolumes      | pv         |          | false      | PersistentVolume      | [create delete deletecollection get list patch update watch] |
@@ -20,12 +27,6 @@
 | services               | svc        |          | true       | Service               | [create delete get list patch update watch]                  |
 
 ### API Server
-
-To get API resources supported by your Kubernetes cluster:
-
-```console
-kubectl api-resources -o wide
-```
 
 To get API versions supported by your Kubernetes cluster:
 
