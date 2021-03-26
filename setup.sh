@@ -36,7 +36,7 @@ zsh $SCRIPTS_PATH/build_docker.sh
 # CONFIGURE CLUSTER
 echo "⧗   Configure cluster\n"
 # Replace single IP in MetalLB config
-sed --in-place 's/__IP__/'$MINIKUBE_IP'/g' $MANIFESTS_PATH/configmaps/metallb-config.yaml
+sed --in-place 's/__IP__/'$MINIKUBE_IP'/g' $MANIFESTS_PATH/configmaps/metallb-cm.yaml
 # Create resources
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
 kubectl apply -f $MANIFESTS_PATH/secrets --recursive
