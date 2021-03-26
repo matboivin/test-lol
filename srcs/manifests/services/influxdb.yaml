@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: influxdb-svc
   namespace: ft-services
+  labels:
+    app: influxdb
 spec:
   ports:
   - port: 8086
@@ -11,13 +13,12 @@ spec:
     name: api
   selector:
     app: influxdb
-    tier: backend
   type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: influxdb-pv-claim
+  name: influxdb-pvc
   namespace: ft-services
   labels:
     app: influxdb
@@ -33,19 +34,19 @@ kind: Deployment
 metadata:
   name: influxdb-deployment
   namespace: ft-services
+  labels:
+    app: influxdb
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: influxdb
-      tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: influxdb
-        tier: backend
     spec:
       containers:
       - image: influxdb:ft
@@ -58,16 +59,16 @@ spec:
         - containerPort: 8086
           name: influxdb-port
         volumeMounts:
-        - mountPath: /var/lib/influxdb
-          name: influxdb-data
-        - mountPath: /etc/influxdb
-          name: influxdb-config
+        - name: influxdb-data
+          mountPath: /var/lib/influxdb
+        - name: influxdb-config
+          mountPath: /etc/influxdb/influxdb.conf
           subPath: influxdb.conf
           readOnly: true
       volumes:
       - name: influxdb-data
         persistentVolumeClaim:
-          claimName: influxdb-pv-claim
+          claimName: influxdb-pvc
       - name: influxdb-config
         configMap:
           name: influxdb-config

@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: nginx-svc
   namespace: ft-services
+  labels:
+    app: nginx
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
@@ -24,6 +26,8 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   namespace: ft-services
+  labels:
+    app: nginx
 spec:
   replicas: 1
   selector:

@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: phpmyadmin-svc
   namespace: ft-services
+  labels:
+    app: phpmyadmin
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
@@ -19,6 +21,8 @@ kind: Deployment
 metadata:
   name: phpmyadmin-deployment
   namespace: ft-services
+  labels:
+    app: phpmyadmin
 spec:
   replicas: 1
   selector:

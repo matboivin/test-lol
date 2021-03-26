@@ -71,7 +71,8 @@ minikube addons enable metrics-server
 
 > FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
 
-`type: LoadBalancer` -> exposes the service externally using a load balancer
+type: `LoadBalancer` -> exposes the service externally using a load balancer  
+type: `ClusterIP` -> the service is accessible within the cluster, not meant for external access
 
 ## Load balancer
 

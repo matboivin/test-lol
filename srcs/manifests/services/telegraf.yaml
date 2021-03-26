@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: telegraf-svc
   namespace: ft-services
+  labels:
+    app: telegraf
 spec:
   ports:
   - port: 8125
@@ -17,6 +19,8 @@ kind: Deployment
 metadata:
   name: telegraf-deployment
   namespace: ft-services
+  labels:
+    app: telegraf
 spec:
   replicas: 1
   selector:
@@ -40,8 +44,8 @@ spec:
         - containerPort: 8125
           name: telegraf-port
         volumeMounts:
-        - mountPath: /etc/telegraf/telegraf.conf
-          name: telegraf-config
+        - name: telegraf-config
+          mountPath: /etc/telegraf/telegraf.conf
           subPath: telegraf.conf
           readOnly: true
       volumes:

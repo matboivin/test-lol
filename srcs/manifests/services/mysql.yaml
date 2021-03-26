@@ -3,24 +3,24 @@ kind: Service
 metadata:
   name: mysql-svc
   namespace: ft-services
+  labels:
+    app: mysql
 spec:
   ports:
     - port: 3306
       targetPort: mysql-port
       protocol: TCP
   selector:
-    app: wordpress
-    tier: backend
+    app: mysql
   type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: mysql-pvc
   namespace: ft-services
   labels:
-    app: wordpress
-    tier: backend
+    app: mysql
 spec:
   accessModes:
     - ReadWriteOnce
@@ -33,19 +33,19 @@ kind: Deployment
 metadata:
   name: mysql-deployment
   namespace: ft-services
+  labels:
+    app: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wordpress
-      tier: backend
+      app: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: wordpress
-        tier: backend
+        app: mysql
     spec:
       containers:
       - image: mysql:ft
@@ -60,9 +60,9 @@ spec:
         - containerPort: 3306
           name: mysql-port
         volumeMounts:
-        - mountPath: /var/lib/mysql
-          name: mysql-data
+        - name: mysql-data
+          mountPath: /var/lib/mysql
       volumes:
       - name: mysql-data
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: mysql-pvc

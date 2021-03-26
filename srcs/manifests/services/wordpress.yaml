@@ -3,37 +3,27 @@ kind: Service
 metadata:
   name: wordpress-svc
   namespace: ft-services
+  labels:
+    app: wordpress
   annotations:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   type: LoadBalancer
   ports:
     - port: 5050
-      targetPort: wordpress-port
+      targetPort: wp-port
       protocol: TCP
   selector:
     app: wordpress
     tier: frontend
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: wordpress-pv-claim
-  namespace: ft-services
-  labels:
-    app: wordpress
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress-deployment
   namespace: ft-services
+  labels:
+    app: wordpress
 spec:
   replicas: 1
   selector:
@@ -74,4 +64,4 @@ spec:
               key: MYSQL_PASSWORD
         ports:
         - containerPort: 5050
-          name: wordpress-port
+          name: wp-port

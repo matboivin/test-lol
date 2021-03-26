@@ -18,6 +18,7 @@
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
 - [Kubernetes Documentation: Interactive Tutorial - Creating a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
+- [Stupid Simple Kubernetes](https://levelup.gitconnected.com/stupid-simple-kubernetes-e509355fba3d)
 
 ### API
 
@@ -43,7 +44,8 @@
 
 ### Volumes
 
-- [Kubernetes Documentation: Reserving a PersistentVolume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume)
+- [Stupid Simple Kubernetes — Persistent Volumes explained by examples](https://medium.com/swlh/stupid-simple-kubernetes-persistent-volumes-explained-by-examples-29f8fec08c4)
+- [Persistent volumes and dynamic provisioning](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)
 
 ### Configuration
 

@@ -52,7 +52,8 @@ The following objects, or resources, are stored in `etcd` (key-value pairs datab
 - RoleBindings or ClusterRoleBindings: grant the permissions described by a Role or ClusterRole to a user or a service
 - [NetworkPolicies](https://kubernetes.io/docs/concepts/services-networking/network-policies/): describe filtering rules to apply between pods, or between a pod and external services
 - [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/): describes cluter-level security policies
-- [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/): used to separate configuration from code, representing configuration data as key-value pairs.
+- [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/): used to separate configuration from code, representing configuration data as key-value pairs
+- [PersistentVolumes and PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reserving-a-persistentvolume): used to have a durable storage for data.
 
 ## Process
 
@@ -71,6 +72,18 @@ The following objects, or resources, are stored in `etcd` (key-value pairs datab
 Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 
 > Pods are not constant. One of the best features Kubernetes offers is that non-functioning pods get replaced by new ones automatically. Services are introduced to provide reliable networking by bringing stable IP addresses and DNS names to the unstable world of pods.  [(Source)](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
+
+## Volumes
+
+> A PersistentVolume (PV) is a piece of storage in the cluster [...].  
+A PersistentVolumeClaim (PVC) is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources. Pods can request specific levels of resources (CPU and Memory). Claims can request specific size and access modes (e.g., they can be mounted ReadWriteOnce, ReadOnlyMany or ReadWriteMany, see AccessModes). [(Source)](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+
+Data is volatile. Volumes have a lifetime of a pod and are directories with data in them that are accessible to containers within a pod. When a pod ceases to exist, its volumes are destroyed.
+
+PersistentVolumes are API object, cluster resources. They are persistent pieces of storage, which means they exist beyond the lifetime of a pod.  
+PersistentVolumeClaim is a request for a PersistentVolume resource.
+
+Dynamic provisioning: Instead of configuring manually a PersistentVolume, create a PersistentVolumeClaim so Kubernetes automatically provisions a persistent disk.
 
 ## Configuration
 
