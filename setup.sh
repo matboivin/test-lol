@@ -48,7 +48,7 @@ sleep 2
 
 # PRINT INFORMATIONS
 echo "\n√   DONE\n\n    IP is: $MINIKUBE_IP"
-echo "\n    For WordPress and phpMyAdmin:"
+echo "\n    Credentials:"
 echo "    - User: user42\n    - Password: user42\n"
 
 echo "    To open Kubernetes dashboard, run:\n\n      minikube dashboard\n"

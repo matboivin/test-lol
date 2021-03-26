@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -it -p 8086:8086 --name $(DOCKER_NAME) $(IMAGE):$(TAG) sh
+	docker run -p 8086:8086 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
 
 up: docker-build docker-run
 
