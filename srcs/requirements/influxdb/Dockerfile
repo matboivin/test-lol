@@ -26,4 +26,4 @@ VOLUME ["/var/lib/influxdb"]
 EXPOSE 8086
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["influxd", "run", "-config=$INFLUXDB_CONFIG_PATH"]
+CMD ["influxd"]
