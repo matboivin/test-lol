@@ -20,8 +20,8 @@ echo "\n√   WordPress image was successfully built\n"
 docker build -t nginx:$IMAGES_TAG $DOCKERFILE_PATH/nginx
 echo "\n√   NGINX image was successfully built\n"
 
-# docker build -t ftps:$IMAGES_TAG $DOCKERFILE_PATH/ftps
-# echo "\n√   FTPS server image was successfully built\n"
+docker build -t ftps:$IMAGES_TAG $DOCKERFILE_PATH/ftps
+echo "\n√   FTPS server image was successfully built\n"
 
 # docker build -t influxdb:$IMAGES_TAG $DOCKERFILE_PATH/influxdb
 # echo "\n√   InfluxDB image was successfully built\n"

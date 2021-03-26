@@ -19,7 +19,7 @@ LEMP stack stands for:
 
 - [X] MariaDB 10.5.8
 - [X] ClusterIP
-- [ ] data persistence
+- [X] data persistence
 
 #### Resources
 
