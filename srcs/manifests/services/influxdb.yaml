@@ -13,26 +13,12 @@ spec:
     name: api
   selector:
     app: influxdb
-  type: ClusterIP
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: influxdb-pvc
-  namespace: ft-services
-  labels:
-    app: influxdb
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
+  clusterIP: None
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: influxdb-deploy
+  name: influxdb-sts
   namespace: ft-services
   labels:
     app: influxdb
@@ -41,8 +27,7 @@ spec:
   selector:
     matchLabels:
       app: influxdb
-  strategy:
-    type: Recreate
+  serviceName: influxdb-svc
   template:
     metadata:
       labels:
@@ -72,12 +57,21 @@ spec:
           subPath: influxdb.conf
           readOnly: true
       volumes:
-      - name: influxdb-data
-        persistentVolumeClaim:
-          claimName: influxdb-pvc
       - name: influxdb-conf-vol
         configMap:
           name: influxdb-config
           items:
           - key: influxdb.conf
             path: influxdb.conf
+  volumeClaimTemplates:
+  - metadata:
+      name: influxdb-data
+      namespace: ft-services
+      labels:
+        app: influxdb
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
