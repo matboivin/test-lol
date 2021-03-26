@@ -20,7 +20,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: wordpress-deploy
   namespace: ft-services
   labels:
     app: wordpress
@@ -49,18 +49,24 @@ spec:
               name: mysql-wp-config
               key: MYSQL_DATABASE
         - name: WORDPRESS_DB_HOST
-          value: mysql-svc
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-wp-config
+              key: MYSQL_ROOT_HOST
         - name: WORDPRESS_DB_PORT
-          value: "3306"
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-wp-config
+              key: MYSQL_ROOT_PORT
         - name: WORDPRESS_DB_USER
           valueFrom:
             secretKeyRef:
-              name: mysql-wp-secrets
+              name: mysql-wp-creds
               key: MYSQL_USER
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-wp-secrets
+              name: mysql-wp-creds
               key: MYSQL_PASSWORD
         ports:
         - containerPort: 5050

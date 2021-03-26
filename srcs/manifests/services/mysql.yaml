@@ -31,7 +31,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-deployment
+  name: mysql-deploy
   namespace: ft-services
   labels:
     app: mysql
@@ -55,7 +55,7 @@ spec:
         - configMapRef:
             name: mysql-wp-config
         - secretRef:
-            name: mysql-wp-secrets
+            name: mysql-wp-creds
         ports:
         - containerPort: 3306
           name: mysql-port

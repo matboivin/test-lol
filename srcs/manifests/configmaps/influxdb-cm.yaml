@@ -4,6 +4,10 @@ metadata:
   name: influxdb-config
   namespace: ft-services
 data:
+  INFLUXDB_DB: local-monitoring
+  INFLUXDB_URL: http://influxdb-svc:8086
+
+  # Config file
   influxdb.conf: |+
     reporting-disabled = true
 

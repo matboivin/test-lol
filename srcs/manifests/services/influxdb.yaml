@@ -32,7 +32,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: influxdb-deployment
+  name: influxdb-deploy
   namespace: ft-services
   labels:
     app: influxdb
@@ -52,16 +52,22 @@ spec:
       - image: influxdb:ft
         name: influxdb
         imagePullPolicy: Never
+        env:
+        - name: INFLUXDB_DB
+          valueFrom:
+            configMapKeyRef:
+              name: influxdb-config
+              key: INFLUXDB_DB
         envFrom:
         - secretRef:
-            name: influxdb-secrets
+            name: influxdb-creds
         ports:
         - containerPort: 8086
           name: influxdb-port
         volumeMounts:
         - name: influxdb-data
           mountPath: /var/lib/influxdb
-        - name: influxdb-config
+        - name: influxdb-conf-vol
           mountPath: /etc/influxdb/influxdb.conf
           subPath: influxdb.conf
           readOnly: true
@@ -69,6 +75,9 @@ spec:
       - name: influxdb-data
         persistentVolumeClaim:
           claimName: influxdb-pvc
-      - name: influxdb-config
+      - name: influxdb-conf-vol
         configMap:
           name: influxdb-config
+          items:
+          - key: influxdb.conf
+            path: influxdb.conf

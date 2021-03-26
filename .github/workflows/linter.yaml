@@ -17,10 +17,10 @@ jobs:
         with:
           manifests: |
               srcs/manifests/00-namespace.yaml
-              srcs/manifests/configmaps/influxdb-config.yaml
-              srcs/manifests/configmaps/metallb-config.yaml
-              srcs/manifests/configmaps/mysql-wp-config.yaml
-              srcs/manifests/configmaps/telegraf-config.yaml
+              srcs/manifests/configmaps/influxdb-cm.yaml
+              srcs/manifests/configmaps/metallb-cm.yaml
+              srcs/manifests/configmaps/mysql-wp-cm.yaml
+              srcs/manifests/configmaps/telegraf-cm.yaml
               srcs/manifests/services/ftps.yaml
               srcs/manifests/services/grafana.yaml
               srcs/manifests/services/influxdb.yaml
@@ -29,5 +29,5 @@ jobs:
               srcs/manifests/services/phpmyadmin.yaml
               srcs/manifests/services/telegraf.yaml
               srcs/manifests/services/wordpress.yaml
-              srcs/manifests/secrets/influxdb-secrets.yaml
-              srcs/manifests/secrets/mysql-wp-secrets.yaml
+              srcs/manifests/secrets/influxdb-creds.yaml
+              srcs/manifests/secrets/mysql-wp-creds.yaml

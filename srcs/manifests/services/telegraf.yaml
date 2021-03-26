@@ -17,7 +17,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: telegraf-deployment
+  name: telegraf-deploy
   namespace: ft-services
   labels:
     app: telegraf
@@ -37,19 +37,30 @@ spec:
       - image: telegraf:ft
         name: telegraf
         imagePullPolicy: Never
+        env:
+        - name: INFLUXDB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: influxdb-config
+              key: INFLUXDB_URL
+        - name: INFLUXDB_DB
+          valueFrom:
+            configMapKeyRef:
+              name: influxdb-config
+              key: INFLUXDB_DB
         envFrom:
         - secretRef:
-            name: influxdb-secrets
+            name: influxdb-creds
         ports:
         - containerPort: 8125
           name: telegraf-port
         volumeMounts:
-        - name: telegraf-config
+        - name: telegraf-conf-vol
           mountPath: /etc/telegraf/telegraf.conf
           subPath: telegraf.conf
           readOnly: true
       volumes:
-      - name: telegraf-config
+      - name: telegraf-conf-vol
         configMap:
           name: telegraf-config
  

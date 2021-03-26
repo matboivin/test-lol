@@ -16,9 +16,9 @@ Monitor the cluster.
 
 ## TIG stack
 
-- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#map-a-configuration-file-using-configmap)
+- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/)
+- [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://www.gojek.io/blog/diy-set-up-telegraf-influxdb-grafana-on-kubernetes)
 - [TIG, le trio Telegraf + InfluxDB + Grafana pour surveiller vos équipements](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
-- [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://blog.gojekengineering.com/diy-set-up-telegraf-influxdb-grafana-on-kubernetes-d55e32f8ce48)
 
 ## InfluxDB
 
