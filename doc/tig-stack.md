@@ -168,3 +168,5 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 ```console
 docker run --rm telegraf:ft telegraf config
 ```
+
+A [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) resource is used for running a logs collection daemon on every node.

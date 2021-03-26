@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: telegraf
+  namespace: ft-services
+  labels:
+    app: telegraf
+spec:
+  selector:
+    matchLabels:
+      app: telegraf
+  template:
+    metadata:
+      labels:
+        app: telegraf
+    spec:
+      containers:
+        - image: telegraf:ft
+          name: telegraf
+          env:
+          - name: INFLUXDB_URL
+            valueFrom:
+              configMapKeyRef:
+                name: influxdb-config
+                key: INFLUXDB_URL
+          - name: INFLUXDB_DB
+            valueFrom:
+              configMapKeyRef:
+                name: influxdb-config
+                key: INFLUXDB_DB
+          envFrom:
+          - secretRef:
+              name: influxdb-creds
+          volumeMounts:
+            - name: telegraf-conf-vol
+              mountPath: /etc/telegraf/telegraf.conf
+              subPath: telegraf.conf
+              readOnly: true
+      volumes:
+      - name: telegraf-conf-vol
+        configMap:
+          name: telegraf-config

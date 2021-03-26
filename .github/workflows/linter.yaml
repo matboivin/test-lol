@@ -21,13 +21,13 @@ jobs:
               srcs/manifests/configmaps/metallb-cm.yaml
               srcs/manifests/configmaps/mysql-wp-cm.yaml
               srcs/manifests/configmaps/telegraf-cm.yaml
+              srcs/manifests/daemonsets/telegraf.yaml
               srcs/manifests/services/ftps.yaml
               srcs/manifests/services/grafana.yaml
               srcs/manifests/services/influxdb.yaml
               srcs/manifests/services/mysql.yaml
               srcs/manifests/services/nginx.yaml
               srcs/manifests/services/phpmyadmin.yaml
-              srcs/manifests/services/telegraf.yaml
               srcs/manifests/services/wordpress.yaml
               srcs/manifests/secrets/influxdb-creds.yaml
               srcs/manifests/secrets/mysql-wp-creds.yaml

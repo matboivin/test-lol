@@ -22,4 +22,4 @@ RUN mkdir -p /etc/telegraf \
 EXPOSE 8125/udp
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["telegraf ", "--config $TELEGRAF_CONFIG_PATH"]
+CMD ["telegraf "]
