@@ -17,6 +17,7 @@ spec:
       containers:
         - image: telegraf:ft
           name: telegraf
+          imagePullPolicy: Never
           env:
           - name: INFLUXDB_URL
             valueFrom:

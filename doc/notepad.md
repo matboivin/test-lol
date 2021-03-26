@@ -19,6 +19,7 @@ kubectl api-resources -o wide
 | configmaps             | cm         |          | true       | ConfigMap             | [create delete deletecollection get list patch update watch] |
 | deployments            | deploy     | apps     | true       | Deployment            | [create delete deletecollection get list patch update watch] |
 | statefulsets           | sts        | apps     | true       | StatefulSet           | [create delete deletecollection get list patch update watch] |
+| daemonsets             | ds         | apps     | true       | DaemonSet             | [create delete deletecollection get list patch update watch] |
 | namespaces             | ns         |          | false      | Namespace             | [create delete get list patch update watch]                  |
 | persistentvolumeclaims | pvc        |          | true       | PersistentVolumeClaim | [create delete deletecollection get list patch update watch] |
 | persistentvolumes      | pv         |          | false      | PersistentVolume      | [create delete deletecollection get list patch update watch] |
