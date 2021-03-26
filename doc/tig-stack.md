@@ -19,6 +19,7 @@ Monitor the cluster.
 - [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/)
 - [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://www.gojek.io/blog/diy-set-up-telegraf-influxdb-grafana-on-kubernetes)
 - [TIG, le trio Telegraf + InfluxDB + Grafana pour surveiller vos équipements](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
+- [Monitoring Kubernetes Architecture](https://dzone.com/articles/monitoring-kubernetes-architecture)
 
 ## InfluxDB
 
