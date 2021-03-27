@@ -13,7 +13,7 @@ Write Dockerfiles.
 
 #### Requirements
 
-- [X] Alpine 3.13 and not latest
+- [X] Alpine 3.13
 
 To make images smaller:  
 `apk update` + (`rm /var/cache/apk/*` OR `apk add --no-cache`)

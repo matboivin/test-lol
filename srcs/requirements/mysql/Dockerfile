@@ -8,7 +8,7 @@ ENV MYSQL_VERSION=10.5.8-r0
 # Install necessary packages
 RUN apk update \
  && apk add --no-cache mysql=${MYSQL_VERSION} mysql-client=${MYSQL_VERSION} \
- && mkdir -p /etc/mysql/ /var/log/mysql \
+ && mkdir -p /etc/mysql/ /var/log/mysql /run/mysqld \
  && chown -R mysql:mysql /etc/mysql/ /var/log/mysql
 
 # Add necessary scripts
@@ -25,4 +25,4 @@ VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 
 ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
-CMD ["/usr/bin/mysqld", "--user=root", "--console"]
+CMD ["/usr/bin/mysqld", "--user=root"]

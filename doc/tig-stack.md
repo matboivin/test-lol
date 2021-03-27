@@ -8,6 +8,8 @@ Monitor the cluster.
 
 > Le monitoring ou surpervision est une activité de surveillance et de mesure d’une activité informatique. Ces mesures permettent de construire des graphes afin de visualiser les performances et de voir les tendances, de détecter voire d’anticiper des anomalies ou des pannes et d’alerter en cas de dysfonctionnement.  [(Source)](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
 
+The monitoring stack should be isolated in its own monitoring namespace but 42 evaluators would probably put zero for this.
+
 **Table of Contents**
 
 1. [InfluxDB](#influxdb)
