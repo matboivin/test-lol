@@ -41,6 +41,7 @@ The monitoring stack should be isolated in its own monitoring namespace but 42 e
 - [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
 - [InfluxDB v1.8 Docker Alpine config](https://github.com/influxdata/influxdata-docker/blob/master/influxdb/1.8/alpine/influxdb.conf)
 - [Monitor Docker](https://docs.influxdata.com/influxdb/v2.0/monitor-alert/templates/infrastructure/docker/)
+- [Execute an InfluxQL command and quit with -execute](https://docs.influxdata.com/influxdb/v1.8/tools/shell/#execute-an-influxql-command-and-quit-with--execute)
 
 8086 -> HTTP API port  
 
@@ -96,6 +97,8 @@ docker run --rm influxdb:ft influxd config > influxdb.conf
 ```
 
 Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
+
+> A successful CREATE DATABASE query returns an empty result. If you attempt to create a database that already exists, InfluxDB does nothing and does not return an error. [(Source)](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-database)
 
 The config is mounted as a ConfigMap.
 

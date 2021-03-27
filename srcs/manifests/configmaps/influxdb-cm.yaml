@@ -4,7 +4,7 @@ metadata:
   name: influxdb-config
   namespace: ft-services
 data:
-  INFLUXDB_DB: local-monitoring
+  INFLUXDB_DB: local_monitoring
   INFLUXDB_URL: http://influxdb:8086
 
   # Config file
