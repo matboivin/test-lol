@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: wp-config
+  name: wordpress-config
   namespace: ft-services
 data:
   # Config file

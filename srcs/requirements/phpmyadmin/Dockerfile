@@ -36,7 +36,6 @@ RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA
  && tar -xvf phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz --strip 1 \
  && rm phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz
 COPY www/ /var/www/phpmyadmin
-COPY config/config.inc.php /var/www/phpmyadmin
 
 # Grant permissions to server user
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www

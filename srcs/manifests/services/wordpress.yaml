@@ -75,10 +75,11 @@ spec:
         - name: wp-conf-vol
           mountPath: /var/www/wordpress/wp-config.php
           subPath: wp-config.php
+          readOnly: true
       volumes:
       - name: wp-conf-vol
         configMap:
-          name: wp-config
+          name: wordpress-config
           items:
           - key: "wp-config.php"
             path: "wp-config.php"

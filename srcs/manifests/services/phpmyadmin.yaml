@@ -61,3 +61,15 @@ spec:
         ports:
         - containerPort: 5000
           name: phpmyadmin-port
+        volumeMounts:
+        - name: pma-conf-vol
+          mountPath: /var/www/phpmyadmin/config.inc.php
+          subPath: config.inc.php
+          readOnly: true
+      volumes:
+      - name: pma-conf-vol
+        configMap:
+          name: phpmyadmin-config
+          items:
+          - key: "config.inc.php"
+            path: "config.inc.php"
