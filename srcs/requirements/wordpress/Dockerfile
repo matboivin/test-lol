@@ -39,7 +39,6 @@ RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz \
  && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/
 COPY www/ /var/www/wordpress
-COPY config/wp-config.php /var/www/wordpress
 COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 

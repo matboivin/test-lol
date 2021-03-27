@@ -33,10 +33,10 @@ spec:
           - secretRef:
               name: influxdb-creds
           volumeMounts:
-            - name: telegraf-conf-vol
-              mountPath: /etc/telegraf/telegraf.conf
-              subPath: telegraf.conf
-              readOnly: true
+          - name: telegraf-conf-vol
+            mountPath: /etc/telegraf/telegraf.conf
+            subPath: telegraf.conf
+            readOnly: true
       volumes:
       - name: telegraf-conf-vol
         configMap:
