@@ -38,6 +38,9 @@ spec:
       - image: grafana:ft
         name: grafana
         imagePullPolicy: Never
+        envFrom:
+        - secretRef:
+            name: grafana-creds
         ports:
         - containerPort: 3000
           name: grafana-port

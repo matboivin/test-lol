@@ -30,5 +30,6 @@ jobs:
               srcs/manifests/services/nginx.yaml
               srcs/manifests/services/phpmyadmin.yaml
               srcs/manifests/services/wordpress.yaml
+              srcs/manifests/secrets/grafana-creds.yaml
               srcs/manifests/secrets/influxdb-creds.yaml
               srcs/manifests/secrets/mysql-wp-creds.yaml
