@@ -16,6 +16,19 @@ spec:
     app: grafana
   type: LoadBalancer
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pvc
+  labels:
+    app: grafana
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -44,3 +57,13 @@ spec:
         ports:
         - containerPort: 3000
           name: grafana-port
+        volumeMounts:
+        - name: grafana-vol
+          mountPath: /var/lib/grafana
+        - name: grafana-vol
+          mountPath: /etc/grafana/provisioning
+          subPath: provisioning
+      volumes:
+      - name: grafana-vol
+        persistentVolumeClaim:
+          claimName: grafana-pvc
