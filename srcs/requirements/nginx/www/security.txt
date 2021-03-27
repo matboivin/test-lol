@@ -1,4 +1,4 @@
-Contact: poorsysadmin@student.42.fr
+Contact: poorsysadmin@mydomain
 Preferred-Languages: fr, en
 
 Canonical: https://mydomain/.well-known/security.txt
