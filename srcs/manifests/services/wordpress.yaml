@@ -48,16 +48,6 @@ spec:
             configMapKeyRef:
               name: mysql-wp-config
               key: MYSQL_DATABASE
-        - name: WORDPRESS_DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-wp-config
-              key: MYSQL_ROOT_HOST
-        - name: WORDPRESS_DB_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-wp-config
-              key: MYSQL_ROOT_PORT
         - name: WORDPRESS_DB_USER
           valueFrom:
             secretKeyRef:
@@ -68,6 +58,16 @@ spec:
             secretKeyRef:
               name: mysql-wp-creds
               key: MYSQL_PASSWORD
+        - name: WORDPRESS_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-wp-config
+              key: MYSQL_ROOT_HOST
+        - name: WORDPRESS_DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-wp-config
+              key: MYSQL_ROOT_PORT
         ports:
         - containerPort: 5050
           name: wp-port
@@ -75,11 +75,10 @@ spec:
         - name: wp-conf-vol
           mountPath: /var/www/wordpress/wp-config.php
           subPath: wp-config.php
-          readOnly: true
       volumes:
       - name: wp-conf-vol
         configMap:
           name: wp-config
           items:
-          - key: wp-config.php
-            path: wp-config.php
+          - key: "wp-config.php"
+            path: "wp-config.php"

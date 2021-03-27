@@ -28,17 +28,17 @@ data:
 
     // ** MySQL settings - You can get this info from your web host ** //
     /** The name of the database for WordPress */
-    define( 'DB_NAME', getenv('$WORDPRESS_DB_NAME') );
+    define( 'DB_NAME', getenv('WORDPRESS_DB_NAME') );
 
     /** MySQL database username */
-    define( 'DB_USER', getenv('$WORDPRESS_DB_USER') );
+    define( 'DB_USER', getenv('WORDPRESS_DB_USER') );
 
     /** MySQL database password */
-    define( 'DB_PASSWORD', getenv('$WORDPRESS_DB_PASSWORD') );
+    define( 'DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') );
 
     /** MySQL hostname */
-    define( 'DB_HOST', getenv('$WORDPRESS_DB_HOST') );
-    define( 'DB_PORT', getenv('$WORDPRESS_DB_PORT') );
+    define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') );
+    define( 'DB_PORT', getenv('WORDPRESS_DB_PORT') );
 
     /** Database Charset to use in creating database tables. */
     define( 'DB_CHARSET', 'utf8' );
@@ -50,14 +50,14 @@ data:
     define('FS_METHOD', 'direct');
 
     /**#@+
-    * Authentication Unique Keys and Salts.
-    *
-    * Change these to different unique phrases!
-    * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
-    * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
-    *
-    * @since 2.6.0
-    */
+     * Authentication Unique Keys and Salts.
+     *
+     * Change these to different unique phrases!
+     * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
+     * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+     *
+     * @since 2.6.0
+     */
     define('AUTH_KEY',         'cF(Ie:q.(#pzugFIQLcy#|O21ajLKUg<<w)veY|.9G;nCfCnM0F,_Lg>!m8!->m9');
     define('SECURE_AUTH_KEY',  'C,rMeevwia14kM|0Gfg-9%-9nI],<)6b:uZWw(Pvf7~VV/Q0{[Stp?t-1];gU{u#');
     define('LOGGED_IN_KEY',    '.(=b8y!$Gsqzg|]Tw|yYc0)(RvQy%VpP!>Wm]G=_YgO--jl=zS}`q0*dLs[|-x02');
@@ -70,25 +70,25 @@ data:
     /**#@-*/
 
     /**
-    * WordPress Database Table prefix.
-    *
-    * You can have multiple installations in one database if you give each
-    * a unique prefix. Only numbers, letters, and underscores please!
-    */
+     * WordPress Database Table prefix.
+     *
+     * You can have multiple installations in one database if you give each
+     * a unique prefix. Only numbers, letters, and underscores please!
+     */
     $table_prefix = 'wp_';
 
     /**
-    * For developers: WordPress debugging mode.
-    *
-    * Change this to true to enable the display of notices during development.
-    * It is strongly recommended that plugin and theme developers use WP_DEBUG
-    * in their development environments.
-    *
-    * For information on other constants that can be used for debugging,
-    * visit the documentation.
-    *
-    * @link https://wordpress.org/support/article/debugging-in-wordpress/
-    */
+     * For developers: WordPress debugging mode.
+     *
+     * Change this to true to enable the display of notices during development.
+     * It is strongly recommended that plugin and theme developers use WP_DEBUG
+     * in their development environments.
+     *
+     * For information on other constants that can be used for debugging,
+     * visit the documentation.
+     *
+     * @link https://wordpress.org/support/article/debugging-in-wordpress/
+     */
     define( 'WP_ENVIRONMENT_TYPE', 'development' );
     define( 'WP_DEBUG', true );
     define( 'WP_DEBUG_LOG', true );

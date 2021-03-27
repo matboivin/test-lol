@@ -41,8 +41,8 @@ sed --in-place 's/__IP__/'$MINIKUBE_IP'/g' $MANIFESTS_PATH/configmaps/metallb-cm
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
 kubectl apply -f $MANIFESTS_PATH/secrets --recursive
 kubectl apply -f $MANIFESTS_PATH/configmaps --recursive
-kubectl apply -f $MANIFESTS_PATH/daemonsets --recursive
 kubectl apply -f $MANIFESTS_PATH/services --recursive
+kubectl apply -f $MANIFESTS_PATH/daemonsets/telegraf.yaml
 # Set context to use ft-services as permanent namespace
 kubectl config set-context --current --namespace=$PROJECT_NAMESPACE
 sleep 2

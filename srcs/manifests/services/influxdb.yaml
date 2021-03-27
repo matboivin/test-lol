@@ -61,8 +61,8 @@ spec:
         configMap:
           name: influxdb-config
           items:
-          - key: influxdb.conf
-            path: influxdb.conf
+          - key: "influxdb.conf"
+            path: "influxdb.conf"
   volumeClaimTemplates:
   - metadata:
       name: influxdb-data
