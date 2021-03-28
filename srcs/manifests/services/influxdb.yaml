@@ -33,6 +33,7 @@ spec:
       labels:
         app: influxdb
     spec:
+      restartPolicy: Always
       containers:
       - image: influxdb:ft
         name: influxdb

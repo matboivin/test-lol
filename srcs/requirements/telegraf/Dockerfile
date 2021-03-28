@@ -16,7 +16,7 @@ COPY scripts/ /opt/
 # Create Telegraf directories and backup default conf
 RUN mkdir -p /etc/telegraf \
  && mv -f /etc/telegraf.conf.d /etc/telegraf/ \
- && mv /etc/telegraf.conf $TELEGRAF_CONFIG_PATH
+ && mv /etc/telegraf.conf /etc/telegraf/telegraf.conf.default
 
 # Inform which ports are intended to be published
 EXPOSE 8125/udp

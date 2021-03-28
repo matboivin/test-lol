@@ -12,6 +12,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
   fi
 
   # Start mysqld in background
+  echo "⧗   Start mysqld ..."
   /usr/bin/mysqld --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid &
   sleep 2
 
