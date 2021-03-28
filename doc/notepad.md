@@ -2,7 +2,9 @@
 
 ## Docker entrypoints
 
-> This script uses the exec Bash command so that the final running application becomes the container’s PID 1. This allows the application to receive any Unix signals sent to the container. For more, see the ENTRYPOINT reference.  [Dockerfile reference for the ENTRYPOINT instruction](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#entrypoint)
+> This script uses the exec Bash command so that the final running application becomes the container’s PID 1. This allows the application to receive any Unix signals sent to the container. For more, see the ENTRYPOINT reference. [(Source)](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#entrypoint)
+
+- [What purpose does using exec in docker entrypoint scripts serve?](https://stackoverflow.com/a/32255981)
 
 ## API Resources
 

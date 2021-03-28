@@ -36,5 +36,5 @@ VOLUME ["/var/lib/grafana"]
 # Inform which ports are intended to be published
 EXPOSE 3000
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/sbin/grafana-server"]

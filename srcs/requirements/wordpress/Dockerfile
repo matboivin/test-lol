@@ -48,5 +48,5 @@ RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 # Inform which ports are intended to be published
 EXPOSE 5050
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/bin/sh", "-c", "php-fpm7; nginx -g 'daemon off;'"]

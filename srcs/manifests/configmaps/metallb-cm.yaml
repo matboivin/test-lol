@@ -9,4 +9,4 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      - __IP__-__IP__
+      - 192.168.49.2-192.168.49.2

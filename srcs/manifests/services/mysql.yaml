@@ -48,6 +48,17 @@ spec:
         volumeMounts:
         - name: mysql-data
           mountPath: /var/lib/mysql
+        - name: mysql-conf-vol
+          mountPath: /etc/my.cnf
+          subPath: my.cnf
+          readOnly: true
+      volumes:
+      - name: mysql-conf-vol
+        configMap:
+          name: mysql-config
+          items:
+          - key: "my.cnf"
+            path: "my.cnf"
   volumeClaimTemplates:
   - metadata:
       name: mysql-data

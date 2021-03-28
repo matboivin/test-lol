@@ -14,9 +14,8 @@ RUN apk update \
 # Add necessary scripts
 COPY scripts/ /opt/
 
-# Copy config
-COPY config/my.cnf /etc/my.cnf
-COPY config/wordpress.sql /opt/
+# Copy db file
+COPY db/wordpress.sql /opt/
 
 # Where MySQL by default will write its data files
 VOLUME ["/var/lib/mysql"]
@@ -24,5 +23,5 @@ VOLUME ["/var/lib/mysql"]
 # Inform which ports are intended to be published
 EXPOSE 3306
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/bin/mysqld", "--user=root"]

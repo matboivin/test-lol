@@ -55,3 +55,27 @@ spec:
           name: pasv-min-port
         - containerPort: 21100
           name: pasv-max-port
+        volumeMounts:
+        - name: vsftpd-conf-vol
+          mountPath: /etc/vsftpd/vsftpd.conf
+          subPath: vsftpd.conf
+          readOnly: true
+        - name: vsftpd-conf-vol
+          mountPath: /etc/vsftpd/vsftpd.user_list
+          subPath: vsftpd.user_list
+          readOnly: true
+        - name: vsftpd-conf-vol
+          mountPath: /etc/vsftpd/vsftpd_user_conf/user42
+          subPath: user42
+          readOnly: true
+      volumes:
+      - name: vsftpd-conf-vol
+        configMap:
+          name: vsftpd-config
+          items:
+          - key: "vsftpd.conf"
+            path: "vsftpd.conf"
+          - key: "vsftpd.user_list"
+            path: "vsftpd.user_list"
+          - key: "user42"
+            path: "user42"

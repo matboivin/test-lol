@@ -30,5 +30,5 @@ RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 # Inform which ports are intended to be published
 EXPOSE 80 443
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

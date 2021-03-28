@@ -7,10 +7,9 @@ ENV FTP_VERSION=3.0.3-r6
 ENV FTP_USER=user42
 ENV FTP_PASS=user42
 
-# Install necessary packages and backup default vsftpd config
+# Install necessary packages
 RUN apk update \
  && apk add --no-cache vsftpd=${FTP_VERSION} vsftpd-doc \
- && mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf.default \
  && mkdir -p /etc/vsftpd/vsftpd_user_conf
 
 # Add necessary scripts
@@ -18,10 +17,6 @@ COPY scripts/ /opt/
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh
-
-# Add config files
-COPY config/ /etc/vsftpd/
-COPY user_conf/ /etc/vsftpd/vsftpd_user_conf/
 
 # Create group and user
 RUN addgroup --system $FTP_USER \
@@ -41,5 +36,5 @@ RUN chown root:root /home/$FTP_USER \
 # Inform which ports are intended to be published
 EXPOSE 21 21000 21100
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

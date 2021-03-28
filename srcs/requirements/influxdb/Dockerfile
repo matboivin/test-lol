@@ -25,5 +25,5 @@ VOLUME ["/var/lib/influxdb"]
 # Inform which ports are intended to be published
 EXPOSE 8086
 
-ENTRYPOINT ["sh", "/opt/entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["influxd"]
