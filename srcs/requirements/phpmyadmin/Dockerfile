@@ -27,9 +27,6 @@ RUN sh /opt/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-# PHP-FPM
-COPY config/php-fpm.conf /etc/php7/
-COPY config/www.conf /etc/php7/php-fpm.d/
 
 # Get and set up phpMyAdmin
 RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz \

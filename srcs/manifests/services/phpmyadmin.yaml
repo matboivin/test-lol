@@ -66,6 +66,14 @@ spec:
           mountPath: /var/www/phpmyadmin/config.inc.php
           subPath: config.inc.php
           readOnly: true
+        - name: php-conf-vol
+          mountPath: /etc/php7/php-fpm.d/www.conf
+          subPath: www.conf
+          readOnly: true
+        - name: php-conf-vol
+          mountPath: /etc/php7/php-fpm.conf
+          subPath: php-fpm.conf
+          readOnly: true
       volumes:
       - name: pma-conf-vol
         configMap:
@@ -73,3 +81,11 @@ spec:
           items:
           - key: "config.inc.php"
             path: "config.inc.php"
+      - name: php-conf-vol
+        configMap:
+          name: php-config
+          items:
+          - key: "php-fpm.conf"
+            path: "php-fpm.conf"
+          - key: "www.conf"
+            path: "www.conf"

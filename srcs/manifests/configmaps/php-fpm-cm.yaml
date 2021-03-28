@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: php-config
+  namespace: ft-services
+data:
+  # Config file
+  php-fpm.conf: |+
+    ;;;;;;;;;;;;;;;;;;;;;
+    ; FPM Configuration ;
+    ;;;;;;;;;;;;;;;;;;;;;
+
+    ;;;;;;;;;;;;;;;;;;
+    ; Global Options ;
+    ;;;;;;;;;;;;;;;;;;
+
+    [global]
+    ; Pid file
+    pid = /var/run/php-fpm7.pid
+
+    ; Error log file
+    error_log = /var/log/php7/error.log
+
+    ; Log level
+    ; Possible Values: alert, error, warning, notice, debug
+    log_level = warning
+
+    ;;;;;;;;;;;;;;;;;;;;
+    ; Pool Definitions ;
+    ;;;;;;;;;;;;;;;;;;;;
+
+    include=/etc/php7/php-fpm.d/*.conf
+
+  # Config file for pool directives
+  www.conf: |+
+    ; Start a new pool named 'www'.
+    ; the variable $pool can be used in any directive and will be replaced by the
+    ; pool name ('www' here)
+    [www]
+
+    ; Unix user/group of processes
+    user = nginx
+    group = nginx
+
+    ; The address on which to accept FastCGI requests.
+    ;listen = 127.0.0.1:9000
+    listen = /var/run/php7-fpm.sock
+
+    ; Set permissions for unix socket, if one is used. In Linux, read/write
+    ; permissions must be set in order to allow connections from a web server. Many
+    ; BSD-derived systems allow connections regardless of permissions. The owner
+    ; and group can be specified either by name or by their numeric IDs.
+    ; Default Values: user and group are set as the running user
+    ;                 mode is set to 0660
+    listen.owner = nginx
+    listen.group = nginx
+
+    ; Choose how the process manager will control the number of child processes.
+    pm = dynamic
+
+    ; The number of child processes to be created when pm is set to 'static' and the
+    pm.max_children = 5
+
+    ; The number of child processes created on startup.
+    pm.start_servers = 2
+
+    ; The desired minimum number of idle server processes.
+    pm.min_spare_servers = 1
+
+    ; The desired maximum number of idle server processes.
+    pm.max_spare_servers = 3
+
+    ; Clear environment in FPM workers
+    clear_env = no

@@ -29,9 +29,6 @@ RUN sh /opt/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-# PHP-FPM
-COPY config/php-fpm.conf /etc/php7/
-COPY config/www.conf /etc/php7/php-fpm.d/
 
 # Get and setup WordPress
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
