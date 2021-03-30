@@ -79,7 +79,7 @@ data:
     # Read metrics about disk usage by mount point
     [[inputs.disk]]
       ## Ignore mount points by filesystem type.
-      ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+      ignore_fs = ["tmpfs", "devtmpfs", "devfs"]
 
     # Read metrics about disk IO by device
     [[inputs.diskio]]
@@ -102,13 +102,3 @@ data:
     # Read metrics about docker containers
     [[inputs.docker]]
     endpoint = "unix:///var/run/docker.sock"
-
-    # Read metrics from the kubernetes kubelet api
-    [[inputs.kubernetes]]
-    # URL for the kubelet
-    url = "https://$HOSTIP:10250"
-    # Pod labels to be added as tags.
-    # label_include = []
-    # label_exclude = ["*"]
-    # Use TLS but skip chain & host verification
-    insecure_skip_verify = true
