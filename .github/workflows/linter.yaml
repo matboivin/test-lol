@@ -17,6 +17,8 @@ jobs:
         with:
           manifests: |
               srcs/manifests/00-namespace.yaml
+              srcs/manifests/configmaps/grafana-dashboards-cm.yaml
+              srcs/manifests/configmaps/grafana-datasource-cm.yaml
               srcs/manifests/configmaps/influxdb-cm.yaml
               srcs/manifests/configmaps/metallb-cm.yaml
               srcs/manifests/configmaps/mysql-cm.yaml

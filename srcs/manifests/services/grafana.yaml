@@ -60,10 +60,23 @@ spec:
         volumeMounts:
         - name: grafana-vol
           mountPath: /var/lib/grafana
-        - name: grafana-vol
-          mountPath: /etc/grafana/provisioning
-          subPath: provisioning
+        - name: grafana-datasource-vol
+          mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
+          subPath: datasource.yaml
+          readOnly: true
+        - name: grafana-dashboards-vol
+          mountPath: /etc/grafana/provisioning/dashboards
+          readOnly: true
       volumes:
       - name: grafana-vol
         persistentVolumeClaim:
           claimName: grafana-pvc
+      - name: grafana-datasource-vol
+        configMap:
+          name: grafana-datasource-config
+          items:
+          - key: "datasource.yaml"
+            path: "datasource.yaml"
+      - name: grafana-dashboards-vol
+        configMap:
+          name: grafana-dashboards-config
