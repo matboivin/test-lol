@@ -19,7 +19,7 @@ minikube delete
 # Start cluster
 echo "\n⧗   Start the cluster ...\n"
 minikube start --driver=docker --kubernetes-version=$KUBECTL_VERSION
-MINIKUBE_IP="$(minikube ip)"
+KUBERNETES_HOST=$(minikube ip)
 # Configure environment to use minikube’s Docker daemon
 eval $(minikube docker-env)
 # Check kubectl version
@@ -36,7 +36,7 @@ zsh $SCRIPTS_PATH/build_docker.sh
 # CONFIGURE CLUSTER
 echo "⧗   Configure cluster\n"
 # Replace single IP in MetalLB config
-sed --in-place 's/__IP__/'$MINIKUBE_IP'/g' $MANIFESTS_PATH/configmaps/metallb-cm.yaml
+sed --in-place 's/__IP__/'$KUBERNETES_HOST'/g' $MANIFESTS_PATH/configmaps/metallb-cm.yaml
 # Create resources
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
 kubectl apply -f $MANIFESTS_PATH/secrets
@@ -48,7 +48,7 @@ kubectl config set-context --current --namespace=$PROJECT_NAMESPACE
 sleep 2
 
 # PRINT INFORMATIONS
-echo "\n√   DONE\n\n    IP is: $MINIKUBE_IP"
+echo "\n√   DONE\n\n    IP is: $KUBERNETES_HOST"
 echo "\n    Credentials:"
 echo "    - User: user42\n    - Password: user42\n"
 

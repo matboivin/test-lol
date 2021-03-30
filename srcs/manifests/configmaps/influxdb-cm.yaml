@@ -5,7 +5,8 @@ metadata:
   namespace: ft-services
 data:
   INFLUXDB_DB: local_monitoring
-  INFLUXDB_URL: http://influxdb:8086
+  INFLUXDB_HOST: influxdb.ft-services.svc.cluster.local
+  INFLUXDB_HTTP_BIND_ADDRESS: ":8086"
 
   # Config file
   influxdb.conf: |+

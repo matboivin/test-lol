@@ -39,6 +39,7 @@
 ### Services
 
 - [Kubernetes Documentation: Services, Load Balancing, and Networking](https://kubernetes.io/docs/concepts/services-networking/)
+- [Kubernetes Documentation: DNS pour les services et les pods](https://kubernetes.io/fr/docs/concepts/services-networking/dns-pod-service/)
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
 - [Using Kubernetes Port, TargetPort, and NodePort](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
 
@@ -52,6 +53,7 @@
 - [Learn how to configure Kubernetes apps using ConfigMap](https://itnext.io/learn-how-to-configure-your-kubernetes-apps-using-the-configmap-object-d8f30f99abeb)
 - [An Introduction to Kubernetes Secrets and ConfigMaps](https://opensource.com/article/19/6/introduction-kubernetes-secrets-and-configmaps)
 - [Kubernetes Documentation: Distribute Credentials Securely Using Secrets](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
+- [Kubernetes Documentation: Expose Pod Information to Containers Through Environment Variables](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
 
 ### Best practices
 
