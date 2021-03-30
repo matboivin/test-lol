@@ -17,17 +17,24 @@ jobs:
         with:
           manifests: |
               srcs/manifests/00-namespace.yaml
-              srcs/manifests/configmaps/grafana-dashboards-cm.yaml
-              srcs/manifests/configmaps/grafana-datasource-cm.yaml
+              # Grafana dashboards
+              srcs/manifests/configmaps/dashboards/dashboard-ftps-cm.yaml
+              srcs/manifests/configmaps/dashboards/dashboard-grafana-cm.yaml
+              # Db config
+              srcs/manifests/configmaps/db/monitoring-db-cm.yaml
+              srcs/manifests/configmaps/db/wordpress-db-cm.yaml
+              # Config
+              srcs/manifests/configmaps/grafana-cm.yaml
               srcs/manifests/configmaps/influxdb-cm.yaml
               srcs/manifests/configmaps/metallb-cm.yaml
               srcs/manifests/configmaps/mysql-cm.yaml
-              srcs/manifests/configmaps/mysql-wp-cm.yaml
               srcs/manifests/configmaps/php-fpm-cm.yaml
               srcs/manifests/configmaps/telegraf-cm.yaml
               srcs/manifests/configmaps/vsftpd-cm.yaml
               srcs/manifests/configmaps/wordpress-cm.yaml
+              # Agent
               srcs/manifests/daemonsets/telegraf.yaml
+              # Services
               srcs/manifests/services/ftps.yaml
               srcs/manifests/services/grafana.yaml
               srcs/manifests/services/influxdb.yaml
@@ -35,6 +42,7 @@ jobs:
               srcs/manifests/services/nginx.yaml
               srcs/manifests/services/phpmyadmin.yaml
               srcs/manifests/services/wordpress.yaml
+              # Secrets
               srcs/manifests/secrets/grafana-creds.yaml
               srcs/manifests/secrets/influxdb-creds.yaml
-              srcs/manifests/secrets/mysql-wp-creds.yaml
+              srcs/manifests/secrets/wordpress-db-creds.yaml

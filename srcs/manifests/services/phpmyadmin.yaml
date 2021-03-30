@@ -43,21 +43,21 @@ spec:
         - name: MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
-              name: mysql-wp-config
+              name: wordpress-db-config
               key: MYSQL_DATABASE
         - name: PMA_HOST
           valueFrom:
             configMapKeyRef:
-              name: mysql-wp-config
+              name: wordpress-db-config
               key: MYSQL_ROOT_HOST
         - name: PMA_PORT
           valueFrom:
             configMapKeyRef:
-              name: mysql-wp-config
+              name: wordpress-db-config
               key: MYSQL_ROOT_PORT
         envFrom:
         - secretRef:
-            name: mysql-wp-creds
+            name: wordpress-db-creds
         ports:
         - containerPort: 5000
           name: phpmyadmin-port
@@ -78,14 +78,6 @@ spec:
       - name: pma-conf-vol
         configMap:
           name: phpmyadmin-config
-          items:
-          - key: "config.inc.php"
-            path: "config.inc.php"
       - name: php-conf-vol
         configMap:
           name: php-config
-          items:
-          - key: "php-fpm.conf"
-            path: "php-fpm.conf"
-          - key: "www.conf"
-            path: "www.conf"

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql-wp-config
+  name: wordpress-db-config
   namespace: ft-services
 data:
   MYSQL_DATABASE: wordpress

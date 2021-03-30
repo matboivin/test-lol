@@ -39,9 +39,9 @@ spec:
         imagePullPolicy: Never
         envFrom:
         - configMapRef:
-            name: mysql-wp-config
+            name: wordpress-db-config
         - secretRef:
-            name: mysql-wp-creds
+            name: wordpress-db-creds
         ports:
         - containerPort: 3306
           name: mysql-port
@@ -56,9 +56,6 @@ spec:
       - name: mysql-conf-vol
         configMap:
           name: mysql-config
-          items:
-          - key: "my.cnf"
-            path: "my.cnf"
   volumeClaimTemplates:
   - metadata:
       name: mysql-data

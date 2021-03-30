@@ -40,7 +40,7 @@ sed --in-place 's/__IP__/'$KUBERNETES_HOST'/g' $MANIFESTS_PATH/configmaps/metall
 # Create resources
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
 kubectl apply -f $MANIFESTS_PATH/secrets
-kubectl apply -f $MANIFESTS_PATH/configmaps
+kubectl apply -f $MANIFESTS_PATH/configmaps --recursive
 kubectl apply -f $MANIFESTS_PATH/services
 kubectl apply -f $MANIFESTS_PATH/daemonsets
 # Set context to use ft-services as permanent namespace

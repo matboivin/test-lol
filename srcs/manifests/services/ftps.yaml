@@ -72,10 +72,3 @@ spec:
       - name: vsftpd-conf-vol
         configMap:
           name: vsftpd-config
-          items:
-          - key: "vsftpd.conf"
-            path: "vsftpd.conf"
-          - key: "vsftpd.user_list"
-            path: "vsftpd.user_list"
-          - key: "user42"
-            path: "user42"

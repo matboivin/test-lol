@@ -24,22 +24,9 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          - name: INFLUXDB_HOST
-            valueFrom:
-              configMapKeyRef:
-                name: influxdb-config
-                key: INFLUXDB_HOST
-          - name: INFLUXDB_PORT
-            valueFrom:
-              configMapKeyRef:
-                name: influxdb-config
-                key: INFLUXDB_HTTP_BIND_ADDRESS
-          - name: INFLUXDB_DB
-            valueFrom:
-              configMapKeyRef:
-                name: influxdb-config
-                key: INFLUXDB_DB
           envFrom:
+          - configMapRef:
+              name: monitoring-db-config
           - secretRef:
               name: influxdb-creds
           volumeMounts:

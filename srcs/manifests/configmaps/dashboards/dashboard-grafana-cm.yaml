@@ -1,10 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboards-config
+  name: dashboard-grafana-config
   namespace: ft-services
+  labels:
+    grafana_dashboard: "true"
 data:
-  grafana-dashboard.json: |+
+  grafana_dashboard.json: |+
     {
       "annotations": {
         "list": [
@@ -27,7 +29,7 @@ data:
       "links": [],
       "panels": [
         {
-          "datasource": null,
+          "datasource": "InfluxDB",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -78,10 +80,24 @@ data:
           "pluginVersion": "7.3.6",
           "targets": [
             {
-              "groupBy": [],
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
               "measurement": "docker_container_status",
               "orderByTime": "ASC",
               "policy": "default",
+              "queryType": "randomWalk",
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -113,7 +129,7 @@ data:
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "InfluxDB",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -140,7 +156,7 @@ data:
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "dtdhms"
             },
             "overrides": []
           },
@@ -185,6 +201,7 @@ data:
               "measurement": "docker_container_status",
               "orderByTime": "ASC",
               "policy": "default",
+              "queryType": "randomWalk",
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -220,7 +237,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "InfluxDB",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -280,6 +297,7 @@ data:
               "measurement": "docker_container_mem",
               "orderByTime": "ASC",
               "policy": "default",
+              "queryType": "randomWalk",
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -351,7 +369,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "InfluxDB",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -411,6 +429,9 @@ data:
               "measurement": "docker_container_cpu",
               "orderByTime": "ASC",
               "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+              "queryType": "randomWalk",
+              "rawQuery": false,
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -482,7 +503,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "InfluxDB",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -614,7 +635,7 @@ data:
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "InfluxDB",
           "fieldConfig": {
             "defaults": {
               "custom": {}
@@ -674,6 +695,7 @@ data:
               "measurement": "docker_container_net",
               "orderByTime": "ASC",
               "policy": "default",
+              "queryType": "randomWalk",
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -744,7 +766,9 @@ data:
       ],
       "schemaVersion": 26,
       "style": "dark",
-      "tags": [],
+      "tags": [
+        "grafana"
+      ],
       "templating": {
         "list": []
       },

@@ -52,31 +52,42 @@ spec:
         name: grafana
         imagePullPolicy: Never
         envFrom:
+        - configMapRef:
+            name: monitoring-db-config
         - secretRef:
             name: grafana-creds
+        - secretRef:
+            name: influxdb-creds
         ports:
         - containerPort: 3000
           name: grafana-port
         volumeMounts:
         - name: grafana-vol
           mountPath: /var/lib/grafana
-        - name: grafana-datasource-vol
-          mountPath: /etc/grafana/provisioning/datasources/datasource.yaml
-          subPath: datasource.yaml
+        - name: grafana-conf-vol
+          mountPath: /usr/share/grafana/conf/provisioning/dashboards/datasources.yaml
+          subPath: datasources.yaml
           readOnly: true
-        - name: grafana-dashboards-vol
-          mountPath: /etc/grafana/provisioning/dashboards
+        - name: grafana-conf-vol
+          mountPath: /etc/grafana/provisioning/datasources/providers.yaml
+          subPath: providers.yaml
+          readOnly: true
+        - name: dashboard-grafana-vol
+          mountPath: /usr/share/grafana/public/dashboards
+          readOnly: true
+        - name: dashboard-ftps-vol
+          mountPath: /usr/share/grafana/public/dashboards
           readOnly: true
       volumes:
       - name: grafana-vol
         persistentVolumeClaim:
           claimName: grafana-pvc
-      - name: grafana-datasource-vol
+      - name: grafana-conf-vol
         configMap:
-          name: grafana-datasource-config
-          items:
-          - key: "datasource.yaml"
-            path: "datasource.yaml"
-      - name: grafana-dashboards-vol
+          name: grafana-config
+      - name: dashboard-grafana-vol
         configMap:
-          name: grafana-dashboards-config
+          name: dashboard-grafana-config
+      - name: dashboard-ftps-vol
+        configMap:
+          name: dashboard-ftps-config

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: monitoring-db-config
+  namespace: ft-services
+data:
+  INFLUXDB_DB: local_monitoring
+  INFLUXDB_HOST: influxdb.ft-services.svc.cluster.local
+  INFLUXDB_HTTP_BIND_ADDRESS: ":8086"
