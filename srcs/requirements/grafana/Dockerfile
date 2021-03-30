@@ -21,13 +21,13 @@ RUN apk update \
 COPY scripts/ /opt/
 
 # Create Grafana directories
-RUN mkdir -p $GF_PATHS_HOME \
-    $GF_PATHS_PROVISIONING/datasources \
-    $GF_PATHS_PROVISIONING/dashboards \
-    $GF_PATHS_LOGS \
-    $GF_PATHS_PLUGINS \
- && mv /etc/grafana.ini $GF_PATHS_CONFIG \
- && chown -R grafana:grafana $GF_PATHS_HOME $GF_PATHS_PROVISIONING $GF_PATHS_LOGS $GF_PATHS_DATA
+RUN mkdir -p "$GF_PATHS_HOME" \
+    "$GF_PATHS_PROVISIONING/datasources" \
+    "$GF_PATHS_PROVISIONING/dashboards" \
+    "$GF_PATHS_LOGS" \
+    "$GF_PATHS_PLUGINS" \
+ && mv /etc/grafana.ini "$GF_PATHS_CONFIG" \
+ && chown -R grafana:grafana "$GF_PATHS_HOME" "$GF_PATHS_PROVISIONING" "$GF_PATHS_LOGS" "$GF_PATHS_DATA"
 
 WORKDIR $GF_PATHS_HOME
 
