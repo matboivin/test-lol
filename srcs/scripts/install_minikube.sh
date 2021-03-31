@@ -3,7 +3,7 @@
 # Ensure minikube is installed
 
 # VARIABLES
-MINIKUBE_VERSION=v1.17.1
+MINIKUBE_VERSION=v1.18.1
 BIN_PATH=/usr/local/bin
 
 # Install minikube if the version is not the one expected
