@@ -25,109 +25,9 @@ data:
       "editable": true,
       "gnetId": null,
       "graphTooltip": 0,
-      "id": 8,
+      "id": 2,
       "links": [],
       "panels": [
-        {
-          "datasource": "InfluxDB",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {
-                "align": null,
-                "filterable": false
-              },
-              "mappings": [],
-              "noValue": "Stopped",
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "blue",
-                    "value": 0
-                  }
-                ]
-              },
-              "unit": "dtdhms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 6,
-            "x": 0,
-            "y": 0
-          },
-          "id": 7,
-          "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
-            "orientation": "horizontal",
-            "reduceOptions": {
-              "calcs": [
-                "last"
-              ],
-              "fields": "/^Time$/",
-              "values": false
-            },
-            "textMode": "value"
-          },
-          "pluginVersion": "7.3.6",
-          "targets": [
-            {
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "docker_container_status",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "queryType": "randomWalk",
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "started_at"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "first"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "io.kubernetes.container.name",
-                  "operator": "=",
-                  "value": "ftps"
-                }
-              ]
-            }
-          ],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Started at",
-          "type": "stat"
-        },
         {
           "datasource": "InfluxDB",
           "description": "",
@@ -156,30 +56,28 @@ data:
                   }
                 ]
               },
-              "unit": "dtdhms"
+              "unit": "ns"
             },
             "overrides": []
           },
           "gridPos": {
             "h": 9,
-            "w": 6,
-            "x": 6,
+            "w": 12,
+            "x": 0,
             "y": 0
           },
           "id": 6,
           "options": {
-            "colorMode": "value",
-            "graphMode": "area",
-            "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
               "calcs": [
                 "last"
               ],
-              "fields": "/^Time$/",
+              "fields": "/^docker_container_status\\.sum$/",
               "values": false
             },
-            "textMode": "value"
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
           },
           "pluginVersion": "7.3.6",
           "targets": [
@@ -214,7 +112,7 @@ data:
                   },
                   {
                     "params": [],
-                    "type": "last"
+                    "type": "sum"
                   }
                 ]
               ],
@@ -230,7 +128,7 @@ data:
           "timeFrom": null,
           "timeShift": null,
           "title": "Uptime",
-          "type": "stat"
+          "type": "gauge"
         },
         {
           "aliasColors": {},

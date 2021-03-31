@@ -8,6 +8,7 @@ ENV GF_PATHS_HOME="/usr/share/grafana"
 ENV GF_PATHS_CONFIG="/etc/grafana/grafana.ini"
 ENV GF_PATHS_PROVISIONING="/usr/share/grafana/conf/provisioning"
 ENV GF_PATHS_PLUGINS="/usr/share/grafana/conf/provisioning/plugins"
+ENV GF_AUTH_DEFAULT_HOME_DASHBOARD_PATH="/usr/share/grafana/public/dashboards/home.json"
 
 # Install necessary packages
 RUN apk update \
