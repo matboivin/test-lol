@@ -72,6 +72,7 @@ spec:
           mountPath: /usr/share/grafana/conf/provisioning/dashboards/providers.yaml
           subPath: providers.yaml
           readOnly: true
+        # Dashboards
         - name: grafana-dashboard-vol
           mountPath: /usr/share/grafana/public/dashboards/grafana_dashboard.json
           subPath: grafana_dashboard.json
@@ -80,6 +81,26 @@ spec:
           mountPath: /usr/share/grafana/public/dashboards/ftps_dashboard.json
           subPath: ftps_dashboard.json
           readOnly: true
+        - name: influxdb-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/influxdb_dashboard.json
+          subPath: influxdb_dashboard.json
+          readOnly: true
+        - name: mysql-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/mysql_dashboard.json
+          subPath: mysql_dashboard.json
+          readOnly: true
+        - name: nginx-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/nginx_dashboard.json
+          subPath: nginx_dashboard.json
+          readOnly: true
+        - name: phpmyadmin-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/phpmyadmin_dashboard.json
+          subPath: phpmyadmin_dashboard.json
+          readOnly: true
+        - name: wordpress-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/wordpress_dashboard.json
+          subPath: wordpress_dashboard.json
+          readOnly: true
       volumes:
       - name: grafana-data
         persistentVolumeClaim:
@@ -87,9 +108,25 @@ spec:
       - name: grafana-conf-vol
         configMap:
           name: grafana-config
+      # Dashboards
       - name: grafana-dashboard-vol
         configMap:
-          name: dashboard-grafana-config
+          name: grafana-dashboard-config
       - name: ftps-dashboard-vol
         configMap:
-          name: dashboard-ftps-config
+          name: ftps-dashboard-config
+      - name: influxdb-dashboard-vol
+        configMap:
+          name: influxdb-dashboard-config
+      - name: mysql-dashboard-vol
+        configMap:
+          name: mysql-dashboard-config
+      - name: nginx-dashboard-vol
+        configMap:
+          name: nginx-dashboard-config
+      - name: phpmyadmin-dashboard-vol
+        configMap:
+          name: phpmyadmin-dashboard-config
+      - name: wordpress-dashboard-vol
+        configMap:
+          name: wordpress-dashboard-config

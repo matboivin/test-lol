@@ -22,6 +22,8 @@ RUN mkdir -p "/etc/grafana" \
  && mv /etc/grafana.ini "$GF_PATHS_CONFIG" \
  && rm -f "/usr/share/grafana/conf/provisioning/dashboards/sample.yaml" \
           "/usr/share/grafana/conf/provisioning/datasources/sample.yaml" \
+          "/usr/share/grafana/public/dashboards/default.json" \
+          "/usr/share/grafana/public/dashboards/template_vars.json" \
  && chown -R grafana:grafana "$GF_PATHS_HOME" "/etc/grafana"
 
 # Where Grafana by default will write its data files

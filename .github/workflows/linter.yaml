@@ -17,8 +17,13 @@ jobs:
         with:
           manifests: |
               srcs/manifests/00-namespace.yaml
-              srcs/manifests/configmaps/dashboards/dashboard-ftps-cm.yaml
-              srcs/manifests/configmaps/dashboards/dashboard-grafana-cm.yaml
+              srcs/manifests/configmaps/dashboards/ftps-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/grafana-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/influxdb-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/mysql-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/nginx-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/pma-dashboard-cm.yaml
+              srcs/manifests/configmaps/dashboards/wordpress-dashboard-cm.yaml
               srcs/manifests/configmaps/db/monitoring-db-cm.yaml
               srcs/manifests/configmaps/db/wordpress-db-cm.yaml
               srcs/manifests/configmaps/grafana-cm.yaml
