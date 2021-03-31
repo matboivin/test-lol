@@ -7,7 +7,6 @@ ENV GRAFANA_VERSION=7.3.6-r0
 ENV GF_PATHS_HOME="/usr/share/grafana"
 ENV GF_PATHS_CONFIG="/etc/grafana/grafana.ini"
 ENV GF_PATHS_PROVISIONING="/usr/share/grafana/conf/provisioning"
-ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH="/usr/share/grafana/public/dashboards"
 ENV GF_PATHS_PLUGINS="/usr/share/grafana/conf/provisioning/plugins"
 
 # Install necessary packages
@@ -18,11 +17,14 @@ RUN apk update \
 COPY scripts/ /opt/
 
 # Create Grafana directories
-RUN mkdir -p "/etc/grafana" "/var/log/grafana" \
+RUN mkdir -p "/etc/grafana" \
  && mv /etc/grafana.ini "$GF_PATHS_CONFIG" \
  && rm -f "/usr/share/grafana/conf/provisioning/dashboards/sample.yaml" \
           "/usr/share/grafana/conf/provisioning/datasources/sample.yaml" \
- && chown -R grafana:grafana "/etc/grafana" "/var/log/grafana"
+ && chown -R grafana:grafana "$GF_PATHS_HOME" "/etc/grafana"
+
+# Where Grafana by default will write its data files
+VOLUME ["/usr/share/grafana/data"]
 
 WORKDIR $GF_PATHS_HOME
 

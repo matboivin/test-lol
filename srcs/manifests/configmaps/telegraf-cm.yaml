@@ -56,7 +56,7 @@ data:
 
     # Configuration for sending metrics to InfluxDB
     [[outputs.influxdb]]
-      urls = ["http://$INFLUXDB_HOST$INFLUXDB_PORT"]
+      urls = ["http://$INFLUXDB_HOST$INFLUXDB_HTTP_BIND_ADDRESS"]
       ## The target database for metrics; will be created as needed.
       database = "$INFLUXDB_DB"
       skip_database_creation = false

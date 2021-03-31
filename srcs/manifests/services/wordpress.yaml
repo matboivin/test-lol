@@ -76,11 +76,11 @@ spec:
           mountPath: /var/www/wordpress/wp-config.php
           subPath: wp-config.php
           readOnly: true
-        - name: php-conf-vol
+        - name: php-fpm-conf-vol
           mountPath: /etc/php7/php-fpm.d/www.conf
           subPath: www.conf
           readOnly: true
-        - name: php-conf-vol
+        - name: php-fpm-conf-vol
           mountPath: /etc/php7/php-fpm.conf
           subPath: php-fpm.conf
           readOnly: true
@@ -88,6 +88,6 @@ spec:
       - name: wp-conf-vol
         configMap:
           name: wordpress-config
-      - name: php-conf-vol
+      - name: php-fpm-conf-vol
         configMap:
-          name: php-config
+          name: php-fpm-config

@@ -7,20 +7,21 @@ data:
   datasources.yaml: |+
     apiVersion: 1
     datasources:
-      - name: InfluxDB
-        type: influxdb
-        # proxy or direct (Server or Browser in the UI)
-        access: proxy
-        url: "http://$INFLUXDB_HOST$INFLUXDB_PORT"
-        password: $INFLUXDB_PASS
-        user: $INFLUXDB_USER
-        database: $INFLUXDB_DB
+    - name: InfluxDB
+      type: influxdb
+      # proxy or direct (Server or Browser in the UI)
+      access: proxy
+      url: "http://$INFLUXDB_HOST$INFLUXDB_HTTP_BIND_ADDRESS"
+      password: $INFLUXDB_PASS
+      user: $INFLUXDB_USER
+      database: $INFLUXDB_DB
   providers.yaml: |+
     apiVersion: 1
     providers:
-      - name: dashboards
-        type: file
-        updateIntervalSeconds: 15
-        options:
-          path: $GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH
-          foldersFromFilesStructure: true
+    - name: dashboards
+      type: file
+      disableDeletion: false
+      updateIntervalSeconds: 10
+      options:
+        path: /usr/share/grafana/public/dashboards
+        foldersFromFilesStructure: true

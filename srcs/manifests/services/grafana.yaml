@@ -62,32 +62,34 @@ spec:
         - containerPort: 3000
           name: grafana-port
         volumeMounts:
-        - name: grafana-vol
-          mountPath: /var/lib/grafana
+        - name: grafana-data
+          mountPath: /usr/share/grafana/data
         - name: grafana-conf-vol
-          mountPath: /usr/share/grafana/conf/provisioning/dashboards/datasources.yaml
+          mountPath: /usr/share/grafana/conf/provisioning/datasources/datasources.yaml
           subPath: datasources.yaml
           readOnly: true
         - name: grafana-conf-vol
-          mountPath: /etc/grafana/provisioning/datasources/providers.yaml
+          mountPath: /usr/share/grafana/conf/provisioning/dashboards/providers.yaml
           subPath: providers.yaml
           readOnly: true
-        - name: dashboard-grafana-vol
-          mountPath: /usr/share/grafana/public/dashboards
+        - name: grafana-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/grafana_dashboard.json
+          subPath: grafana_dashboard.json
           readOnly: true
-        - name: dashboard-ftps-vol
-          mountPath: /usr/share/grafana/public/dashboards
+        - name: ftps-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/ftps_dashboard.json
+          subPath: ftps_dashboard.json
           readOnly: true
       volumes:
-      - name: grafana-vol
+      - name: grafana-data
         persistentVolumeClaim:
           claimName: grafana-pvc
       - name: grafana-conf-vol
         configMap:
           name: grafana-config
-      - name: dashboard-grafana-vol
+      - name: grafana-dashboard-vol
         configMap:
           name: dashboard-grafana-config
-      - name: dashboard-ftps-vol
+      - name: ftps-dashboard-vol
         configMap:
           name: dashboard-ftps-config
