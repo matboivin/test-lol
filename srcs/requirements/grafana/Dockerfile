@@ -18,7 +18,7 @@ RUN apk update \
 COPY scripts/ /opt/
 
 # Create Grafana directories
-RUN mkdir -p "/etc/grafana" \
+RUN mkdir -p "/etc/grafana" "/usr/share/grafana/public/dashboards/ft_services" \
  && mv /etc/grafana.ini "$GF_PATHS_CONFIG" \
  && rm -f "/usr/share/grafana/conf/provisioning/dashboards/sample.yaml" \
           "/usr/share/grafana/conf/provisioning/datasources/sample.yaml" \

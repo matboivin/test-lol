@@ -23,6 +23,7 @@ data:
       type: file
       disableDeletion: false
       updateIntervalSeconds: 10
+      allowUiUpdates: false
       options:
         path: /usr/share/grafana/public/dashboards
         foldersFromFilesStructure: true

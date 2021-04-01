@@ -14,7 +14,7 @@ RUN apk update \
 # Add necessary scripts
 COPY scripts/ /opt/
 
-# Copy db file
+# Add WordPress database
 COPY db/wordpress.sql /opt/
 
 # Where MySQL by default will write its data files
