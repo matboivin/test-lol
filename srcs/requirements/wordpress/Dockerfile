@@ -16,7 +16,7 @@ RUN apk update \
     php7-xmlreader php7-zlib \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /run/nginx /var/www/localhost
+ && mkdir -p /run/nginx /etc/nginx/sites-enabled
 
 # Add necessary scripts
 COPY scripts/ /opt/
@@ -34,10 +34,13 @@ COPY config/conf.d /etc/nginx/conf.d/
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz \
- && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/
-COPY www/ /var/www/wordpress
+ && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/ /var/www/wordpress/html
+COPY html/ /var/www/wordpress/html
 COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
+
+# Symlink to sites-available to enable vhost
+RUN ln -s /etc/nginx/sites-available/localhost.conf /etc/nginx/sites-enabled/
 
 # Grant permissions to server user
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www

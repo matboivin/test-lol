@@ -10,7 +10,7 @@ RUN apk update \
  && apk add --no-cache nginx=${NGINX_VERSION} \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /run/nginx/
+ && mkdir -p /run/nginx/ /var/www/localhost/html /etc/nginx/sites-enabled
 
 # Add necessary scripts
 COPY scripts/ /opt/
@@ -22,7 +22,10 @@ RUN sh /opt/gen_key.sh
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
-COPY www/ /var/www/localhost
+COPY html/ /var/www/localhost/html
+
+# Symlink to sites-available to enable vhost
+RUN ln -s /etc/nginx/sites-available/localhost.conf /etc/nginx/sites-enabled/
 
 # Grant permissions to server user
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www

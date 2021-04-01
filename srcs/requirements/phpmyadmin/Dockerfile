@@ -14,7 +14,7 @@ RUN apk update \
     php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom php7-mbstring php7-fpm php7-opcache \
  && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /run/nginx /var/www/localhost /var/www/phpmyadmin
+ && mkdir -p /run/nginx /var/www/phpmyadmin/html /etc/nginx/sites-enabled
 
 # Add necessary scripts
 COPY scripts/ /opt/
@@ -32,7 +32,10 @@ COPY config/conf.d /etc/nginx/conf.d/
 RUN cd /var/www/phpmyadmin && wget https://files.phpmyadmin.net/phpMyAdmin/${PMA_VERSION}/phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz \
  && tar -xvf phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz --strip 1 \
  && rm phpMyAdmin-${PMA_VERSION}-all-languages.tar.gz
-COPY www/ /var/www/phpmyadmin
+COPY html/ /var/www/phpmyadmin/html
+
+# Symlink to sites-available to enable vhost
+RUN ln -s /etc/nginx/sites-available/localhost.conf /etc/nginx/sites-enabled/
 
 # Grant permissions to server user
 RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
