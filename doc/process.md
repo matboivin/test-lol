@@ -62,8 +62,8 @@ minikube addons enable metrics-server
 
 #### Requirements
 
-- [ ] Data persistence
-- [ ] Restart in case of crash
+- [X] Data persistence
+- [X] Restart in case of crash
 - [X] No NodePort
 - [Write Dockerfiles](containers.md)
 

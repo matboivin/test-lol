@@ -20,7 +20,6 @@ The monitoring stack should be isolated in its own monitoring namespace but 42 e
 
 - [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/)
 - [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://www.gojek.io/blog/diy-set-up-telegraf-influxdb-grafana-on-kubernetes)
-- [TIG, le trio Telegraf + InfluxDB + Grafana pour surveiller vos équipements](https://domopi.eu/tig-le-trio-telegraf-influxdb-grafana-pour-surveiller-vos-equipements/)
 - [Monitoring Kubernetes Architecture](https://dzone.com/articles/monitoring-kubernetes-architecture)
 
 ## InfluxDB
@@ -29,19 +28,19 @@ The monitoring stack should be isolated in its own monitoring namespace but 42 e
 
 - [X] InfluxDB 1.8.3-r2
 - [X] ClusterIP
-- [ ] data persistence
+- [X] data persistence
 
 #### Resources
 
 - [InfluxDB official Docker image](https://hub.docker.com/_/influxdb)
 - [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)
 - [Get started with InfluxDB OSS v1.8](https://docs.influxdata.com/influxdb/v1.8/introduction/get-started/)
-- [How To Install InfluxDB 1.7 and 2.0 on Linux in 2019](https://devconnected.com/how-to-install-influxdb-on-ubuntu-debian-in-2019/#Option_2_Adding_the_repositories_to_your_package_manager)
-- [InfluxDB : une base de données time series open source ultra-rapide](https://www.journaldunet.fr/web-tech/guide-de-l-entreprise-digitale/1443846-influxdb-une-base-de-donnees-time-series-open-source-sur-optimisee/)
 - [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
 - [InfluxDB v1.8 Docker Alpine config](https://github.com/influxdata/influxdata-docker/blob/master/influxdb/1.8/alpine/influxdb.conf)
 - [Monitor Docker](https://docs.influxdata.com/influxdb/v2.0/monitor-alert/templates/infrastructure/docker/)
 - [Execute an InfluxQL command and quit with -execute](https://docs.influxdata.com/influxdb/v1.8/tools/shell/#execute-an-influxql-command-and-quit-with--execute)
+- [kubeapps: InfluxDB](https://hub.kubeapps.com/charts/bitnami/influxdb)
+- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#how-to-deploy-influxdb)
 
 8086 -> HTTP API port  
 
@@ -102,10 +101,6 @@ Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconn
 
 The config is mounted as a ConfigMap.
 
-- [kubeapps: InfluxDB](https://hub.kubeapps.com/charts/bitnami/influxdb)
-- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#how-to-deploy-influxdb)
-- [influxdata config.yaml](https://github.com/influxdata/kube-influxdb/blob/master/influxdb/templates/config.yaml)
-
 ## Grafana
 
 #### Requirements
@@ -113,13 +108,12 @@ The config is mounted as a ConfigMap.
 - [X] Grafana 7.3.6-r0
 - [X] type LoadBalancer
 - [X] port 3000
-- [ ] linked to InfluxDB
-- [ ] one dashboard per service
+- [X] linked to InfluxDB
+- [X] one dashboard per service
 
 #### Resources
 
 - [Monitorer votre infra avec Telegraf, InfluxDB et Grafana](https://blog.octo.com/monitorer-votre-infra-avec-telegraf-influxdb-et-grafana/)
-- [Monitoring Kubernetes with Grafana and InfluxDB](https://logz.io/blog/monitoring-kubernetes-grafana-influxdb/)
 - [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
 - [Grafana Labs: Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=linux)
 - [Grafana Labs: Install Grafana](https://grafana.com/docs/grafana/latest/installation/)
@@ -168,7 +162,6 @@ Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux b
 #### Resources
 
 - [Telegraf official Docker image](https://hub.docker.com/_/telegraf)
-- [Telegraf configuration](https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md)
 - [Telegraf configuration](https://github.com/influxdata/telegraf/blob/master/docs/CONFIGURATION.md)
 
 ```console
