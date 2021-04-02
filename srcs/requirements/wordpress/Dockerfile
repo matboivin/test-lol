@@ -49,4 +49,4 @@ RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 EXPOSE 5050
 
 ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
-CMD ["/bin/sh", "-c", "php-fpm7 && nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "php-fpm7; nginx -g 'daemon off;'"]
