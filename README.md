@@ -27,25 +27,9 @@ Don't copy. Learn.
 
 This project is to be run inside 42's VM.
 
-- 2 CPUs or more
-- 2GB of free memory
-- 20GB of free disk space
-
-Add user42 to the Docker group:
-
-```console
-sudo usermod -aG docker $(whoami)
-su $(whoami)
-
-# Will also maybe require
-sudo systemctl restart docker
-```
-
-Install [jq](https://stedolan.github.io/jq/) to format output:
-
-```console
-kubectl version -o json | jq
-```
+<p align="center">
+  <img src="assets/kubernetes-blog.jpeg" alt="k8s meme" width="450" />
+</p>
 
 ### Acknowledgements
 
