@@ -21,6 +21,7 @@ The monitoring stack should be isolated in its own monitoring namespace but 42 e
 - [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/)
 - [[DIY] Set Up Telegraf, InfluxDB, & Grafana on Kubernetes](https://www.gojek.io/blog/diy-set-up-telegraf-influxdb-grafana-on-kubernetes)
 - [Monitoring Kubernetes Architecture](https://dzone.com/articles/monitoring-kubernetes-architecture)
+- [Deploy InfluxDB and Grafana on Kubernetes to collect Twitter stats](https://opensource.com/article/19/2/deploy-influxdb-grafana-kubernetes)
 
 ## InfluxDB
 
@@ -34,19 +35,12 @@ The monitoring stack should be isolated in its own monitoring namespace but 42 e
 
 - [InfluxDB official Docker image](https://hub.docker.com/_/influxdb)
 - [InfluxDB ports](https://docs.influxdata.com/influxdb/v1.8/administration/ports/)
-- [Get started with InfluxDB OSS v1.8](https://docs.influxdata.com/influxdb/v1.8/introduction/get-started/)
-- [InfluxDB v1.8 config](https://github.com/influxdata/docs-v2/blob/00aadfceaa99de0d05610eb0617e56f1232c9153/content/influxdb/v1.8/administration/config.mds)
 - [InfluxDB v1.8 Docker Alpine config](https://github.com/influxdata/influxdata-docker/blob/master/influxdb/1.8/alpine/influxdb.conf)
-- [Monitor Docker](https://docs.influxdata.com/influxdb/v2.0/monitor-alert/templates/infrastructure/docker/)
 - [Execute an InfluxQL command and quit with -execute](https://docs.influxdata.com/influxdb/v1.8/tools/shell/#execute-an-influxql-command-and-quit-with--execute)
-- [kubeapps: InfluxDB](https://hub.kubeapps.com/charts/bitnami/influxdb)
-- [How To Deploy InfluxDB / Telegraf / Grafana on K8s?](https://octoperf.com/blog/2019/09/19/kraken-kubernetes-influxdb-grafana-telegraf/#how-to-deploy-influxdb)
 
 8086 -> HTTP API port  
 
 > The CLI communicates with InfluxDB directly by making requests to the InfluxDB API over port 8086 by default.
-
-- INFLUXDB_CONFIG_PATH `/etc/influxdb/influxdb.conf`
 
 `/usr/sbin/influxd`
 ```
@@ -87,19 +81,7 @@ Usage: influxd run [flags]
 - - - Write memory usage information to a file.
 ```
 
-`influxd` PID file -> `/var/log/influxdb/influxd.log`
-
-To create an InfluxDB configuration file using Docker, run the following command:
-
-```console
-docker run --rm influxdb:ft influxd config > influxdb.conf
-```
-
-Source: [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
-
 > A successful CREATE DATABASE query returns an empty result. If you attempt to create a database that already exists, InfluxDB does nothing and does not return an error. [(Source)](https://docs.influxdata.com/influxdb/v1.7/query_language/database_management/#create-database)
-
-The config is mounted as a ConfigMap.
 
 ## Grafana
 
@@ -113,12 +95,7 @@ The config is mounted as a ConfigMap.
 
 #### Resources
 
-- [Monitorer votre infra avec Telegraf, InfluxDB et Grafana](https://blog.octo.com/monitorer-votre-infra-avec-telegraf-influxdb-et-grafana/)
-- [How To Install InfluxDB Telegraf and Grafana on Docker](https://devconnected.com/how-to-install-influxdb-telegraf-and-grafana-on-docker/)
-- [Grafana Labs: Download Grafana](https://grafana.com/grafana/download?edition=enterprise&platform=linux)
-- [Grafana Labs: Install Grafana](https://grafana.com/docs/grafana/latest/installation/)
 - [Grafana Labs: Configure a Grafana Docker image](https://grafana.com/docs/grafana/latest/administration/configure-docker/)
-- [Deploy InfluxDB and Grafana on Kubernetes to collect Twitter stats](https://opensource.com/article/19/2/deploy-influxdb-grafana-kubernetes)
 
 Select open-source version:
 
@@ -128,15 +105,6 @@ tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
 ```
 
 > You must restart Grafana for any configuration changes to take effect.  [(Source)](https://grafana.com/docs/grafana/latest/administration/configuration/)
-
-Set the default paths like the [Official Docker Image](https://grafana.com/docs/grafana/latest/administration/configure-docker/):
-
-- GF_PATHS_CONFIG `/etc/grafana/grafana.ini`
-- GF_PATHS_DATA `/var/lib/grafana`
-- GF_PATHS_HOME `/usr/share/grafana`
-- GF_PATHS_LOGS `/var/log/grafana`
-- GF_PATHS_PLUGINS `/var/lib/grafana/plugins`
-- GF_PATHS_PROVISIONING `/etc/grafana/provisioning`
 
 Do not change `defaults.ini`! Grafana defaults are stored in this file. Depending on your OS, make all configuration changes in either `custom.ini` or `grafana.ini`.  
 - Default configuration from `$WORKING_DIR/conf/defaults.ini`  
@@ -150,8 +118,6 @@ To invoke Grafana CLI, add the path to the grafana binaries in your `PATH` envir
 Source: [Grafana Labs: Grafana CLI](https://grafana.com/docs/grafana/latest/administration/cli/)
 
 Can't find `grafana-cli` on Alpine-based Docker image: [Problem with the linux binaries on Alpine](https://github.com/github/hub/issues/1818)
-
-- GF_SECURITY_ADMIN_PASSWORD__FILE `/run/secrets/<name of secret>`
 
 ## Telegraf
 

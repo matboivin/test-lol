@@ -51,11 +51,3 @@ kubectl logs <controller> -n metallb-system
 ## Services and ports
 
 > Port definitions in Pods have names, and you can reference these names in the targetPort attribute of a Service. This works even if there is a mixture of Pods in the Service using a single configured name, with the same network protocol available via different port numbers. This offers a lot of flexibility for deploying and evolving your Services. For example, you can change the port numbers that Pods expose in the next version of your backend software, without breaking clients.  [(Source)](https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service)
-
-## ConfigMap
-
-Create a ConfigMap from a file:
-
-```console
-kubectl create configmap name --from-file=file.conf
-```

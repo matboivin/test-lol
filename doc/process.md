@@ -67,10 +67,6 @@ minikube addons enable metrics-server
 - [X] No NodePort
 - [Write Dockerfiles](containers.md)
 
-> In case of a crash or stop of one of the two database containers, you will have to make shure the data persist.  All your containers must restart in case of a crash or stop of one of its component parts.
-
-> FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
-
 type: `LoadBalancer` -> exposes the service externally using a load balancer  
 type: `ClusterIP` -> the service is accessible within the cluster, not meant for external access
 
@@ -82,17 +78,10 @@ type: `ClusterIP` -> the service is accessible within the cluster, not meant for
 - [X] No Ingress
 - [X] No `kubectl port-forward`
 
-> Make sure that each redirection toward a service is done using a load balancer. FTPS, Grafana, Wordpress, PhpMyAdmin and nginx’s kind must be "LoadBalancer". Influxdb and MySQL’s kind must be "ClusterIP". Other entries can be present, but none of them can be of kind "NodePort".
-
-> Usage of Node Port services, Ingress Controller object or kubectl port-forward command is prohibited.  
-Your Load Balancer should be the only entry point for the Cluster.
-
 #### Resources
 
 - [MetalLB documentation: MetalLB installation](https://metallb.universe.tf/installation/)
 - [MetalLB documentation: IP address sharing](https://metallb.universe.tf/usage/#ip-address-sharing)
-- [Kubernetes Documentation: Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
-- [Ce qu’il faut savoir sur MetalLB](https://www.objectif-libre.com/fr/blog/2019/06/11/metallb/)
 - [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
 - [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
 
@@ -103,5 +92,3 @@ Your Load Balancer should be the only entry point for the Cluster.
 Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 
 **TL;DR** MetalLB is a bare metal load balancer. Its role is to distribute the requests between services of our cluster, depending on the ability of these services to fulfill requests. It ensures no service becomes overworked, reduces incidents and minimizes response time.
-
-> The controller helps in the IP address assignment, whereas the speaker advertises layer -2 address.

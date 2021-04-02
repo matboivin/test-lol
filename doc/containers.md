@@ -67,9 +67,6 @@ Read user:password from stdin and update /etc/passwd
 	-R,--root DIR		Directory to chroot into
 ```
 
-- [How do I add a user when I'm using Alpine as a base image?](https://stackoverflow.com/questions/49955097/how-do-i-add-a-user-when-im-using-alpine-as-a-base-image)
-- [Update BestPractices.md with alpine user](https://github.com/nodejs/docker-node/pull/299)
-
 ### Directory structure
 
 #### /etc – Configuration Files
@@ -100,8 +97,6 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 
 - [NGINX official Docker image](https://hub.docker.com/_/nginx)
 - [Alpine Wiki: NGINX](https://wiki.alpinelinux.org/wiki/Nginx)
-- [How To Install Nginx web server on Alpine Linux](https://www.cyberciti.biz/faq/how-to-install-nginx-web-server-on-alpine-linux/)
-- [Kubernetes Documentation: Connecting Applications with Services](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/)
 - [Nginx and Letsencrypt with certbot in docker alpine](https://geko.cloud/nginx-and-ssl-with-certbot-in-docker-alpine/)
 
 #### Config
@@ -119,19 +114,13 @@ Source: [The Linux Directory Structure, Explained](https://www.howtogeek.com/117
 
 #### Redir / reverse proxy
 
-- [Mettez en place un reverse-proxy avec Nginx](https://openclassrooms.com/fr/courses/1733551-gerez-votre-serveur-linux-et-ses-services/5236081-mettez-en-place-un-reverse-proxy-avec-nginx)
 - [How to proxy web apps using nginx?](https://gist.github.com/soheilhy/8b94347ff8336d971ad0)
-- [How to get phpmyadmin to work with both a reverse proxy and a plain IP:PMA_PORT connection?](https://serverfault.com/questions/1044014/how-to-get-phpmyadmin-to-work-with-both-a-reverse-proxy-and-a-plain-ippma-port)
 - [How to set up an easy and secure reverse proxy with Docker, Nginx & Letsencrypt](https://www.freecodecamp.org/news/docker-nginx-letsencrypt-easy-secure-reverse-proxy-40165ba3aee2/)
 
 server blocks -> pour encapsuler les détails de configuration et héberger plusieurs domaines sur un seul serveur  
 1 worker -> 1024 connections
 
 > If you add a custom CMD in the Dockerfile, be sure to include -g daemon off; in the CMD in order for nginx to stay in the foreground, so that Docker can track the process properly (otherwise your container will stop immediately after starting)!  [(Source)](https://hub.docker.com/_/nginx)
-
-Log files:
-- `/var/log/nginx/access.log`
-- `/var/log/nginx/error.log`
 
 ## vsftpd
 
@@ -147,10 +136,8 @@ Log files:
 - [Alpine Wiki: FTP](https://wiki.alpinelinux.org/wiki/FTP)
 - [VSFTPD.CONF](http://vsftpd.beasts.org/vsftpd_conf.html)
 - [Wiki Ubuntu: VSFTPD](https://doc.ubuntu-fr.org/vsftpd)
-- [How to Install and Configure an FTP server (vsftpd) with SSL/TLS on Ubuntu 20.04](https://www.howtoforge.com/tutorial/ubuntu-vsftpd/)
-- [How to setup and use FTP Server in Ubuntu Linux](https://linuxconfig.org/how-to-setup-and-use-ftp-server-in-ubuntu-linux)
-- [How To Set Up vsftpd for Anonymous Downloads on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-anonymous-downloads-on-ubuntu-16-04)
 - [ArchLinux: Very Secure FTP Daemon](https://wiki.archlinux.org/index.php/Very_Secure_FTP_Daemon)
+- [How To Set Up vsftpd for Anonymous Downloads on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-anonymous-downloads-on-ubuntu-16-04)
 - [Configure VSFTPD with an SSL](https://www.liquidweb.com/kb/configure-vsftpd-ssl/)
 - [VSFTP (avec certificat SSL)](http://ressources-info.fr/tutoriels-systemes/afficher/8/)
 - [Ftps server doesn't work properly using kubernetes](https://stackoverflow.com/questions/60458028/ftps-server-doesnt-work-properly-using-kubernetes)
@@ -158,8 +145,6 @@ Log files:
 #### Config
 
 > FTP (or File Transfer Protocol) is a protocol that allows you to transfer files from a server to a client and vice versa (as FTP uses a client-server architecture).
-
-No persistence?
 
 vsftpd (Very Secure FTP Daemon) -> server
 

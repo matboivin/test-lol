@@ -11,14 +11,10 @@
 - [etcd](https://etcd.io/)
 - [Cloud Native Computing Foundation](https://www.cncf.io/)
 - [minikube](https://minikube.sigs.k8s.io/docs/)
-- [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
-- [phoenixNAP:What Is Kubernetes? Complete Guide](https://phoenixnap.com/kb/what-is-kubernetes)
-- [phoenixNAP: Understanding Kubernetes Architecture With Diagrams](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
-- [Kubernetes Design and Development Explained](https://thenewstack.io/kubernetes-design-and-development-explained/)
 - [Container training](https://container.training/)
 - [Play with Kubernetes Classroom](https://training.play-with-kubernetes.com/)
-- [Kubernetes Documentation: Interactive Tutorial - Creating a Cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
 - [Stupid Simple Kubernetes](https://levelup.gitconnected.com/stupid-simple-kubernetes-e509355fba3d)
+- [Kubernetes Design and Development Explained](https://thenewstack.io/kubernetes-design-and-development-explained/)
 
 ### API
 
@@ -26,11 +22,6 @@
 - [API groups](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#-strong-api-groups-strong-)
 - [Which API Group in k8s](https://stackoverflow.com/questions/57821065/which-api-group-in-k8s)
 - [Kubernetes API Resources: Which Group and Version to Use?](https://akomljen.com/kubernetes-api-resources-which-group-and-version-to-use/)
-
-### Namespace
-
-- [container.training: Namespaces](https://container.training/kube-selfpaced.yml.html#119)
-- [Kubernetes Documentation: Creating a new namespace](https://kubernetes.io/docs/tasks/administer-cluster/namespaces/#creating-a-new-namespace)
 
 ### Labels and selectors
 
@@ -42,6 +33,10 @@
 - [Kubernetes Documentation: DNS pour les services et les pods](https://kubernetes.io/fr/docs/concepts/services-networking/dns-pod-service/)
 - [What is an 'endpoint' in Kubernetes?](https://stackoverflow.com/questions/52857825/what-is-an-endpoint-in-kubernetes)
 - [Using Kubernetes Port, TargetPort, and NodePort](https://www.bmc.com/blogs/kubernetes-port-targetport-nodeport/)
+
+### Pods
+
+- [What is Statefulset and how is it different from Deployment?](https://collabnix.github.io/kubelabs/StatefulSets101/)
 
 ### Volumes
 
@@ -57,8 +52,6 @@
 
 ### Best practices
 
-- [Kubernetes Documentation: Managing Resources](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
-- [Kubernetes Documentation: Configuration Best Practices](https://kubernetes.io/docs/concepts/configuration/overview/)
 - [A Better Way of Organizing Your Kubernetes Manifest Files](https://boxunix.com/2020/05/15/a-better-way-of-organizing-your-kubernetes-manifest-files/)
 - [Helm docs: The Chart File Structure](https://helm.sh/docs/topics/charts/)
 

@@ -7,7 +7,7 @@ Don't copy. Learn.
 
 ## Components
 
-- minikube v1.17.1
+- minikube v1.18.1
 - kubectl v1.20.2
 - Alpine 3.13
 - NGINX 1.18.0-r13

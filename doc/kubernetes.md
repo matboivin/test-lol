@@ -73,12 +73,6 @@ Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
 
 > Pods are not constant. One of the best features Kubernetes offers is that non-functioning pods get replaced by new ones automatically. Services are introduced to provide reliable networking by bringing stable IP addresses and DNS names to the unstable world of pods.  [(Source)](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
 
-## Pods: Deployments or StatefulSets?
-
-- [Kubernetes Documentation: StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
-- [Kubernetes Documentation: Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-- [What is Statefulset and how is it different from Deployment?](https://collabnix.github.io/kubelabs/StatefulSets101/)
-
 ## Volumes
 
 > A PersistentVolume (PV) is a piece of storage in the cluster [...].  

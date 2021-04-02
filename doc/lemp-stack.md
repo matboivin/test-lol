@@ -25,22 +25,12 @@ LEMP stack stands for:
 
 - [MySQL official Docker image](https://registry.hub.docker.com/_/mysql/)
 - [Alpine Wiki: MariaDB](https://wiki.alpinelinux.org/wiki/MariaDB)
-- [MySQL documentation: Environment Variables](https://dev.mysql.com/doc/refman/5.7/en/environment-variables.html)
 - [How to set up MariaDB SSL and secure connections from clients](https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/)
 - [Creating Database for WordPress](https://wordpress.org/support/article/creating-database-for-wordpress/)
 
 #### Config
 
 - [SSL Configuration Generator](https://ssl-config.mozilla.org/)
-
-Environment Variables [(Source)](https://registry.hub.docker.com/_/mysql/):
-
-- MYSQL_ROOT_PASSWORD
-- MYSQL_DATABASE
-- MYSQL_USER, MYSQL_PASSWORD
-- MYSQL_HOST
-
-`/var/lib/mysql` inside the container: where MySQL by default will write its data files.
 
 ```console
 /usr/bin/mysqld --datadir=/var/lib/mysql --pid-file=/run/mysqld/mysqld.pid --skip-grant-tables --skip-networking &
@@ -68,7 +58,6 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 - [phpMyAdmin official Docker image](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
 - [Alpine Wiki: phpMyAdmin](https://wiki.alpinelinux.org/wiki/phpMyAdmin)
 - [Arch Wiki: phpMyAdmin](https://wiki.archlinux.org/index.php/PhpMyAdmin)
-- [Deploy phpMyAdmin on Kubernetes to Manage MySQL Pods](https://www.serverlab.ca/tutorials/containers/kubernetes/deploy-phpmyadmin-to-kubernetes-to-manage-mysql-pods/)
 
 #### Config
 
@@ -77,9 +66,6 @@ Source: [Alpine Wiki: Restore root password](https://wiki.alpinelinux.org/wiki/M
 
 phpMyAdmin is linked to an existing MySQL service.  
 phpMyAdmin needs the root password of the MySQL service.  
-
-- `PMA_HOST`: define address/host name of the MySQL server
-- `PMA_PORT`: define port of the MySQL server
 
 ## WordPress
 
@@ -98,10 +84,8 @@ phpMyAdmin needs the root password of the MySQL service.
 
 - [Alpine Wiki: WordPress](https://wiki.alpinelinux.org/wiki/WordPress)
 - [Kubernetes Documentation: Example: Deploying WordPress and MySQL with Persistent Volumes](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
-- [How to deploy WordPress and MySQL on Kubernetes](https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5)
 - [Set Up Nginx FastCGI Cache to Reduce WordPress Server Response Time](https://www.linuxbabe.com/nginx/setup-nginx-fastcgi-cache)
 - [Converting Apache Rewrite Rules to NGINX Rewrite Rules](https://www.nginx.com/blog/converting-apache-to-nginx-rewrite-rules/)
-- [WordPress documentation: Server Environment](https://make.wordpress.org/hosting/handbook/handbook/server-environment/)
 
 #### Config
 
