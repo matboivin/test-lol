@@ -35,8 +35,8 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: influxdb:ft
-        name: influxdb
+      - name: influxdb
+        image: influxdb:ft
         imagePullPolicy: Never
         envFrom:
         - configMapRef:

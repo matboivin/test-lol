@@ -49,8 +49,8 @@ spec:
         app: grafana
     spec:
       containers:
-      - image: grafana:ft
-        name: grafana
+      - name: grafana
+        image: grafana:ft
         imagePullPolicy: Never
         envFrom:
         - configMapRef:

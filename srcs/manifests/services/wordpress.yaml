@@ -39,8 +39,8 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:ft
-        name: wordpress
+      - name: wordpress
+        image: wordpress:ft
         imagePullPolicy: Never
         env:
         - name: WORDPRESS_DB_NAME

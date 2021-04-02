@@ -41,8 +41,8 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx:ft
-        name: nginx
+      - name: nginx
+        image: nginx:ft
         imagePullPolicy: Never
         ports:
         - containerPort: 80

@@ -36,8 +36,8 @@ spec:
         app: phpmyadmin
     spec:
       containers:
-      - image: phpmyadmin:ft
-        name: phpmyadmin
+      - name: phpmyadmin
+        image: phpmyadmin:ft
         imagePullPolicy: Never
         env:
         - name: MYSQL_DATABASE

@@ -34,8 +34,8 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: mysql:ft
-        name: mysql
+      - name: mysql
+        image: mysql:ft
         imagePullPolicy: Never
         envFrom:
         - configMapRef:

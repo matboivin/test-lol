@@ -45,8 +45,8 @@ spec:
         app: vsftpd
     spec:
       containers:
-      - image: ftps:ft
-        name: ftps
+      - name: ftps
+        image: ftps:ft
         imagePullPolicy: Never
         ports:
         - containerPort: 21
