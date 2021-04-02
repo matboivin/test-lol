@@ -62,6 +62,8 @@
 - [19 Practical Examples of Openssl Command in Linux and Unix](https://sysaix.com/19-practical-examples-of-openssl-command-in-linux-and-unix)
 - [jq](https://stedolan.github.io/jq/)
 - [Six Strategies for Application Deployment](https://thenewstack.io/deployment-strategies/)
+- [Docker and the PID 1 zombie reaping problem](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/)
+- [Run multiple services in a container](https://docs.docker.com/config/containers/multi-service_container/)
 
 ## Security
 

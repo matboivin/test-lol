@@ -7,8 +7,9 @@ ENV NGINX_VERSION=1.18.0-r13
 
 # Install necessary packages and backup default NGINX config
 RUN apk update \
- && apk add --no-cache nginx=${NGINX_VERSION} \
- && mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
+ && apk add --no-cache nginx=${NGINX_VERSION}
+# Backup default NGINX config and create necessary directories
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
  && mkdir -p /run/nginx/ /var/www/localhost/html /etc/nginx/sites-enabled
 
@@ -18,7 +19,7 @@ COPY scripts/ /opt/
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh
 
-# Add config and HTML files
+# Add NGINX config and HTML files
 COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/

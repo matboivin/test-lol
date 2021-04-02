@@ -20,8 +20,6 @@ minikube delete
 echo "\n⧗   Start the cluster ...\n"
 minikube start --driver=docker --kubernetes-version=$KUBECTL_VERSION
 KUBERNETES_HOST=$(minikube ip)
-# Configure environment to use minikube’s Docker daemon
-eval $(minikube docker-env)
 # Check kubectl version
 zsh $SCRIPTS_PATH/install_kubectl.sh
 
@@ -29,6 +27,9 @@ zsh $SCRIPTS_PATH/install_kubectl.sh
 minikube addons enable metrics-server
 minikube addons enable dashboard
 minikube addons enable metallb
+
+# Configure environment to use minikube’s Docker daemon
+eval $(minikube docker-env)
 
 # DOCKER IMAGES
 zsh $SCRIPTS_PATH/build_docker.sh
