@@ -9,7 +9,7 @@ ENV FTP_PASS=user42
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache vsftpd=${FTP_VERSION} vsftpd-doc \
+ && apk add --no-cache vsftpd=${FTP_VERSION} \
  && mkdir -p /etc/vsftpd/vsftpd_user_conf
 
 # Add necessary scripts
@@ -34,7 +34,7 @@ RUN chown root:root /home/$FTP_USER \
  && chown $FTP_USER:$FTP_USER /home/$FTP_USER/files
 
 # Inform which ports are intended to be published
-EXPOSE 21 20
+EXPOSE 21 20 21000 21100
 
 ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

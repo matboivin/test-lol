@@ -17,14 +17,14 @@ spec:
     targetPort: ftp-data-port
     protocol: TCP
     name: data
-  - port: 21100
-    targetPort: pasv-max-port
-    protocol: TCP
-    name: ftp-pasv-max
   - port: 21000
     targetPort: pasv-min-port
     protocol: TCP
     name: ftp-pasv-min
+  - port: 21100
+    targetPort: pasv-max-port
+    protocol: TCP
+    name: ftp-pasv-max
   selector:
     app: vsftpd
   type: LoadBalancer
@@ -72,10 +72,10 @@ spec:
           name: ftp-port
         - containerPort: 20
           name: ftp-data-port
-        - containerPort: 21100
-          name: pasv-max-port
         - containerPort: 21000
           name: pasv-min-port
+        - containerPort: 21100
+          name: pasv-max-port
         volumeMounts:
         - name: ftps-data
           mountPath: /home/user42/files
