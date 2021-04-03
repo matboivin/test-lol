@@ -85,10 +85,4 @@ type: `ClusterIP` -> the service is accessible within the cluster, not meant for
 - [Getting external traffic into Kubernetes – ClusterIp, NodePort, LoadBalancer, and Ingress](https://www.ovh.com/blog/getting-external-traffic-into-kubernetes-clusterip-nodeport-loadbalancer-and-ingress/)
 - [MetalLB (Network LoadBalancer ) & Minikube.](https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe)
 
-<p align="center">
-  <img src="assets/service-pod-ip.png" alt="service and pod with IP address" />
-</p>
-
-Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
-
 **TL;DR** MetalLB is a bare metal load balancer. Its role is to distribute the requests between services of our cluster, depending on the ability of these services to fulfill requests. It ensures no service becomes overworked, reduces incidents and minimizes response time.

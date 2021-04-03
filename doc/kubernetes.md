@@ -65,12 +65,6 @@ The following objects, or resources, are stored in `etcd` (key-value pairs datab
 
 ## Services
 
-<p align="center">
-  <img src="assets/service-pod.png" alt="Service and Pod diagram" />
-</p>
-
-Image source: [k8s-diagrams](https://github.com/cloudogu/k8s-diagrams)
-
 > Pods are not constant. One of the best features Kubernetes offers is that non-functioning pods get replaced by new ones automatically. Services are introduced to provide reliable networking by bringing stable IP addresses and DNS names to the unstable world of pods.  [(Source)](https://phoenixnap.com/kb/understanding-kubernetes-architecture-diagrams)
 
 ## Volumes
