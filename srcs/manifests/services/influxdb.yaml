@@ -27,6 +27,8 @@ spec:
   selector:
     matchLabels:
       app: influxdb
+  updateStrategy:
+    type: RollingUpdate
   serviceName: influxdb
   template:
     metadata:

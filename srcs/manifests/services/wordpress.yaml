@@ -38,6 +38,7 @@ spec:
         app: wordpress
         tier: frontend
     spec:
+      restartPolicy: Always
       containers:
       - name: wordpress
         image: wordpress:ft

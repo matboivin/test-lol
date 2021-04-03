@@ -48,6 +48,7 @@ spec:
       labels:
         app: grafana
     spec:
+      restartPolicy: Always
       containers:
       - name: grafana
         image: grafana:ft

@@ -26,6 +26,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  updateStrategy:
+    type: RollingUpdate
   serviceName: mysql
   template:
     metadata:
