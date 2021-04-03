@@ -75,10 +75,6 @@ spec:
           subPath: providers.yaml
           readOnly: true
         # Dashboards
-        - name: home-dashboard-vol
-          mountPath: /usr/share/grafana/public/dashboards/home.json
-          subPath: home.json
-          readOnly: true
         - name: grafana-dashboard-vol
           mountPath: /usr/share/grafana/public/dashboards/ft_services/grafana_dashboard.json
           subPath: grafana_dashboard.json
@@ -115,9 +111,6 @@ spec:
         configMap:
           name: grafana-config
       # Dashboards
-      - name: home-dashboard-vol
-        configMap:
-          name: home-dashboard-config
       - name: grafana-dashboard-vol
         configMap:
           name: grafana-dashboard-config

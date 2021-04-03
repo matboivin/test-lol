@@ -16,6 +16,7 @@ RUN apk update \
 
 # Add necessary scripts
 COPY scripts/ /opt/
+COPY config/home.json "$GF_AUTH_DEFAULT_HOME_DASHBOARD_PATH"
 
 # Create Grafana directories
 RUN mkdir -p "/etc/grafana" "/usr/share/grafana/public/dashboards/ft_services" \
