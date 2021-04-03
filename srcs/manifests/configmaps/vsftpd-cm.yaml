@@ -81,16 +81,16 @@ data:
     pasv_enable=NO
 
     # The maximum port to allocate for PASV style data connections. Can be used to specify a narrow port range to assist firewalling.
-    #pasv_max_port=21100
+    pasv_max_port=21100
     # The minimum port to allocate for PASV style data connections. Can be used to specify a narrow port range to assist firewalling.
-    #pasv_min_port=21000
+    pasv_min_port=21000
 
     # Set to YES if you want to use a hostname (as opposed to IP address) in the pasv_address option.
     #pasv_addr_resolve
 
     # Use this option to override the IP address that vsftpd will advertise in response to the PASV command.
     # Provide a numeric IP address, unless pasv_addr_resolve is enabled, in which case you can provide a hostname which will be DNS resolved for you at startup. 
-    #pasv_address=192.168.49.2
+    pasv_address=ftps.ft-services.svc.cluster.local
 
     ########################################
     #                                      #

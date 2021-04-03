@@ -17,9 +17,31 @@ spec:
     targetPort: ftp-data-port
     protocol: TCP
     name: data
+  - port: 21100
+    targetPort: pasv-max-port
+    protocol: TCP
+    name: ftp-pasv-max
+  - port: 21000
+    targetPort: pasv-min-port
+    protocol: TCP
+    name: ftp-pasv-min
   selector:
     app: vsftpd
   type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ftps-pvc
+  namespace: ft-services
+  labels:
+    app: vsftpd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -50,7 +72,13 @@ spec:
           name: ftp-port
         - containerPort: 20
           name: ftp-data-port
+        - containerPort: 21100
+          name: pasv-max-port
+        - containerPort: 21000
+          name: pasv-min-port
         volumeMounts:
+        - name: ftps-data
+          mountPath: /home/user42/files
         - name: vsftpd-conf-vol
           mountPath: /etc/vsftpd/vsftpd.conf
           subPath: vsftpd.conf
@@ -64,6 +92,9 @@ spec:
           subPath: user42
           readOnly: true
       volumes:
+      - name: ftps-data
+        persistentVolumeClaim:
+          claimName: ftps-pvc
       - name: vsftpd-conf-vol
         configMap:
           name: vsftpd-config
