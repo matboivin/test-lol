@@ -4,8 +4,6 @@ LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
 ENV FTP_VERSION=3.0.3-r6
-ENV FTP_USER=user42
-ENV FTP_PASS=user42
 
 # Install necessary packages
 RUN apk update \
@@ -17,21 +15,6 @@ COPY scripts/ /opt/
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh
-
-# Create group and user
-RUN addgroup --system $FTP_USER \
- && adduser \
-    --system \
-    --disabled-password \
-    --home /home/$FTP_USER \
-    --shell /sbin/nologin \
-    --ingroup $FTP_USER \
-    $FTP_USER \
- && echo "$FTP_USER:$FTP_PASS" | chpasswd
-# Secure chroot jail
-RUN chown root:root /home/$FTP_USER \
- && mkdir -p /home/$FTP_USER/files \
- && chown $FTP_USER:$FTP_USER /home/$FTP_USER/files
 
 # Inform which ports are intended to be published
 EXPOSE 21 20 21000-21100
