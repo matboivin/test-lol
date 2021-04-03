@@ -5,6 +5,10 @@
 This project is a school assignment. It was done for **learning purposes** and is thus **not intended for production**.  
 Don't copy. Learn.  
 
+<p align="center">
+  <img src="assets/kubernetes-blog.jpeg" alt="k8s meme" width="450" />
+</p>
+
 ## Components
 
 - minikube v1.18.1
@@ -26,10 +30,6 @@ Don't copy. Learn.
 ## Prerequisites
 
 This project is to be run inside 42's VM.
-
-<p align="center">
-  <img src="assets/kubernetes-blog.jpeg" alt="k8s meme" width="450" />
-</p>
 
 ### Acknowledgements
 
