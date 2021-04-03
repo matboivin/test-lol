@@ -19,7 +19,6 @@ jobs:
               srcs/manifests/00-namespace.yaml
               srcs/manifests/configmaps/dashboards/ftps-dashboard-cm.yaml
               srcs/manifests/configmaps/dashboards/grafana-dashboard-cm.yaml
-              srcs/manifests/configmaps/dashboards/home-dashboard-cm.yaml
               srcs/manifests/configmaps/dashboards/influxdb-dashboard-cm.yaml
               srcs/manifests/configmaps/dashboards/mysql-dashboard-cm.yaml
               srcs/manifests/configmaps/dashboards/nginx-dashboard-cm.yaml
