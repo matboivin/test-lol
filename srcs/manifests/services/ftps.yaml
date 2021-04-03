@@ -12,15 +12,11 @@ spec:
   - port: 21
     targetPort: ftp-port
     protocol: TCP
-    name: ftp
-  - port: 21000
-    targetPort: pasv-min-port
+    name: control
+  - port: 20
+    targetPort: ftp-data-port
     protocol: TCP
-    name: ftp-pasv-min
-  - port: 21100
-    targetPort: pasv-max-port
-    protocol: TCP
-    name: ftp-pasv-max
+    name: data
   selector:
     app: vsftpd
   type: LoadBalancer
@@ -52,10 +48,8 @@ spec:
         ports:
         - containerPort: 21
           name: ftp-port
-        - containerPort: 21000
-          name: pasv-min-port
-        - containerPort: 21100
-          name: pasv-max-port
+        - containerPort: 20
+          name: ftp-data-port
         volumeMounts:
         - name: vsftpd-conf-vol
           mountPath: /etc/vsftpd/vsftpd.conf
