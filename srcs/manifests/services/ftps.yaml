@@ -67,9 +67,6 @@ spec:
       - name: ftps
         image: ftps:ft
         imagePullPolicy: Never
-        env:
-        - name: PASV_ADDRESS
-          value: ftps.ft-services.svc.cluster.local
         envFrom:
         - secretRef:
             name: ftps-creds

@@ -20,6 +20,7 @@ COPY scripts/ /opt/
 RUN mkdir -p /etc/influxdb $INFLUXDB_DATA_DIR $INFLUXDB_DATA_WAL_DIR $INFLUXDB_LOG_DIR \
  && mv /etc/influxdb.conf $INFLUXDB_CONFIG_PATH
 
+# Data directory
 VOLUME ["/var/lib/influxdb"]
 
 # Inform which ports are intended to be published

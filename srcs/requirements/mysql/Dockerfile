@@ -17,7 +17,7 @@ COPY scripts/ /opt/
 # Add WordPress database
 COPY db/wordpress.sql /opt/
 
-# Where MySQL by default will write its data files
+# Data directory
 VOLUME ["/var/lib/mysql"]
 
 # Inform which ports are intended to be published

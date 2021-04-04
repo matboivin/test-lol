@@ -27,7 +27,7 @@ RUN mkdir -p "/etc/grafana" "/usr/share/grafana/public/dashboards/ft_services" \
           "/usr/share/grafana/public/dashboards/template_vars.json" \
  && chown -R grafana:grafana "$GF_PATHS_HOME" "/etc/grafana"
 
-# Where Grafana by default will write its data files
+# Data directory
 VOLUME ["/usr/share/grafana/data"]
 
 WORKDIR $GF_PATHS_HOME

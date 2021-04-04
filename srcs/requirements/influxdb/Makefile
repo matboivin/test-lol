@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -p 8086:8086 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
+	docker run -e INFLUXDB_DB=local_monitoring -e INFLUXDB_USER=user42 -e INFLUXDB_PASS=user42 -p 8086:8086 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
 
 up: docker-build docker-run
 

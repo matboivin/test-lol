@@ -8,7 +8,7 @@ docker-build:
 	docker build -t $(IMAGE):$(TAG) .
 
 docker-run:
-	docker run -p 21:21 -p 21000-21100:21000-21100 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
+	docker run -e FTP_USER=user42 -e FTP_PASS=user42 -p 21:21 -p 20:20 -p 21000-21100:21000-21100 --name $(DOCKER_NAME) $(IMAGE):$(TAG)
 
 up: docker-build docker-run
 

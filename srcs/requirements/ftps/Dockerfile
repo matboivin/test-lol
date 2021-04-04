@@ -8,7 +8,7 @@ ENV FTP_VERSION=3.0.3-r6
 # Install necessary packages
 RUN apk update \
  && apk add --no-cache vsftpd=${FTP_VERSION} \
- && mkdir -p /etc/vsftpd/vsftpd_user_conf
+ && mkdir -p /etc/vsftpd/vsftpd_user_conf /var/run/vsftpd/empty
 
 # Add necessary scripts
 COPY scripts/ /opt/
