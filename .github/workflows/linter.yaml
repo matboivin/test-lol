@@ -32,7 +32,6 @@ jobs:
               srcs/manifests/configmaps/mysql-cm.yaml
               srcs/manifests/configmaps/php-fpm-cm.yaml
               srcs/manifests/configmaps/telegraf-cm.yaml
-              srcs/manifests/configmaps/vsftpd-cm.yaml
               srcs/manifests/configmaps/wordpress-cm.yaml
               srcs/manifests/daemonsets/telegraf.yaml
               srcs/manifests/services/ftps.yaml
