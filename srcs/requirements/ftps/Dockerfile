@@ -12,6 +12,10 @@ RUN apk update \
 
 # Add necessary scripts
 COPY scripts/ /opt/
+# Add config
+COPY config/vsftpd.conf /etc/vsftpd/vsftpd.conf
+COPY config/vsftpd.user_list /etc/vsftpd/vsftpd.user_list
+COPY config/user42 /etc/vsftpd/vsftpd_user_conf/user42
 
 # Generate a self-signed certificate and private key using OpenSSL
 RUN sh /opt/gen_key.sh

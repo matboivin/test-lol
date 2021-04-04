@@ -1,0 +1,10 @@
+########################################
+#                                      #
+#          user42 configuration        #
+#                                      #
+########################################
+
+# Set local root
+local_root=/home/user42
+
+write_enable=YES

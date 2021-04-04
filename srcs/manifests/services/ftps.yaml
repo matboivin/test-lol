@@ -87,22 +87,7 @@ spec:
         volumeMounts:
         - name: ftps-data
           mountPath: /home
-        - name: vsftpd-conf-vol
-          mountPath: /etc/vsftpd/vsftpd.conf
-          subPath: vsftpd.conf
-          readOnly: true
-        - name: vsftpd-conf-vol
-          mountPath: /etc/vsftpd/vsftpd.user_list
-          subPath: vsftpd.user_list
-          readOnly: true
-        - name: vsftpd-conf-vol
-          mountPath: /etc/vsftpd/vsftpd_user_conf/user42
-          subPath: user42
-          readOnly: true
       volumes:
       - name: ftps-data
         persistentVolumeClaim:
           claimName: ftps-pvc
-      - name: vsftpd-conf-vol
-        configMap:
-          name: vsftpd-config
