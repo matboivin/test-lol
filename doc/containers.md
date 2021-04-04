@@ -185,7 +185,7 @@ set ssl:priority "NORMAL:-SSL3.0:-TLS1.0:-TLS1.1:+TLS1.2"
 ```
 
 ```sh
-lftp -u <user>[,<pass>] 192.168.49.2 -p 21
+lftp -u <user> <IP> -p 21
 ```
 
 ## Other containers

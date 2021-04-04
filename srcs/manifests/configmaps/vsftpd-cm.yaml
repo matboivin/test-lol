@@ -30,12 +30,14 @@ data:
     dirmessage_enable=YES
     use_localtime=YES
 
-    # Write rights
-    write_enable=YES
-
     # Local users
     local_enable=YES
     local_umask=022
+
+    # User list
+    userlist_enable=YES
+    userlist_deny=YES
+    userlist_file=/etc/vsftpd/vsftpd.user_list
 
     # Anonymous FTP
     anonymous_enable=NO
@@ -79,3 +81,28 @@ data:
     # encrypted connections.
     rsa_cert_file=/etc/ssl/certs/vsftpd-selfsigned.crt
     rsa_private_key_file=/etc/ssl/private/vsftpd-selfsigned.key
+
+    ########################################
+    #                                      #
+    #         Users configuration          #
+    #                                      #
+    ########################################
+
+    user_config_dir=/etc/vsftpd/vsftpd_user_conf
+
+  # User list
+  vsftpd.user_list: |
+    root
+
+  # Config file for user42
+  user42: |
+    ########################################
+    #                                      #
+    #          user42 configuration        #
+    #                                      #
+    ########################################
+
+    # Set local root
+    local_root=/home/user42
+
+    write_enable=YES
