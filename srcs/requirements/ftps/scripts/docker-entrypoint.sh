@@ -9,9 +9,6 @@ if ! id -u "$FTP_USER" > /dev/null 2>&1; then
     # Create FTP user
     adduser --disabled-password $FTP_USER
     echo "$FTP_USER:$FTP_PASS" | chpasswd
-    # Secure chroot jail
-    # chown root:root /home/$FTP_USER
-    # mkdir -p /home/$FTP_USER/files
     chown -R $FTP_USER /home/$FTP_USER
 fi
 

@@ -33,6 +33,9 @@ data:
     # Local users
     local_enable=YES
     local_umask=022
+    chroot_local_user=YES
+    allow_writeable_chroot=YES
+    secure_chroot_dir=/var/run/vsftpd/empty
 
     # User list
     userlist_enable=YES

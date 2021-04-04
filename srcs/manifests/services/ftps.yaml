@@ -67,6 +67,11 @@ spec:
       - name: ftps
         image: ftps:ft
         imagePullPolicy: Never
+        env:
+        - name: PASV_ADDRESS
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
         envFrom:
         - secretRef:
             name: ftps-creds
