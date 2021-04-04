@@ -17,7 +17,7 @@ COPY scripts/ /opt/
 RUN sh /opt/gen_key.sh
 
 # Inform which ports are intended to be published
-EXPOSE 21 20 21000-21100
+EXPOSE 21 20 20000-20001
 
 ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

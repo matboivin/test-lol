@@ -14,6 +14,8 @@ data:
 
     # Standalone mode
     listen=YES
+    # Sandboxing
+    seccomp_sandbox=NO
 
     # Ports
     listen_port=21
@@ -28,32 +30,15 @@ data:
     dirmessage_enable=YES
     use_localtime=YES
 
-    # Anonymous FTP
-    anonymous_enable=NO
-    anon_umask=002
-    anon_mkdir_write_enable=NO
-    anon_world_readable_only=NO
-    anon_root=/var/lib/ftp
-
-    # User list
-    userlist_enable=YES
-    userlist_deny=YES
-    userlist_file=/etc/vsftpd/vsftpd.user_list
+    # Write rights
+    write_enable=YES
 
     # Local users
     local_enable=YES
     local_umask=022
-    chroot_local_user=YES
-    allow_writeable_chroot=YES
-    # This option should be the name of a directory which is empty
-    # Also, the directory should not be writable by the ftp user
-    # This directory is used as a secure chroot() jail at times vsftpd does not require filesystem access
-    secure_chroot_dir=/var/run/vsftpd/empty
 
-    # Limits for standalone mode
-    max_clients=10
-    max_per_ip=4
-    max_login_fails=3
+    # Anonymous FTP
+    anonymous_enable=NO
 
     # Activate logging of uploads/downloads
     dual_log_enable=YES
@@ -62,17 +47,11 @@ data:
     log_ftp_protocol=YES
     vsftpd_log_file=/var/log/vsftpd.log
 
-    # Sandboxing
-    seccomp_sandbox=NO
-
     # Passive mode
     pasv_enable=YES
-    pasv_addr_resolve=YES
-    pasv_address=ftps.ft-services.svc.cluster.local
-    # The minimum port to allocate for PASV style data connections.
-    pasv_min_port=21000
-    # The maximum port to allocate for PASV style data connections.
-    pasv_max_port=21100
+    pasv_address=192.168.49.2
+    pasv_min_port=20000
+    pasv_max_port=20001
 
     ########################################
     #                                      #
@@ -86,15 +65,12 @@ data:
     allow_anon_ssl=NO
     force_local_data_ssl=YES
     force_local_logins_ssl=YES
+    require_ssl_reuse=NO
 
     # Permit TLS v1 protocol connections. TLS v1 connections are preferred
     ssl_tlsv1=YES
     ssl_sslv2=NO
     ssl_sslv3=NO
-
-    # Additional protection against Man In The Middle (MITM) attacks.
-    # This may not be compatible with some older FTP clients.
-    require_ssl_reuse=YES
 
     # Require the server to use stronger cipher suites.
     ssl_ciphers=HIGH
@@ -103,28 +79,3 @@ data:
     # encrypted connections.
     rsa_cert_file=/etc/ssl/certs/vsftpd-selfsigned.crt
     rsa_private_key_file=/etc/ssl/private/vsftpd-selfsigned.key
-
-    ########################################
-    #                                      #
-    #         Users configuration          #
-    #                                      #
-    ########################################
-
-    user_config_dir=/etc/vsftpd/vsftpd_user_conf
-
-  # User list
-  vsftpd.user_list: |
-    root
-
-  # Config file for user42
-  user42: |
-    ########################################
-    #                                      #
-    #          user42 configuration        #
-    #                                      #
-    ########################################
-
-    # Set local root
-    local_root=/home/user42/files
-
-    write_enable=YES

@@ -17,14 +17,14 @@ spec:
     targetPort: ftp-data-port
     protocol: TCP
     name: data
-  - port: 21000
+  - port: 20000
     targetPort: pasv-min-port
     protocol: TCP
-    name: ftp-pasv-min
-  - port: 21100
+    name: pasv-min
+  - port: 20001
     targetPort: pasv-max-port
     protocol: TCP
-    name: ftp-pasv-max
+    name: pasv-max
   selector:
     app: vsftpd
   type: LoadBalancer
@@ -41,7 +41,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 500Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -75,24 +75,16 @@ spec:
           name: ftp-port
         - containerPort: 20
           name: ftp-data-port
-        - containerPort: 21000
+        - containerPort: 20000
           name: pasv-min-port
-        - containerPort: 21100
+        - containerPort: 20001
           name: pasv-max-port
         volumeMounts:
         - name: ftps-data
-          mountPath: /home/user42/files
+          mountPath: /home
         - name: vsftpd-conf-vol
           mountPath: /etc/vsftpd/vsftpd.conf
           subPath: vsftpd.conf
-          readOnly: true
-        - name: vsftpd-conf-vol
-          mountPath: /etc/vsftpd/vsftpd.user_list
-          subPath: vsftpd.user_list
-          readOnly: true
-        - name: vsftpd-conf-vol
-          mountPath: /etc/vsftpd/vsftpd_user_conf/user42
-          subPath: user42
           readOnly: true
       volumes:
       - name: ftps-data

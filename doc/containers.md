@@ -177,14 +177,15 @@ Edit configuration file:
 sudo vim /etc/lftp.conf
 ```
 
-Add the following two lines:
+Add the following lines:
 ```
 set ftp:ssl-force on
 set ssl:verify-certificate no
+set ssl:priority "NORMAL:-SSL3.0:-TLS1.0:-TLS1.1:+TLS1.2"
 ```
 
 ```sh
-lftp -u <user>[,<pass>] 192.168.49.2
+lftp -u <user>[,<pass>] 192.168.49.2 -p 21
 ```
 
 ## Other containers
