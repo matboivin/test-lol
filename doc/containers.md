@@ -188,6 +188,18 @@ set ssl:priority "NORMAL:-SSL3.0:-TLS1.0:-TLS1.1:+TLS1.2"
 lftp -u <user> <IP> -p 21
 ```
 
+2. Filezilla
+
+On 42's VM, install filezilla:
+```sh
+sudo apt install filezilla
+```
+
+Launch in command line:
+```sh
+filezilla
+```
+
 ## Other containers
 
 - [LEMP Stack + PMA + WordPress](lemp-stack.md)

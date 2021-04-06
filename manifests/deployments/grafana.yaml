@@ -79,17 +79,17 @@ spec:
           mountPath: /usr/share/grafana/public/dashboards/ft_services/grafana_dashboard.json
           subPath: grafana_dashboard.json
           readOnly: true
-        - name: ftps-dashboard-vol
-          mountPath: /usr/share/grafana/public/dashboards/ft_services/ftps_dashboard.json
-          subPath: ftps_dashboard.json
+        - name: vsftpd-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/ft_services/vsftpd_dashboard.json
+          subPath: vsftpd_dashboard.json
           readOnly: true
         - name: influxdb-dashboard-vol
           mountPath: /usr/share/grafana/public/dashboards/ft_services/influxdb_dashboard.json
           subPath: influxdb_dashboard.json
           readOnly: true
-        - name: mysql-dashboard-vol
-          mountPath: /usr/share/grafana/public/dashboards/ft_services/mysql_dashboard.json
-          subPath: mysql_dashboard.json
+        - name: mariadb-dashboard-vol
+          mountPath: /usr/share/grafana/public/dashboards/ft_services/mariadb_dashboard.json
+          subPath: mariadb_dashboard.json
           readOnly: true
         - name: nginx-dashboard-vol
           mountPath: /usr/share/grafana/public/dashboards/ft_services/nginx_dashboard.json
@@ -114,15 +114,15 @@ spec:
       - name: grafana-dashboard-vol
         configMap:
           name: grafana-dashboard-config
-      - name: ftps-dashboard-vol
+      - name: vsftpd-dashboard-vol
         configMap:
-          name: ftps-dashboard-config
+          name: vsftpd-dashboard-config
       - name: influxdb-dashboard-vol
         configMap:
           name: influxdb-dashboard-config
-      - name: mysql-dashboard-vol
+      - name: mariadb-dashboard-vol
         configMap:
-          name: mysql-dashboard-config
+          name: mariadb-dashboard-config
       - name: nginx-dashboard-vol
         configMap:
           name: nginx-dashboard-config

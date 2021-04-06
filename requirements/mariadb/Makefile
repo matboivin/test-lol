@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := mysql
-DOCKER_NAME := mysql1
+IMAGE := mariadb
+DOCKER_NAME := mariadb1
 TAG = ft
 
 docker-build:

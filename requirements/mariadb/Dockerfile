@@ -3,11 +3,11 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
-ENV MYSQL_VERSION=10.5.8-r0
+ENV MARIADB_VERSION=10.5.8-r0
 
 # Install necessary packages
 RUN apk update \
- && apk add --no-cache mysql=${MYSQL_VERSION} mysql-client=${MYSQL_VERSION} \
+ && apk add --no-cache mariadb=${MARIADB_VERSION} mariadb-client=${MARIADB_VERSION} \
  && mkdir -p /etc/mysql/ /var/log/mysql /run/mysqld \
  && chown -R mysql:mysql /etc/mysql/ /var/log/mysql
 

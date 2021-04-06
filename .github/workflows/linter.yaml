@@ -17,10 +17,10 @@ jobs:
         with:
           manifests: |
               manifests/00-namespace.yaml
-              manifests/configmaps/dashboards/ftps-dashboard-cm.yaml
+              manifests/configmaps/dashboards/vsftpd-dashboard-cm.yaml
               manifests/configmaps/dashboards/grafana-dashboard-cm.yaml
               manifests/configmaps/dashboards/influxdb-dashboard-cm.yaml
-              manifests/configmaps/dashboards/mysql-dashboard-cm.yaml
+              manifests/configmaps/dashboards/mariadb-dashboard-cm.yaml
               manifests/configmaps/dashboards/nginx-dashboard-cm.yaml
               manifests/configmaps/dashboards/pma-dashboard-cm.yaml
               manifests/configmaps/dashboards/wordpress-dashboard-cm.yaml
@@ -29,19 +29,19 @@ jobs:
               manifests/configmaps/grafana-cm.yaml
               manifests/configmaps/influxdb-cm.yaml
               manifests/configmaps/metallb-cm.yaml
-              manifests/configmaps/mysql-cm.yaml
+              manifests/configmaps/mariadb-cm.yaml
               manifests/configmaps/php-fpm-cm.yaml
               manifests/configmaps/telegraf-cm.yaml
               manifests/configmaps/wordpress-cm.yaml
               manifests/daemonsets/telegraf.yaml
               manifests/statefulsets/influxdb.yaml
-              manifests/statefulsets/mysql.yaml
-              manifests/deployments/ftps.yaml
+              manifests/statefulsets/mariadb.yaml
+              manifests/deployments/vsftpd.yaml
               manifests/deployments/grafana.yaml
               manifests/deployments/nginx.yaml
               manifests/deployments/phpmyadmin.yaml
               manifests/deployments/wordpress.yaml
-              manifests/secrets/ftps-creds.yaml
+              manifests/secrets/vsftpd-creds.yaml
               manifests/secrets/grafana-creds.yaml
               manifests/secrets/influxdb-creds.yaml
               manifests/secrets/wordpress-db-creds.yaml

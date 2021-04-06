@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ftps
+  name: vsftpd
   namespace: ft-services
   labels:
     app: vsftpd
@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ftps-pvc
+  name: vsftpd-pvc
   namespace: ft-services
   labels:
     app: vsftpd
@@ -46,7 +46,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ftps
+  name: vsftpd
   namespace: ft-services
   labels:
     app: vsftpd
@@ -64,8 +64,8 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: ftps
-        image: ftps:ft
+      - name: vsftpd
+        image: vsftpd:ft
         imagePullPolicy: Never
         env:
         - name: PASV_ADDRESS
@@ -74,7 +74,7 @@ spec:
               fieldPath: status.hostIP
         envFrom:
         - secretRef:
-            name: ftps-creds
+            name: vsftpd-creds
         ports:
         - containerPort: 990
           name: implicit-ssl
@@ -85,9 +85,9 @@ spec:
         - containerPort: 20001
           name: pasv-max-port
         volumeMounts:
-        - name: ftps-data
+        - name: vsftpd-data
           mountPath: /home
       volumes:
-      - name: ftps-data
+      - name: vsftpd-data
         persistentVolumeClaim:
-          claimName: ftps-pvc
+          claimName: vsftpd-pvc

@@ -1,43 +1,43 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: mariadb
   namespace: ft-services
   labels:
-    app: mysql
+    app: mariadb
 spec:
   ports:
     - port: 3306
-      targetPort: mysql-port
+      targetPort: mariadb-port
       protocol: TCP
   selector:
-    app: mysql
+    app: mariadb
   clusterIP: None
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: mariadb
   namespace: ft-services
   labels:
-    app: mysql
+    app: mariadb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: mariadb
   updateStrategy:
     type: RollingUpdate
-  serviceName: mysql
+  serviceName: mariadb
   template:
     metadata:
       labels:
-        app: mysql
+        app: mariadb
     spec:
       restartPolicy: Always
       containers:
-      - name: mysql
-        image: mysql:ft
+      - name: mariadb
+        image: mariadb:ft
         imagePullPolicy: Never
         envFrom:
         - configMapRef:
@@ -46,24 +46,24 @@ spec:
             name: wordpress-db-creds
         ports:
         - containerPort: 3306
-          name: mysql-port
+          name: mariadb-port
         volumeMounts:
-        - name: mysql-data
+        - name: mariadb-data
           mountPath: /var/lib/mysql
-        - name: mysql-conf-vol
+        - name: mariadb-conf-vol
           mountPath: /etc/my.cnf
           subPath: my.cnf
           readOnly: true
       volumes:
-      - name: mysql-conf-vol
+      - name: mariadb-conf-vol
         configMap:
-          name: mysql-config
+          name: mariadb-config
   volumeClaimTemplates:
   - metadata:
-      name: mysql-data
+      name: mariadb-data
       namespace: ft-services
       labels:
-        app: mysql
+        app: mariadb
     spec:
       accessModes:
         - ReadWriteOnce
