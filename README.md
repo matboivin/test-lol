@@ -34,8 +34,8 @@ This project is to be run inside 42's VM.
 ## Preview
 
 <p align="center">
-  <img src="assets/preview00.png" alt="Nginx index" width="450" /> <img src="assets/preview01.png" alt="WordPress home" width="450" />
-  <img src="assets/preview02.png" alt="Grafana dashboards" width="450" /> <img src="assets/preview03.png" alt="InfluxDB Dashboard" width="450" />
+  <img src="assets/preview00.png" alt="Nginx index" width="400" /> <img src="assets/preview01.png" alt="WordPress home" width="400" />
+  <img src="assets/preview02.png" alt="Grafana dashboards" width="400" /> <img src="assets/preview03.png" alt="InfluxDB Dashboard" width="400" />
 </p>
 
 ### Acknowledgements
