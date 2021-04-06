@@ -1,18 +1,23 @@
 SHELL = /bin/zsh
 KUBECTL_VERSION=v1.20.2
-SCRIPTS_PATH=srcs/scripts
-DOCKERFILE_PATH=srcs/requirements
-MANIFESTS_PATH=srcs/manifests
+SCRIPTS_PATH=scripts
+DOCKERFILE_PATH=requirements
+MANIFESTS_PATH=manifests
 NAMESPACE_DEV=ft-services
+export KUBERNETES_HOST=$(shell minikube ip)
+# export KUBERNETES_HOST=$(shell kubectl get node minikube -o jsonpath='{.status.addresses[0].address}')
 
-all: install start
-	@eval $(minikube docker-env)
-	@zsh $(SCRIPTS_PATH)/build_docker.sh
-	kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
-	kubectl apply -f $(MANIFESTS_PATH)/secrets --recursive
-	kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
-	kubectl apply -f $(MANIFESTS_PATH)/services --recursive
-	kubectl config set-context --current --namespace=$(NAMESPACE_DEV)
+all: install start build_docker
+	@echo "⧗   4/4Configure cluster\n"
+	@sed --in-place 's/__IP__/'$(KUBERNETES_HOST)'/g' $(MANIFESTS_PATH)/configmaps/metallb-cm.yaml
+	@kubectl apply -f $(MANIFESTS_PATH)/00-namespace.yaml
+	@kubectl apply -f $(MANIFESTS_PATH)/secrets
+	@kubectl apply -f $(MANIFESTS_PATH)/configmaps --recursive
+	@kubectl apply -f $(MANIFESTS_PATH)/statefulsets
+	@kubectl apply -f $(MANIFESTS_PATH)/deployments
+	@kubectl apply -f $(MANIFESTS_PATH)/daemonsets
+	@kubectl config set-context --current --namespace=$(NAMESPACE_DEV)
+	@echo "\n√   SETUP DONE\n"
 
 install: clean
 	@zsh $(SCRIPTS_PATH)/install_minikube.sh
@@ -20,15 +25,12 @@ install: clean
 start:
 	@echo "⧗   Start the cluster ...\n"
 	minikube start --driver=docker --kubernetes-version=$(KUBECTL_VERSION)
-	minikube addons enable metrics-server
-	minikube addons enable dashboard
-	minikube addons enable metallb
+	@minikube addons enable metrics-server
+	@minikube addons enable dashboard
+	@minikube addons enable metallb
 
-list:
-	minikube service list
-
-watch:
-	kubectl get pods -A --watch
+build_docker:
+	@zsh $(SCRIPTS_PATH)/build_docker.sh
 
 stop:
 	minikube stop
@@ -36,4 +38,4 @@ stop:
 clean:
 	minikube delete
 
-.PHONY: install start stop list watch clean
+.PHONY: install start stop clean

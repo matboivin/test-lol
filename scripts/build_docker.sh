@@ -4,9 +4,10 @@
 
 # VARIABLES
 IMAGES_TAG=ft
-DOCKERFILE_PATH=srcs/requirements
+DOCKERFILE_PATH=requirements
 
 echo "\n⧗   Build docker images\n"
+eval $(minikube docker-env)
 
 docker build -t mysql:$IMAGES_TAG $DOCKERFILE_PATH/mysql
 echo "\n√   MySQL image was successfully built\n"
