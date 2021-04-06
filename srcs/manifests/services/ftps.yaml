@@ -9,8 +9,8 @@ metadata:
     metallb.universe.tf/allow-shared-ip: single-ip
 spec:
   ports:
-  - port: 21
-    targetPort: ftp-port
+  - port: 990
+    targetPort: implicit-ssl
     protocol: TCP
     name: control
   - port: 20
@@ -76,8 +76,8 @@ spec:
         - secretRef:
             name: ftps-creds
         ports:
-        - containerPort: 21
-          name: ftp-port
+        - containerPort: 990
+          name: implicit-ssl
         - containerPort: 20
           name: ftp-data-port
         - containerPort: 20000

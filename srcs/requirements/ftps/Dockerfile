@@ -21,7 +21,7 @@ COPY config/user42 /etc/vsftpd/vsftpd_user_conf/user42
 RUN sh /opt/gen_key.sh
 
 # Inform which ports are intended to be published
-EXPOSE 21 20 20000-20001
+EXPOSE 990 20 20000-20001
 
 ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]
