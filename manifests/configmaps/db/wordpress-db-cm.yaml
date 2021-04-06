@@ -5,5 +5,5 @@ metadata:
   namespace: ft-services
 data:
   MYSQL_DATABASE: wordpress
-  MYSQL_ROOT_HOST: mysql.ft-services.svc.cluster.local
+  MYSQL_ROOT_HOST: mariadb.ft-services.svc.cluster.local
   MYSQL_ROOT_PORT: "3306"
