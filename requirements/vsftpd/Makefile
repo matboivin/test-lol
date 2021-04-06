@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 DOCKER_USER := mboivin
-IMAGE := ftps
-DOCKER_NAME := ftps1
+IMAGE := vsftpd
+DOCKER_NAME := vsftpd1
 TAG = ft
 
 docker-build:

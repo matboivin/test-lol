@@ -51,3 +51,47 @@ kubectl logs <controller> -n metallb-system
 ## Services and ports
 
 > Port definitions in Pods have names, and you can reference these names in the targetPort attribute of a Service. This works even if there is a mixture of Pods in the Service using a single configured name, with the same network protocol available via different port numbers. This offers a lot of flexibility for deploying and evolving your Services. For example, you can change the port numbers that Pods expose in the next version of your backend software, without breaking clients.  [(Source)](https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service)
+
+## Short and long options
+
+`adduser`
+
+```
+Usage: adduser [OPTIONS] USER [GROUP]
+
+Create new user, or add USER to GROUP
+
+	-h	--home				DIR		Home directory
+	-g	--gecos				GECOS	GECOS field
+	-s	--shell				SHELL	Login shell
+	-G	--ingroup			GRP		Group
+	-S	--system			Create a system user
+	-D	--disabled-password	Don't assign a password
+	-H	--no-create-home	Don't create home directory
+	-u	--uid				UID		User id
+	-k						SKEL	Skeleton directory (/etc/skel)
+```
+
+`addgroup`
+
+```
+Usage: addgroup [-g GID] [-S] [USER] GROUP
+
+Add a group or add a user to a group
+
+	-g	--gid		GID	Group id
+	-S	--system	Create a system group
+```
+
+`chpasswd`
+
+```
+Usage: chpasswd [--md5|--encrypted|--crypt-method|--root]
+
+Read user:password from stdin and update /etc/passwd
+
+	-e,--encrypted		Supplied passwords are in encrypted form
+	-m,--md5		Encrypt using md5, not des
+	-c,--crypt-method ALG	des,md5,sha256/512 (default sha512)
+	-R,--root DIR		Directory to chroot into
+```

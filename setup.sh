@@ -75,7 +75,6 @@ sleep 4
 # PRINT INFORMATIONS
 echo "\n√   SETUP DONE\n\n    IP: $KUBERNETES_HOST"
 echo "\n    Ports:\n    - PMAPORT: 5000\n    - WPPORT: 5050\n    - GRAFANAPORT: 3000"
-echo "\n    Credentials:\n    - User: user42\n    - Password: user42\n"
 
 # Launch dashboard
 echo "    To open Kubernetes dashboard, click on the URL below and select the 'ft-services' namespace.\n"
