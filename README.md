@@ -1,13 +1,15 @@
 # ft_services
 
+`ft_services` is an individual school project at [42 Paris](https://www.42.fr) campus.
+
+42 is a private, non-profit and tuition-free Computer Science school based on peer-to-peer learning and hands-on projects.
+
+> Set up a Kubernetes cluster. 
+
 ### Disclaimer
 
 This project is a school assignment. It was done for **learning purposes** and is thus **not intended for production**.  
 Don't copy. Learn.  
-
-<p align="center">
-  <img src="assets/kubernetes-blog.jpeg" alt="k8s meme" width="450" />
-</p>
 
 ## Components
 
@@ -27,9 +29,14 @@ Don't copy. Learn.
 
 ## Usage
 
-## Prerequisites
-
 This project is to be run inside 42's VM.
+
+## Preview
+
+<p align="center">
+  <img src="assets/preview00.png" alt="Nginx index" width="450" /> <img src="assets/preview01.png" alt="WordPress home" width="450" />
+  <img src="assets/preview02.png" alt="Grafana dashboards" width="450" /> <img src="assets/preview03.png" alt="InfluxDB Dashboard" width="450" />
+</p>
 
 ### Acknowledgements
 
