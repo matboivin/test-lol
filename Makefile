@@ -5,7 +5,6 @@ DOCKERFILE_PATH=requirements
 MANIFESTS_PATH=manifests
 NAMESPACE_DEV=ft-services
 export KUBERNETES_HOST=$(shell minikube ip)
-# export KUBERNETES_HOST=$(shell kubectl get node minikube -o jsonpath='{.status.addresses[0].address}')
 
 all: install start build_docker
 	@echo "⧗   4/4Configure cluster\n"

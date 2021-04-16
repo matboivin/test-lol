@@ -56,8 +56,6 @@ echo "\n√   Grafana image was successfully built\n"
 echo "⧗   4/4Configure cluster\n"
 # Replace single IP in MetalLB config
 KUBERNETES_HOST=$(minikube ip)
-# Equivalent:
-#KUBERNETES_HOST=$(shell kubectl get node minikube -o jsonpath='{.status.addresses[0].address}')
 sed --in-place 's/__IP__/'$KUBERNETES_HOST'/g' $MANIFESTS_PATH/configmaps/metallb-cm.yaml
 # Create resources
 kubectl apply -f $MANIFESTS_PATH/00-namespace.yaml
