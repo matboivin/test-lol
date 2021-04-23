@@ -6,7 +6,7 @@ metadata:
   labels:
     app: vsftpd
   annotations:
-    metallb.universe.tf/allow-shared-ip: training-key
+    metallb.universe.tf/allow-shared-ip: ip-ext
 spec:
   ports:
   - port: 990
