@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-dashboard-config
-  namespace: ft-services
+  namespace: monitoring
   labels:
     grafana_dashboard: "true"
 data:

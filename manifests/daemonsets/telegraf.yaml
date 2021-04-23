@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: telegraf
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: telegraf
 spec:

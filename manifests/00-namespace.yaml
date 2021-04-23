@@ -3,4 +3,11 @@ kind: Namespace
 metadata:
   name: ft-services
   labels:
-    environment: dev
+    environment: training
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    environment: training

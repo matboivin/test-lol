@@ -3,7 +3,7 @@ FROM alpine:3.13
 LABEL maintainer="mboivin@student.42.fr"
 
 # Environment Variables
-ENV MARIADB_VERSION=10.5.8-r0
+ENV MARIADB_VERSION=10.5.9-r0
 
 # Install necessary packages
 RUN apk update \

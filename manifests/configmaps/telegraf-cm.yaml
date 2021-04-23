@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: telegraf-config
-  namespace: ft-services
+  namespace: monitoring
 data:
   # Config file
   telegraf.conf: |+

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: influxdb
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: influxdb
 spec:
@@ -19,7 +19,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: influxdb
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: influxdb
 spec:
@@ -62,7 +62,7 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: influxdb-data
-      namespace: ft-services
+      namespace: monitoring
       labels:
         app: influxdb
     spec:

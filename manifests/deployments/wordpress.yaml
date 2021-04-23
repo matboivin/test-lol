@@ -6,7 +6,7 @@ metadata:
   labels:
     app: wordpress
   annotations:
-    metallb.universe.tf/allow-shared-ip: single-ip
+    metallb.universe.tf/allow-shared-ip: training-key
 spec:
   type: LoadBalancer
   ports:

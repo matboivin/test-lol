@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: grafana
   annotations:
-    metallb.universe.tf/allow-shared-ip: single-ip
+    metallb.universe.tf/allow-shared-ip: training-key
 spec:
   ports:
   - port: 3000
@@ -20,7 +20,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: grafana-pvc
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: grafana
 spec:
@@ -34,7 +34,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
-  namespace: ft-services
+  namespace: monitoring
   labels:
     app: grafana
 spec:

@@ -6,7 +6,7 @@ metadata:
   labels:
     app: phpmyadmin
   annotations:
-    metallb.universe.tf/allow-shared-ip: single-ip
+    metallb.universe.tf/allow-shared-ip: training-key
 spec:
   ports:
     - port: 5000
