@@ -8,10 +8,6 @@ BIN_PATH=/usr/local/bin
 
 # Install kubectl if the version is not the one expected
 if ! [[ $(kubectl version) =~ "$KUBECTL_VERSION" ]] || [ $? -eq 127 ]; then
-    # Check directory exists
-    if [ ! -d "$BIN_PATH" ]; then
-        mkdir -p $BIN_PATH
-    fi
     sudo rm -rf $BIN_PATH/kubectl
     echo "\n⧗   Downloading kubectl with curl ...\n"
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
