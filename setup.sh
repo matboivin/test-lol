@@ -8,7 +8,6 @@ IMAGES_TAG=ft
 DOCKERFILE_PATH=requirements
 MANIFESTS_PATH=manifests
 SCRIPTS_PATH=scripts
-PROJECT_NAMESPACE=ft-services
 
 echo "⧗   START FT_SERVICES\n"
 
@@ -64,8 +63,8 @@ kubectl apply -f $MANIFESTS_PATH/configmaps --recursive
 kubectl apply -f $MANIFESTS_PATH/statefulsets
 kubectl apply -f $MANIFESTS_PATH/deployments
 kubectl apply -f $MANIFESTS_PATH/daemonsets
-# Set context to use ft-services as permanent namespace
-kubectl config set-context --current --namespace=$PROJECT_NAMESPACE
+# Set context
+kubectl config set-context --current --namespace=dev
 
 echo "\n⧗   ...\n"
 sleep 4

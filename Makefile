@@ -3,7 +3,6 @@ KUBECTL_VERSION=v1.20.2
 SCRIPTS_PATH=scripts
 DOCKERFILE_PATH=requirements
 MANIFESTS_PATH=manifests
-NAMESPACE_DEV=ft-services
 export KUBERNETES_HOST=$(shell minikube ip)
 
 all: install start build_docker
@@ -15,7 +14,7 @@ all: install start build_docker
 	@kubectl apply -f $(MANIFESTS_PATH)/statefulsets
 	@kubectl apply -f $(MANIFESTS_PATH)/deployments
 	@kubectl apply -f $(MANIFESTS_PATH)/daemonsets
-	@kubectl config set-context --current --namespace=$(NAMESPACE_DEV)
+	@kubectl config set-context --current --namespace=dev
 	@echo "\n√   SETUP DONE\n"
 
 install: clean

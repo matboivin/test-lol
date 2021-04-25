@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ft-services
+  name: dev
   labels:
     environment: training
 ---

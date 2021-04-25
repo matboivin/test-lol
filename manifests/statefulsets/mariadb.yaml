@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mariadb
-  namespace: ft-services
+  namespace: dev
   labels:
     app: mariadb
 spec:
@@ -18,7 +18,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mariadb
-  namespace: ft-services
+  namespace: dev
   labels:
     app: mariadb
 spec:
@@ -61,7 +61,7 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: mariadb-data
-      namespace: ft-services
+      namespace: dev
       labels:
         app: mariadb
     spec:
