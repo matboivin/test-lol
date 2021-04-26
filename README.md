@@ -28,7 +28,8 @@ Don't copy. Learn.
 
 ## Usage
 
-This project is to be run inside 42's VM.
+This project is to be run inside 42's VM, but it is also compatible with Debian/Ubuntu.  
+The driver used is Docker.
 
 ### Prerequisites
 
@@ -38,23 +39,23 @@ This project is to be run inside 42's VM.
 Add `user42` to the docker group:
 
 ```console
-sudo usermod -aG docker $(whoami)
-su $(whoami)
-service docker restart
+$ sudo usermod -aG docker $(whoami)
+$ su $(whoami)
+$ service docker restart
 ```
 
 ### Common tasks
 
 ```console
 # Using Makefile
-make all
+$ make all
 
 # Using the script required by the assignment
-sh setup.sh
+$ sh setup.sh
 ```
 
 * `make install` installs minikube and kubectl
-* `make start` start cluster and enables necessary addons
+* `make start` starts cluster and enables necessary addons
 
 ## Preview
 
