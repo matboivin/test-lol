@@ -45,7 +45,7 @@ service docker restart
 
 ### Common tasks
 
-```
+```console
 # Using Makefile
 make all
 
