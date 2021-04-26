@@ -28,7 +28,7 @@ Don't copy. Learn.
 
 ## Usage
 
-This project is to be run inside 42's VM, but it is also compatible with Debian/Ubuntu.  
+This project should be run inside 42's VM. It is also compatible with Debian/Ubuntu.  
 The driver used is Docker.
 
 ### Prerequisites
