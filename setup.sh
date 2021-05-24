@@ -5,9 +5,9 @@
 # VARIABLES
 KUBECTL_VERSION=v1.20.2
 IMAGES_TAG=ft
-DOCKERFILE_PATH=requirements
-MANIFESTS_PATH=manifests
-SCRIPTS_PATH=scripts
+DOCKERFILE_PATH=srcs/requirements
+MANIFESTS_PATH=srcs/manifests
+SCRIPTS_PATH=srcs/scripts
 
 echo "⧗   START FT_SERVICES\n"
 

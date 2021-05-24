@@ -1,8 +1,8 @@
 SHELL = /bin/zsh
 KUBECTL_VERSION=v1.20.2
-SCRIPTS_PATH=scripts
-DOCKERFILE_PATH=requirements
-MANIFESTS_PATH=manifests
+SCRIPTS_PATH=srcs/scripts
+DOCKERFILE_PATH=srcs/requirements
+MANIFESTS_PATH=srcs/manifests
 export KUBERNETES_HOST=$(shell minikube ip)
 
 all: install start build_docker
