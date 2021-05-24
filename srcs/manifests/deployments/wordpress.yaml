@@ -17,6 +17,20 @@ spec:
     app: wordpress
     tier: frontend
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-pvc
+  namespace: dev
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -73,6 +87,8 @@ spec:
         - containerPort: 5050
           name: wp-port
         volumeMounts:
+        - name: wp-data
+          mountPath: /var/www/wordpress/html
         - name: wp-conf-vol
           mountPath: /var/www/wordpress/wp-config.php
           subPath: wp-config.php
@@ -86,6 +102,9 @@ spec:
           subPath: php-fpm.conf
           readOnly: true
       volumes:
+      - name: wp-data
+        persistentVolumeClaim:
+          claimName: wp-pvc
       - name: wp-conf-vol
         configMap:
           name: wordpress-config

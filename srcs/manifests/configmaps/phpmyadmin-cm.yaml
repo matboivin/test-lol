@@ -34,12 +34,10 @@ data:
     $i++;
     /**
      * Authentication type
-     * To enable auto-login, change the auth_type to 'config'
-     * and uncomment 'user' and 'password' lines
      */
-    $cfg['Servers'][$i]['auth_type'] = 'cookie';
-    // $cfg['Servers'][$i]['user'] = getenv('MYSQL_USER');
-    // $cfg['Servers'][$i]['password'] = getenv('MYSQL_PASSWORD');
+    $cfg['Servers'][$i]['auth_type'] = 'config';
+    $cfg['Servers'][$i]['user'] = getenv('MYSQL_USER');
+    $cfg['Servers'][$i]['password'] = getenv('MYSQL_PASSWORD');
 
     /* The database to use */
     $cfg['Servers'][$i]['only_db'] = getenv('MYSQL_DATABASE');
