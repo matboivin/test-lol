@@ -4,7 +4,7 @@
 
 # VARIABLES
 IMAGES_TAG=ft
-DOCKERFILE_PATH=../srcs/requirements
+DOCKERFILE_PATH=srcs/requirements
 
 echo "\n⧗   Build docker images\n"
 eval $(minikube docker-env)
