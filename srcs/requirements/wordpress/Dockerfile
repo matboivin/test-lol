@@ -27,9 +27,9 @@ COPY scripts/ /opt/
 RUN sh /opt/gen_key.sh
 
 # Add NGINX config
-COPY config/nginx.conf /etc/nginx/
-COPY config/localhost.conf /etc/nginx/sites-available/
-COPY config/conf.d /etc/nginx/conf.d/
+COPY nginx/nginx.conf /etc/nginx/
+COPY nginx/localhost.conf /etc/nginx/sites-available/
+COPY nginx/conf.d /etc/nginx/conf.d/
 # Add supervisord config
 COPY config/supervisord.conf /etc/supervisor/supervisord.conf
 
@@ -37,8 +37,9 @@ COPY config/supervisord.conf /etc/supervisor/supervisord.conf
 RUN cd /var/www && wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
  && tar -zxvf wordpress-${WORDPRESS_VERSION}.tar.gz \
  && rm wordpress-${WORDPRESS_VERSION}.tar.gz \
- && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/ /var/www/wordpress/html
+ && mkdir -p /var/www/wordpress/wp-content/uploads/2021/03/ /var/www/wordpress/html /var/www/wordpress/img
 COPY html/ /var/www/wordpress/html
+COPY img/ /var/www/wordpress/img
 COPY wp-theme/cyanotype /var/www/wordpress/wp-content/themes/cyanotype
 COPY wp-theme/42wallpaper.jpg /var/www/wordpress/wp-content/uploads/2021/03/
 

@@ -23,5 +23,5 @@ RUN sh /opt/gen_key.sh
 # Inform which ports are intended to be published
 EXPOSE 990 20 20000-20001
 
-ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker_entrypoint.sh"]
 CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

@@ -35,5 +35,5 @@ WORKDIR $GF_PATHS_HOME
 # Inform which ports are intended to be published
 EXPOSE 3000
 
-ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker_entrypoint.sh"]
 CMD ["/usr/sbin/grafana-server"]

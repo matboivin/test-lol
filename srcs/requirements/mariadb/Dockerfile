@@ -23,5 +23,5 @@ VOLUME ["/var/lib/mysql"]
 # Inform which ports are intended to be published
 EXPOSE 3306
 
-ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker_entrypoint.sh"]
 CMD ["/usr/bin/mysqld", "--user=root"]

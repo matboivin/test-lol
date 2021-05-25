@@ -21,5 +21,5 @@ RUN mkdir -p /etc/telegraf \
 # Inform which ports are intended to be published
 EXPOSE 8125/udp
 
-ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker_entrypoint.sh"]
 CMD ["telegraf"]

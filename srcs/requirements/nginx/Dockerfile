@@ -11,7 +11,7 @@ RUN apk update \
 # Backup default NGINX config and create necessary directories
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default \
  && rm /etc/nginx/conf.d/default.conf \
- && mkdir -p /run/nginx/ /var/www/localhost/html /etc/nginx/sites-enabled
+ && mkdir -p /run/nginx/ /var/www/localhost/html /var/www/localhost/img /etc/nginx/sites-enabled
 
 # Add necessary scripts
 COPY scripts/ /opt/
@@ -24,6 +24,7 @@ COPY config/nginx.conf /etc/nginx/
 COPY config/localhost.conf /etc/nginx/sites-available/
 COPY config/conf.d /etc/nginx/conf.d/
 COPY html/ /var/www/localhost/html
+COPY img/ /var/www/localhost/img
 
 # Symlink to sites-available to enable vhost
 RUN ln -s /etc/nginx/sites-available/localhost.conf /etc/nginx/sites-enabled/
@@ -34,5 +35,5 @@ RUN chown -R nginx:nginx /run /var/lib/nginx /var/www
 # Inform which ports are intended to be published
 EXPOSE 80 443
 
-ENTRYPOINT ["sh", "/opt/docker-entrypoint.sh"]
+ENTRYPOINT ["sh", "/opt/docker_entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
