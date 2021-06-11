@@ -64,7 +64,11 @@ $ sh setup.sh
   <img src="assets/preview02.png" alt="Grafana dashboards" width="400" /> <img src="assets/preview03.png" alt="InfluxDB Dashboard" width="400" />
 </p>
 
-### Acknowledgements
+## License
+
+See `LICENSE` for more information.
+
+## Acknowledgements
 
 School project done at [42 Paris](https://www.42.fr).
 
