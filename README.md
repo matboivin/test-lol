@@ -26,12 +26,7 @@ Don't copy. Learn.
 - Grafana 7.3.6
 - Telegraf 1.17.0
 
-## Usage
-
-This project should be run inside 42's VM. It is also compatible with Debian/Ubuntu.  
-The driver used is Docker.
-
-### Prerequisites
+## Requirements
 
 - 42's VM with 2 CPUs
 - Docker 18.09 or higher
@@ -44,7 +39,10 @@ $ su $(whoami)
 $ service docker restart
 ```
 
-### Common tasks
+## Usage
+
+This project should be run inside 42's VM. It is also compatible with Debian/Ubuntu.  
+The driver used is Docker.
 
 ```console
 # Using Makefile
@@ -53,6 +51,8 @@ $ make all
 # Using the script required by the assignment
 $ sh setup.sh
 ```
+
+### Common tasks
 
 * `make install` installs minikube and kubectl
 * `make start` starts cluster and enables necessary addons
@@ -64,12 +64,12 @@ $ sh setup.sh
   <img src="assets/preview02.png" alt="Grafana dashboards" width="400" /> <img src="assets/preview03.png" alt="InfluxDB Dashboard" width="400" />
 </p>
 
-## License
-
-See `LICENSE` for more information.
-
 ## Acknowledgements
 
 School project done at [42 Paris](https://www.42.fr).
 
 WordPress theme: [Cyanotype](https://wordpress.org/themes/cyanotype/) By Automattic.
+
+## License
+
+See `LICENSE` for more information.
